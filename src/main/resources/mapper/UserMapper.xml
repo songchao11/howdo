@@ -31,5 +31,11 @@
 	inner join howdo_user_role hur on hu.id=hur.user_id
 	inner join howdo_role hr on hur.role_id=hr.id and hu.account=#{account}
   </select>
+  
+  <insert id="addUser">
+  	insert howdo_user(account,password,nickname,email,head_pic) 
+  	values (#{user.account}, #{user.password}, #{user.nickname}, 
+  	#{user.email}, #{user.headPic})
+  </insert>
 
 </mapper>

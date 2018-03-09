@@ -83,12 +83,14 @@ input[type="text"],input[type="password"]{padding-left:26px;}
     		var email = $("#email").val();
 	 		if(validate_info()){
 	 			$.ajax({
-	    			url: "${APP_PATH}/register",
+	    			url: "${APP_PATH}/user",
 	    			data: {"account": username, "password": password, "email": email},
 	    			dataType: "json",
 	    			type: "POST",
 	    			success: function(result){
-	    				alert(result.code)
+	    				if(result.code == 100){
+	    					window.location.href = "login.jsp";
+	    				}
 	    			}
 	    		});
 	  		}else{
@@ -103,7 +105,7 @@ input[type="text"],input[type="password"]{padding-left:26px;}
     		$("#error_box").text("");
     		var username = this.value;
     		$.ajax({
-    			url: "${APP_PATH}/checkUser",
+    			url: "${APP_PATH}/account",
     			data: "username="+username,
     			type: "GET",
     			success: function(result){ 

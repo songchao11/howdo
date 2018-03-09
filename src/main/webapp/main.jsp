@@ -6,6 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HowDo</title>
 
+<%
+	pageContext.setAttribute("APP_PATH", request.getContextPath());
+%>
+
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -29,6 +33,10 @@
 	.dropdown-menu {
 		margin-top: -1px;
 		margin-left: 81%;
+	}
+	.user_menu a{
+		color: white;
+		text-decoration:none;
 	}
 </style>
 </head>
@@ -77,11 +85,9 @@
 </form>
 </div>
 <div class="user_menu">
-	<!--登录&nbsp;|&nbsp;注册-->
-	<!--<ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="#">Link</a></li>-->
-        <!--<li class="dropdown">-->
-          <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	<!-- <a href="login.jsp">登录</a><span>&nbsp;|&nbsp;</span><a href="register.jsp">注册</a> -->
+          <!-- <span>
+          <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           	admin 
           	<span class="caret"></span>
           </a>
@@ -90,9 +96,9 @@
             
             <li role="separator" class="divider"></li>
             <li><a href="logout">退出登录</a></li>
-          </ul>
-        <!--</li>
-      </ul>-->
+          </ul>  
+          </span> -->
+        
 </div>
 </div>
 </section>
@@ -379,8 +385,47 @@
 </div>
 </div>
 </div>
-
 </section>
-
+<script type="text/javascript">
+	$(function(){
+		showUser();
+	});
+	function showUser(){
+		//清空 .user_menu div里面的东西
+		$(".user_menu").empty(); 
+		$.ajax({
+			url: "${APP_PATH}/user",
+			type: "GET",
+			/* <span>
+		    <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		    	admin 
+		    	<span class="caret"></span>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a href="#">个人中心</a></li>
+		      
+		      <li role="separator" class="divider"></li>
+		      <li><a href="logout">退出登录</a></li>
+		    </ul>  
+		    </span> */
+			success: function(result){
+				if(result.code == 100){
+					var a_user = $("<a></a>").addClass("dropdown-toggle").attr("href","#").attr("data-toggle","dropdown")
+					.attr("role","button").attr("aria-haspopup","true").attr("aria-expanded","false").append(result.extend.user.nickname)
+					.append($("<span></span>").addClass("caret"));
+					var a_ul = $("<ul></ul>").addClass("dropdown-menu").append($("<li></li>").append($("<a></a>").attr("href","#").append("个人中心")))
+					.append($("<li></li>").addClass("divider").attr("role","separator"))
+					.append($("<li></li>").append($("<a></a>").append("退出登录").attr("href","logout")));
+					$("<span></span>").append(a_user).append(a_ul).appendTo(".user_menu");
+				}else if(result.code == 200){
+					var a_login = $("<a></a>").append("登录").attr("href","login.jsp");
+					var a_text = $("<span></span>").append("&nbsp;|&nbsp;");
+					var a_register = $("<a></a>").append("注册").attr("href","register.jsp");
+					$("<span></span>").append(a_login).append(a_text).append(a_register).appendTo(".user_menu");
+				}
+			}
+		});
+	}
+</script>
 </body>
 </html>

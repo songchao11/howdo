@@ -2,6 +2,7 @@ package com.song.howdo.controller;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +26,22 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public Msg queryUsers(){
+    	Object user =  SecurityUtils.getSubject().getPrincipal();
+    	System.out.println("测试:"+user);
         List<User> users = userService.queryUsers();
         return Msg.success().add("users", users);
     }
 
-    @RequestMapping(value = "/checkUser", method = RequestMethod.GET)
+    /**
+     * 检查账户名是否被占用
+     * @param username
+     * @return
+     */
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
     @ResponseBody
     public Msg checkUser(@RequestParam String username){
+    	Object useraa =  SecurityUtils.getSubject().getPrincipal();
+    	System.out.println("哈哈:"+useraa);
     	User user = userService.queryUserByAccount(username);
     	if(user == null){
     		return Msg.success();
@@ -40,12 +50,25 @@ public class UserController {
     	}
     }
     
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    /**
+     * 注册用户
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
     public Msg register(User user){
-    	System.out.println(user.getAccount());
-    	return Msg.success();
+    	return userService.addUser(user);
     }
 
+    /**
+     * 获取登录用户信息
+     * @return
+     */
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @ResponseBody
+    public Msg getUser(){
+    	return userService.getUser();
+    }
 
 }

@@ -175,14 +175,14 @@
             	
                 /login.jsp = anon
                 /register.jsp = anon
+                /main.jsp = anon
        			/login = anon
        			/logout = logout
        			/user.jsp = roles[user]
        			/admin.jsp = roles[admin]
        			/index.jsp = roles[user]
        			/article/main = anon
-       			/checkUser = anon
-       			/register = anon
+       			/user = anon
                 
                 # everything else requires authentication:
                 /** = authc
