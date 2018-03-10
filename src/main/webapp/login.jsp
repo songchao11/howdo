@@ -17,7 +17,7 @@
     
     <style type="text/css">
 	body{
-    background: url("static/img/1.jpg");
+    background: url("http://119.23.77.220/images/p1.jpg");
     animation-name:myfirst;
     animation-duration:12s;
     /*变换时间*/
@@ -30,16 +30,19 @@
 }
 @keyframes myfirst
 {
-    0%   {background:url(static/img/1.jpg);}
-    34%  {background:url(static/img/2.jpg);}
-    67%  {background:url(static/img/3.jpg);}
-    100% {background:url(static/img/1.jpg);}
+    0%   {background:url(http://119.23.77.220/images/p1.jpg);}
+    34%  {background:url(http://119.23.77.220/images/p2.jpg);}
+    67%  {background:url(http://119.23.77.220/images/p3.jpg);}
+    100% {background:url(http://119.23.77.220/images/p1.jpg);}
 }
 .form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
 /*阴影*/
 .fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
 input[type="text"],input[type="password"]{padding-left:26px;}
 .checkbox{padding-left:21px;}
+#error_box{
+	color: red;
+}
 </style>
 </head>
 <body>
@@ -48,7 +51,7 @@ input[type="text"],input[type="password"]{padding-left:26px;}
             <div class="form-horizontal col-md-offset-3" id="login_form">
                 <h3 class="form-title">LOGIN</h3>
                 
-                <form action="login" method="post">
+                <!-- <form action="login" method="post"> -->
 	                <div class="col-md-9">
 	                    <div class="form-group">
 	                        <i class="fa fa-user fa-lg"></i>
@@ -60,16 +63,63 @@ input[type="text"],input[type="password"]{padding-left:26px;}
 	                    </div>
 	                    <div class="form-group">
 	                        <label class="checkbox">
-	                            <input type="checkbox" name="remember" value="1"/>记住我
+	                            <input type="checkbox" id="remember" name="remember" value="1"/>记住我
 	                        </label>
 	                    </div>
+	                    <div id="error_box"></div>
 	                    <div class="form-group col-md-offset-9">
-	                        <button type="submit" class="btn btn-success pull-right" name="submit">登录</button>
+	                        <button type="submit" class="btn btn-success pull-right" name="submit" id="login_btn">登录</button>
 	                    </div>
 	                </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>
+    
+    <script type="text/javascript">
+    $("#login_btn").click(function(){
+		var username = $("#username").val();
+		var password = $("#password").val();
+		var remember = '0';
+		if($("#remember").is(':checked')){
+			remember = '1';
+		}
+ 		if(validate_info()){
+ 			$.ajax({
+    			url: "${APP_PATH}/login",
+    			data: {"account": username, "password": password, "remember": remember},
+    			dataType: "json",
+    			type: "GET",
+    			success: function(result){
+    				if(result.code == 100){
+    					window.location.href = "main.jsp";
+    				}else if(result.code == 200){
+    					showError("账号或密码错误!");
+    				}
+    			}
+    		});
+  		}
+	});
+    function validate_info(){
+		//判断是否为空
+		$("#error_box").text("");
+		var username = $("#username").val();
+		var password = $("#password").val();
+		if(username == ""){
+			showError("账号不能为空!");
+			return false;
+		}
+		if(password == ""){
+			showError("密码不能为空!");
+			return false;
+		}
+		return true;
+	}
+    function showError(msg){
+		$("#error_box").text("");
+		$("#error_box").text(msg);
+	}
+    </script>
+    
 </body>
 </html>

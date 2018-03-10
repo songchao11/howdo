@@ -6,25 +6,30 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.song.howdo.model.Msg;
+import com.song.howdo.model.User;
 
 @Controller
 public class ShiroHandler {
 
-	@RequestMapping("/login")
-	public String login(@RequestParam("username") String username, 
-			@RequestParam("password") String password,
-			@RequestParam("remember") String remember){
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@ResponseBody
+	public Msg login(User user){
 		Subject currentUser = SecurityUtils.getSubject();
-		
+		String username = user.getAccount();
+		String password = user.getPassword();
+		String remember = user.getRemember();
 		if (!currentUser.isAuthenticated()) {
         	// 把用户名和密码封装为 UsernamePasswordToken 对象
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             // rememberme
-//            if(remember != null){
-//            	System.out.println("测试:"+remember);
+            if(remember == "1"){
+            	System.out.println("测试:"+remember);
                 token.setRememberMe(true);
-//            }
+            }
             try {
             	// 执行登录. 
                 currentUser.login(token);
@@ -34,9 +39,10 @@ public class ShiroHandler {
             catch (AuthenticationException ae) {
                 //unexpected condition?  error?
             	System.out.println("登录失败: " + ae.getMessage());
+            	return Msg.fail();
             }
         }
-		return "redirect:/main.jsp";
+		return Msg.success();
 	}
 	
 }

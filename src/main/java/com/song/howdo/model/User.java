@@ -1,6 +1,7 @@
 package com.song.howdo.model;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "howdo_user")
 public class User extends BaseEntity {
@@ -10,6 +11,10 @@ public class User extends BaseEntity {
 	private String nickname;
 	private String email;
 	private String headPic;
+	
+	@Transient
+	private String remember;
+	
 	public String getAccount() {
 		return account;
 	}
@@ -39,6 +44,12 @@ public class User extends BaseEntity {
 	}
 	public void setHeadPic(String headPic) {
 		this.headPic = headPic;
+	}
+	public String getRemember() {
+		return remember;
+	}
+	public void setRemember(String remember) {
+		this.remember = remember;
 	}
 	
 	

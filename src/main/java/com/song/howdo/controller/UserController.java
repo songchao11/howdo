@@ -41,7 +41,6 @@ public class UserController {
     @ResponseBody
     public Msg checkUser(@RequestParam String username){
     	Object useraa =  SecurityUtils.getSubject().getPrincipal();
-    	System.out.println("¹þ¹þ:"+useraa);
     	User user = userService.queryUserByAccount(username);
     	if(user == null){
     		return Msg.success();

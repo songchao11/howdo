@@ -23,6 +23,9 @@
 
 <script src="//dynamic01.ehowcdn.com/services/modules/js/common_header/0dbdbf9e/"></script><script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js" defer></script><script type="text/javascript" src="//www.zergnet.com/zerg-inf-multi.js"></script>
 <style type="text/css">
+	#Header{
+		position:fixed;
+	}
 	.user_menu {
 		width: 125px;
 		height: 30px;
