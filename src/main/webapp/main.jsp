@@ -110,7 +110,7 @@
 <div class="non-responsive-spacer"></div>
 <div class="inner-container">
 </div>
-<section id="Body" class="Homepage FLC" data-page-id="homepage" data-section="body">
+<section id="Body" class="Homepage FLC" data-page-id="homepage" data-section="body" >
 <!-- 特色项目 -->
 <div class="container-fluid hero-container">
 	<a href="/13709304/how-to-sew-diy-fabric-storage-boxes" data-gtm-event="featured hero">
@@ -399,24 +399,12 @@
 		$.ajax({
 			url: "${APP_PATH}/user",
 			type: "GET",
-			/* <span>
-		    <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-		    	admin 
-		    	<span class="caret"></span>
-		    </a>
-		    <ul class="dropdown-menu">
-		      <li><a href="#">个人中心</a></li>
-		      
-		      <li role="separator" class="divider"></li>
-		      <li><a href="logout">退出登录</a></li>
-		    </ul>  
-		    </span> */
 			success: function(result){
 				if(result.code == 100){
 					var a_user = $("<a></a>").addClass("dropdown-toggle").attr("href","#").attr("data-toggle","dropdown")
 					.attr("role","button").attr("aria-haspopup","true").attr("aria-expanded","false").append(result.extend.user.nickname)
 					.append($("<span></span>").addClass("caret"));
-					var a_ul = $("<ul></ul>").addClass("dropdown-menu").append($("<li></li>").append($("<a></a>").attr("href","#").append("个人中心")))
+					var a_ul = $("<ul></ul>").addClass("dropdown-menu").append($("<li></li>").append($("<a></a>").attr("href","personal.jsp").append("个人中心")))
 					.append($("<li></li>").addClass("divider").attr("role","separator"))
 					.append($("<li></li>").append($("<a></a>").append("退出登录").attr("href","logout")));
 					$("<span></span>").append(a_user).append(a_ul).appendTo(".user_menu");
