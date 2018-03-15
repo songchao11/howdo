@@ -76,7 +76,7 @@
         <property name="cacheManager" ref="cacheManager"/>
         <!-- <property name="sessionMode" ref="native"></property>    -->    
         <property name="realm" ref="jdbcRealm"></property>
-        <property name="rememberMeManager.cookie.maxAge" value="10"></property>
+        <property name="rememberMeManager.cookie.maxAge" value="259200"></property>
     </bean>
 
     <!-- Let's use some enterprise caching support for better performance.  You can replace this with any enterprise

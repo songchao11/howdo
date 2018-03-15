@@ -1,5 +1,6 @@
 package com.song.howdo.controller;
 
+import com.song.howdo.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,12 @@ public class ArticleController {
 	@ResponseBody
 	public Msg queryCategorys(){
 		return articleService.queryCategorys();
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
+	public Msg addArticle(Article article){
+		return articleService.addArticle(article);
 	}
 	
 }

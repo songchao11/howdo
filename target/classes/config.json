@@ -1,0 +1,79 @@
+
+{
+    
+    "useFtpUpload": "true", 
+    "keepLocalFile": "true", 
+    "imageActionName": "uploadimage", 
+    "imageFieldName": "upfile", 
+    "imageMaxSize": "52428800", 
+    "imageAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], 
+    "imageCompressEnable": true, 
+    "imageCompressBorder": "1600", 
+    "imageInsertAlign": "none", 
+    "imageUrlPrefix": "", 
+    "imagePathFormat": "/images/{filename}", 
+                                
+    "scrawlActionName": "uploadscrawl", 
+    "scrawlFieldName": "upfile", 
+    "scrawlPathFormat": "/ueditor/image/{yyyy}{mm}{dd}/{time}{rand:6}", 
+    "scrawlMaxSize": "52428800", 
+    "scrawlUrlPrefix": "", 
+    "scrawlInsertAlign": "none",
+
+    
+    "snapscreenActionName": "uploadimage", 
+    "snapscreenPathFormat": "/ueditor/image/{yyyy}{mm}{dd}/{time}{rand:6}", 
+    "snapscreenUrlPrefix": "", 
+    "snapscreenInsertAlign": "none", 
+
+    
+    "catcherLocalDomain": ["127.0.0.1", "localhost", "img.baidu.com"],
+    "catcherActionName": "catchimage", 
+    "catcherFieldName": "source", 
+    "catcherPathFormat": "/ueditor/image/{yyyy}{mm}{dd}/{time}{rand:6}", 
+    "catcherUrlPrefix": "", 
+    "catcherMaxSize": "52428800", 
+    "catcherAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], 
+
+    
+    "videoActionName": "uploadvideo", 
+    "videoFieldName": "upfile", 
+    "videoPathFormat": "/video/{filename}", 
+    "videoUrlPrefix": "10.211.111.18:8080/upload", 
+    "videoMaxSize": "524288000", 
+    "videoAllowFiles": [
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid"], 
+
+    
+    "fileActionName": "uploadfile", 
+    "fileFieldName": "upfile", 
+    "filePathFormat": "/doc/{filename}", 
+    "fileUrlPrefix": "", 
+    "fileMaxSize": "52428800", 
+    "fileAllowFiles": [
+        ".xls", ".xlsx", ".doc", ".docx", ".pptx", ".ppt", ".txt", ".pdf"
+    ], 
+
+    
+    "imageManagerActionName": "listimage", 
+    "imageManagerListPath": "ueditor/image/", 
+    "imageManagerListSize": "20", 
+    "imageManagerUrlPrefix": "", 
+    "imageManagerInsertAlign": "none", 
+    "imageManagerAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], 
+
+    
+    "fileManagerActionName": "listfile", 
+    "fileManagerListPath": "/ueditor/file/", 
+    "fileManagerUrlPrefix": "", 
+    "fileManagerListSize": "20", 
+    "fileManagerAllowFiles": [
+        ".png", ".jpg", ".jpeg", ".gif", ".bmp",
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
+        ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
+        ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml"
+    ] 
+
+}
