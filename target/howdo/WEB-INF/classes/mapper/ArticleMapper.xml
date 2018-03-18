@@ -30,4 +30,8 @@
         and cate_id=#{article.cateId}
     </select>
 
+    <select id="queryArticleById" resultMap="BaseResultMap">
+        select * from howdo_article where id=#{id}
+    </select>
+
 </mapper>

@@ -12,6 +12,10 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="static/js/userinfo.js"></script>
+
+	<link rel="stylesheet" href="static/toast/css/toast.css">
+	<script src="static/toast/js/toast.js"></script>
 
 <link type="image/x-icon" href="//v5-static.ehowcdn.com/favicon.ico" rel="shortcut icon apple-touch-icon"/>
 <link rel="stylesheet" type="text/css" href="//dynamic02.ehowcdn.com/services/modules/css/common_header,corporate-skin,article-consolidated-widgets-desktop/12e08054/"/><link type="text/css" href="//v5-static.ehowcdn.com/content/compressed/homepage-1fa83ddb.css" rel="stylesheet"/>
@@ -28,6 +32,9 @@
 <style type="text/css">
 	#Header{
 		position:fixed;
+	}
+	html{
+		background-color: #f4f4f4;
 	}
 	.user_menu {
 		width: 125px;
@@ -47,18 +54,21 @@
 	.side_navigation{
 		/*border: 1px solid red;*/
 		margin-top: 85px;
-		width: 215px;
+		/*width: 215px;*/
+		width: 180px;
+		margin-left: 40px;
 		height: 500px;
 		position:fixed;
-		background-color: #f4f4f4;
+		background-color: white;
 	}
 	.right_content{
 		/*border: 1px solid black;*/
 		width: 1070px;
 		/*height: 100px;*/
 		margin-top: 85px;
-		margin-right: 30px;
-		float: right;
+		margin-left: 250px;
+		float: left;
+		background-color: white;
 	}
 	.article_title{
 		/*border: 1px solid red;*/
@@ -81,9 +91,9 @@
 		height: 35px;
 		margin-left: 5px;
 	}
-	.side_navigation ul li a{
-		margin-left: 10px;
-	}
+	/*.side_navigation ul li a{*/
+		/*margin-left: 10px;*/
+	/*}*/
 	.article_title select{
 		background-color: #f4f4f4;
 		width: 200px;
@@ -173,10 +183,7 @@
 		<script id="editor" type="text/plain" style="width:100%;height: 575px; background-color: #f4f4f4;"></script>
 	</div>
 </div>
-    <div id="myAlert" class="alert alert-warning">
-        <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>警告！</strong>您的网络连接有问题。
-    </div>
+
 
 <script type="text/javascript">
 
@@ -185,68 +192,71 @@
 	$(function(){
 		showUser();
 		showArticleCategory();
-	});
-	function showUser(){
-		//清空 .user_menu div里面的东西
-		$(".user_menu").empty(); 
-		$.ajax({
-			url: "${APP_PATH}/user",
-			type: "GET",
-			success: function(result){
-				if(result.code == 100){
-					var a_user = $("<a></a>").addClass("dropdown-toggle").attr("href","#").attr("data-toggle","dropdown")
-					.attr("role","button").attr("aria-haspopup","true").attr("aria-expanded","false").append(result.extend.user.nickname)
-					.append($("<span></span>").addClass("caret"));
-					var a_ul = $("<ul></ul>").addClass("dropdown-menu").append($("<li></li>").append($("<a></a>").attr("href","personal.jsp").append("个人中心")))
-					.append($("<li></li>").addClass("divider").attr("role","separator"))
-					.append($("<li></li>").append($("<a></a>").append("退出登录").attr("href","logout")));
-					$("<span></span>").append(a_user).append(a_ul).appendTo(".user_menu");
-				}else if(result.code == 200){
-					var a_login = $("<a></a>").append("登录").attr("href","login.jsp");
-					var a_text = $("<span></span>").append("&nbsp;|&nbsp;");
-					var a_register = $("<a></a>").append("注册").attr("href","register.jsp");
-					$("<span></span>").append(a_login).append(a_text).append(a_register).appendTo(".user_menu");
-				}
-			}
-		});
+    });
+	function showToast(msg,flag){
+		if(flag == 'success'){
+            $('.right_content').toast({
+                content: msg,
+				background: '#65D08E'
+            });
+		}else{
+            $('.right_content').toast({
+                content: msg,
+                background: '#CC4532'
+            });
+		}
+        setTimeout("$('.right_content span').hide()",3000);
 	}
 	$("#btn_draft").click(function(){
-        var category = $("#cate_select").val();
-		var title = $("#a_title").val();
-		var content = UE.getEditor('editor').getContent();
-		if(title != "" && content != ""){
-			
-		}else{
-			
-		}
+        addArticleOrDraft('draft');
 	});
 	$("#btn_article").click(function(){
-		var category = $("#cate_select").val();
-		var title = $("#a_title").val();
+        addArticleOrDraft('article');
+	});
+
+	function addArticleOrDraft(msg){
+		if(msg == 'article'){
+			var isPublish = 'Y';
+			var toastMsg = '发布';
+		}
+		if(msg == 'draft'){
+			var isPublish = 'N';
+			var toastMsg = '保存';
+		}
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var category = $("#cate_select").val();
+        var title = $("#a_title").val();
         var content = UE.getEditor('editor').getContent();
         $("#myAlert").alert('close');
-		if(category == 0){
-			alert("请选择文章类型");
-			return ;
-		}
-		if(title == ""){
-			alert("请填写文章标题");
-			return ;
-		}
-		if(content == ""){
-			alert("请填写文章内容");
-			return ;
-		}
-		$.ajax({
-			url: "${APP_PATH}/article",
-			type: "POST",
-			data: {"title":title, "content":content, "isPublish":"Y", "userId":1, "enableFlag":"Y", "cateId":category, "readNum":0},
-			dataType: "json",
-			success: function(result){
-				alert("成功");
-			}
-		});
-	});
+        if(category == 0){
+            showToast("请选择文章类型",'failure');
+            return ;
+        }
+        if(title == ""){
+            showToast("请填写文章标题",'failure');
+            return ;
+        }
+        if(content == ""){
+            showToast("请填写文章内容",'failure');
+            return ;
+        }
+
+        $.ajax({
+            url: "${APP_PATH}/article",
+            type: "POST",
+            data: {"title":title, "content":content, "isPublish":isPublish, "userId":userEntity.id, "enableFlag":"Y", "cateId":category, "readNum":0},
+            dataType: "json",
+            success: function(result){
+                if(result.code == 100){
+                    showToast(toastMsg+"成功",'success');
+                    window.location.href = "article.jsp";
+                }else if(result.code == 200){
+                    showToast(toastMsg+"失败",'failure');
+                }
+            }
+        });
+	}
 
 	function showArticleCategory(){
 		$.ajax({

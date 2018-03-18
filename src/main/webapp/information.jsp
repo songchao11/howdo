@@ -14,6 +14,7 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="static/js/userinfo.js"></script>
 
 <link type="image/x-icon" href="//v5-static.ehowcdn.com/favicon.ico" rel="shortcut icon apple-touch-icon"/>
 <link rel="stylesheet" type="text/css" href="//dynamic02.ehowcdn.com/services/modules/css/common_header,corporate-skin,article-consolidated-widgets-desktop/12e08054/"/><link type="text/css" href="//v5-static.ehowcdn.com/content/compressed/homepage-1fa83ddb.css" rel="stylesheet"/>
@@ -25,6 +26,9 @@
 <style type="text/css">
 	#Header{
 		position:fixed;
+	}
+	html{
+		background-color: #f4f4f4;
 	}
 	.user_menu {
 		width: 125px;
@@ -44,21 +48,76 @@
 	.side_navigation{
 		/*border: 1px solid red;*/
 		margin-top: 85px;
-		width: 215px;
+		width: 180px;
+		margin-left: 40px;
 		height: 500px;
 		position:fixed;
-		background-color: #f4f4f4;
+		background-color: white;
 	}
 	.right_content{
-		/*border: 1px solid black;*/
 		width: 1070px;
-		height: 100px;
+		height: 670px;
 		margin-top: 85px;
-		margin-right: 30px;
-		float: right;
+		margin-left: 250px;
+		float: left;
+		background-color: white;
 	}
-	.side_navigation ul li a{
-		margin-left: 10px;
+	.article_management{
+		margin-left: 25px;
+		margin-top: 20px;
+	}
+	.article_management span{
+		font-weight: bold;
+	}
+	.article_tabs{
+		margin-left: 25px;
+		margin-top: 20px;
+		border-bottom:1px solid #e9e9e9;
+		width:1017px;
+	}
+	.article_tabs ul li{
+		float: left;
+		list-style: none;
+	}
+	.article_tabs ul li a{
+		font-size: 14px;
+	}
+	.info_left{
+		border-right:1px solid #e9e9e9;
+		height: 560px;
+		width:160px;
+		margin-left: 25px;
+		float: left;
+	}
+	.info_left_headpic{
+		width: 100px;
+		height: 100px;
+		margin-top: 29px;
+		margin-left: 16px;
+		margin-bottom: 15px;
+	}
+	.info_left_txt{
+		margin-left: 37px;
+		font-size: 14px;
+		margin-top: 15px;
+	}
+	.info_right{
+		width: 560px;
+		height: 531px;
+		/*border:1px solid red;*/
+		float: left;
+		margin-left: 30px;
+		margin-top: 29px;
+	}
+	.info_right table tr td{
+		width:135px;
+		height: 45px;
+	}
+	.info_button{
+		float: left;
+		margin-left: 200px;
+		width:40px;
+		margin-top: 29px;
 	}
 </style>
 </head>
@@ -128,8 +187,65 @@
 	</ul>
 </div>
 <div class="right_content">
-	
-	个人信息
+
+	<div class="article_management">
+		<span>|</span> 个人信息管理
+	</div>
+	<div class="article_tabs">
+		<ul class="nav nav-pills" id="pills-tab" role="tablist">
+			<li >
+				<a >基本资料</a>
+			</li>
+			<li >
+				<a >修改密码</a>
+			</li>
+		</ul>
+	</div>
+	<div class="info_left">
+		<div class="info_left_headpic"><img src="http://119.23.77.220/images/cat.jpg"></div>
+		<div><a class="info_left_txt">修改头像</a></div>
+	</div>
+	<div class="info_right">
+		<table>
+			<tr>
+				<td>账号:</td>
+				<td>godcc</td>
+			</tr>
+			<tr>
+				<td>昵称:</td>
+				<td>天王盖地虎</td>
+			</tr>
+			<tr>
+				<td>性别:</td>
+				<td>男</td>
+			</tr>
+			<tr>
+				<td>年龄:</td>
+				<td>23</td>
+			</tr>
+			<tr>
+				<td>生日:</td>
+				<td>2月26日</td>
+			</tr>
+			<tr>
+				<td>星座:</td>
+				<td>双鱼座</td>
+			</tr>
+			<tr>
+				<td>居住地:</td>
+				<td>芜湖</td>
+			</tr>
+			<tr>
+				<td>邮箱:</td>
+				<td>1197308689@qq.com</td>
+			</tr>
+			<tr>
+				<td>个性签名:</td>
+				<td>天王盖地虎，小鸡炖蘑菇，蘑菇不在家，转头日二哈天王盖地虎，小鸡炖蘑菇，蘑菇不在家，转头日二哈</td>
+			</tr>
+		</table>
+	</div>
+	<div class="info_button"><a>修改</a></div>
 	
 </div>
 
@@ -137,30 +253,6 @@
 	$(function(){
 		showUser();
 	});
-	function showUser(){
-		//清空 .user_menu div里面的东西
-		/*$(".user_menu").empty(); */
-		$.ajax({
-			url: "${APP_PATH}/user",
-			type: "GET",
-			success: function(result){
-				if(result.code == 100){
-					var a_user = $("<a></a>").addClass("dropdown-toggle").attr("href","#").attr("data-toggle","dropdown")
-					.attr("role","button").attr("aria-haspopup","true").attr("aria-expanded","false").append(result.extend.user.nickname)
-					.append($("<span></span>").addClass("caret"));
-					var a_ul = $("<ul></ul>").addClass("dropdown-menu").append($("<li></li>").append($("<a></a>").attr("href","personal.jsp").append("个人中心")))
-					.append($("<li></li>").addClass("divider").attr("role","separator"))
-					.append($("<li></li>").append($("<a></a>").append("退出登录").attr("href","logout")));
-					$("<span></span>").append(a_user).append(a_ul).appendTo(".user_menu");
-				}else if(result.code == 200){
-					var a_login = $("<a></a>").append("登录").attr("href","login.jsp");
-					var a_text = $("<span></span>").append("&nbsp;|&nbsp;");
-					var a_register = $("<a></a>").append("注册").attr("href","register.jsp");
-					$("<span></span>").append(a_login).append(a_text).append(a_register).appendTo(".user_menu");
-				}
-			}
-		});
-	}
 </script>
 </body>
 </html>

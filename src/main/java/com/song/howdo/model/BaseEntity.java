@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * »ù´¡ÐÅÏ¢
+ * åŸºç¡€ç±»
  * @author songchao
  *
  */

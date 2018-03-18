@@ -12,6 +12,7 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="static/js/userinfo.js"></script>
 
 <link type="image/x-icon" href="//v5-static.ehowcdn.com/favicon.ico" rel="shortcut icon apple-touch-icon"/>
 <link rel="stylesheet" type="text/css" href="//dynamic02.ehowcdn.com/services/modules/css/common_header,corporate-skin,article-consolidated-widgets-desktop/12e08054/"/><link type="text/css" href="//v5-static.ehowcdn.com/content/compressed/homepage-1fa83ddb.css" rel="stylesheet"/>
@@ -23,6 +24,9 @@
 <style type="text/css">
 	#Header{
 		position:fixed;
+	}
+	html{
+		background-color: #f4f4f4;
 	}
 	.user_menu {
 		width: 125px;
@@ -42,21 +46,98 @@
 	.side_navigation{
 		/*border: 1px solid red;*/
 		margin-top: 85px;
-		width: 215px;
+		width: 180px;
+		margin-left: 40px;
 		height: 500px;
 		position:fixed;
-		background-color: #f4f4f4;
+		background-color: white;
 	}
 	.right_content{
 		/*border: 1px solid black;*/
 		width: 1070px;
-		height: 100px;
+		height: 670px;
 		margin-top: 85px;
-		margin-right: 30px;
-		float: right;
+		margin-left: 250px;
+		float: left;
+		background-color: white;
 	}
-	.side_navigation ul li a{
+	.article_management{
+		margin-left: 25px;
+		margin-top: 20px;
+	}
+	.article_management span{
+		font-weight: bold;
+	}
+	.article_tabs{
+		margin-left: 25px;
+		margin-top: 20px;
+		border-bottom:1px solid #e9e9e9;
+		width:1017px;
+	}
+	.article_tabs ul li{
+		float: left;
+		list-style: none;
+	}
+	.article_tabs ul li a{
+		font-size: 14px;
+	}
+	.article_search{
+		margin-top: -33px;
+		background: #f4f4f4;
+		float: right;
+		margin-right: 30px;
+		width: 280px;
+	}
+	.article_search input{
+		background: #f4f4f4;
+		border-radius:4px;
+		width: 250px;
+	}
+	.attention_content{
+		/*border:1px solid red;*/
+		width: 820px;
+		height: 450px;
+		margin-left: 125px;
+		margin-top: 15px;
+	}
+	/*.attention_content table tr td{*/
+		/*width: 410px;*/
+		/*height: 100px;*/
+		/*border:1px solid green;*/
+	/*}*/
+	.attention_content_one{
+		border: 1px solid #f0f0f0;
+		width: 360px;
+		height: 100px;
+		margin-right: 100px;
+		margin-bottom: 10px;
+	}
+	.attention_content_one:hover{
+		background-color: #f4f4f4;
+	}
+	.attention_img{
+		width: 99px;
+		height: 99px;
+		/*border:1px solid blue;*/
+		float: left;
+	}
+	.article_page{
+		margin-top: -20px;
+		text-align: center;
+	}
+	.attention_info{
+		/*border:1px solid red;*/
+		float: left;
+		height:60px;
+		margin-top: 20px;
 		margin-left: 10px;
+	}
+	.signature{
+		font-size: 14px;
+	}
+	.nickname{
+		font-size: 18px;
+		font-family: 宋体;
 	}
 </style>
 </head>
@@ -126,8 +207,151 @@
 	</ul>
 </div>
 <div class="right_content">
-	
-	关注页面
+
+	<div class="article_management">
+		<span>|</span> 我的关系
+	</div>
+	<div class="article_tabs">
+		<ul class="nav nav-pills" id="pills-tab" role="tablist">
+			<li >
+				<a >我关注的(4)</a>
+			</li>
+			<li >
+				<a >关注我的(4)</a>
+			</li>
+			<li >
+				<a >相互关注(4)</a>
+			</li>
+		</ul>
+		<div class="article_search">
+			<input type="text">
+			<span class="glyphicon glyphicon-search"></span>
+		</div>
+	</div>
+
+	<div class="attention_content">
+		<table>
+			<tr>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="attention_content_one">
+						<div class="attention_img">
+							<img src="http://119.23.77.220/images/cat.jpg">
+						</div>
+						<div class="attention_info">
+							<span class="nickname">渣渣辉</span><br>
+							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<%--分页--%>
+	<div class="article_page">
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 	
 </div>
 
@@ -135,30 +359,6 @@
 	$(function(){
 		showUser();
 	});
-	function showUser(){
-		//清空 .user_menu div里面的东西
-		/*$(".user_menu").empty(); */
-		$.ajax({
-			url: "${APP_PATH}/user",
-			type: "GET",
-			success: function(result){
-				if(result.code == 100){
-					var a_user = $("<a></a>").addClass("dropdown-toggle").attr("href","#").attr("data-toggle","dropdown")
-					.attr("role","button").attr("aria-haspopup","true").attr("aria-expanded","false").append(result.extend.user.nickname)
-					.append($("<span></span>").addClass("caret"));
-					var a_ul = $("<ul></ul>").addClass("dropdown-menu").append($("<li></li>").append($("<a></a>").attr("href","personal.jsp").append("个人中心")))
-					.append($("<li></li>").addClass("divider").attr("role","separator"))
-					.append($("<li></li>").append($("<a></a>").append("退出登录").attr("href","logout")));
-					$("<span></span>").append(a_user).append(a_ul).appendTo(".user_menu");
-				}else if(result.code == 200){
-					var a_login = $("<a></a>").append("登录").attr("href","login.jsp");
-					var a_text = $("<span></span>").append("&nbsp;|&nbsp;");
-					var a_register = $("<a></a>").append("注册").attr("href","register.jsp");
-					$("<span></span>").append(a_login).append(a_text).append(a_register).appendTo(".user_menu");
-				}
-			}
-		});
-	}
 </script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.song.howdo.mapper.ArticleMapper;
 import com.song.howdo.model.Article;
+import com.song.howdo.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ public class ArticleServiceImpl implements ArticleService {
 	private CategoryMapper categoryMapper;
 	@Autowired
 	private ArticleMapper articleMapper;
+	@Autowired
+	private FileService fileService;
+
 	
 	public Msg queryCategorys() {
 		List<Category> cates = categoryMapper.queryCategorys();
@@ -31,6 +35,7 @@ public class ArticleServiceImpl implements ArticleService {
 		articleMapper.addArticle(article);
 		Article a = articleMapper.queryArticle(article);
 		if(a != null){
+			fileService.addFile(a.getContent(), a.getId());
 			return Msg.success();
 		}
 		return Msg.fail();

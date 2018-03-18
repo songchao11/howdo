@@ -13,4 +13,5 @@ public interface ArticleMapper {
 
     Article queryArticle(@Param("article") Article article);
 
+    Article queryArticleById(@Param("id") Long id);
 }

@@ -92,6 +92,8 @@ input[type="text"],input[type="password"]{padding-left:26px;}
     			type: "GET",
     			success: function(result){
     				if(result.code == 100){
+    				    //将用户信息放入 sessionStorage 中
+                        sessionStorage.setItem('userInfo',JSON.stringify(result.extend.user));
     					window.location.href = "main.jsp";
     				}else if(result.code == 200){
     					showError("账号或密码错误!");

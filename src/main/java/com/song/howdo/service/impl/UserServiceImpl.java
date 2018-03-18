@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public Msg addUser(User user) {
-		//½«Ã÷ÎÄÃÜÂëÑÎÖµ¼ÓÃÜ
+		//ç›å€¼åŠ å¯†
 		String password =  encryptBySalt(user.getPassword(), user.getAccount());
 		System.out.println(password);
 		user.setPassword(password);
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	/**
-	 * ÃÜÂëÑÎÖµ¼ÓÃÜ·½·¨
+	 * å¯†ç ç›å€¼åŠ å¯†
 	 * @param credentials
 	 * @return
 	 */

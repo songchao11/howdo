@@ -11,6 +11,10 @@
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="head_pic" property="headPic" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="signature" property="signature" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
     <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />

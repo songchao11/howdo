@@ -27,13 +27,12 @@ public class UserController {
     @ResponseBody
     public Msg queryUsers(){
     	Object user =  SecurityUtils.getSubject().getPrincipal();
-    	System.out.println("²âÊÔ:"+user);
         List<User> users = userService.queryUsers();
         return Msg.success().add("users", users);
     }
 
     /**
-     * ¼ì²éÕË»§ÃûÊÇ·ñ±»Õ¼ÓÃ
+     * ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Õ¼ï¿½ï¿½
      * @param username
      * @return
      */
@@ -50,7 +49,7 @@ public class UserController {
     }
     
     /**
-     * ×¢²áÓÃ»§
+     * ×¢ï¿½ï¿½ï¿½Ã»ï¿½
      * @param user
      * @return
      */
@@ -61,7 +60,7 @@ public class UserController {
     }
 
     /**
-     * »ñÈ¡µÇÂ¼ÓÃ»§ÐÅÏ¢
+     * ï¿½ï¿½È¡ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
      * @return
      */
     @RequestMapping(value = "/user", method = RequestMethod.GET)
