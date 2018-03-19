@@ -11,10 +11,12 @@
 	pageContext.setAttribute("APP_PATH", request.getContextPath());
 	%>
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<%--<script src="static/time/js/jquery-1.5.1.js"></script>--%>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="static/js/userinfo.js"></script>
+
 
 <link type="image/x-icon" href="//v5-static.ehowcdn.com/favicon.ico" rel="shortcut icon apple-touch-icon"/>
 <link rel="stylesheet" type="text/css" href="//dynamic02.ehowcdn.com/services/modules/css/common_header,corporate-skin,article-consolidated-widgets-desktop/12e08054/"/><link type="text/css" href="//v5-static.ehowcdn.com/content/compressed/homepage-1fa83ddb.css" rel="stylesheet"/>
@@ -56,7 +58,8 @@
 	}
 	.right_content{
 		width: 1070px;
-		height: 670px;
+		/*height: 670px;*/
+		height:1000px;
 		margin-top: 85px;
 		margin-left: 250px;
 		float: left;
@@ -122,6 +125,61 @@
 </style>
 </head>
 <body class="Corporate Homepage " data-skin="corporate">
+
+<!-- 修改个人信息的模态框 -->
+<div class="modal fade" id="editInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">员工添加</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="empName_add_input" class="col-sm-2 control-label">empName</label>
+						<div class="col-sm-10">
+							<input type="text" name="empName" class="form-control" id="empName_add_input" placeholder="empName">
+							<span class="help-block"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email_add_input" class="col-sm-2 control-label">email</label>
+						<div class="col-sm-10">
+							<input type="text" name="email" class="form-control" id="email_add_input" placeholder="email@hand-china.com">
+							<span class="help-block"></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="email_add_input" class="col-sm-2 control-label">gender</label>
+						<div class="col-sm-10">
+							<label class="radio-inline">
+								<input type="radio" name="gender" id="gender1_add_input" value="M" checked="checked"> 男
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="gender" id="gender2_add_input" value="F"> 女
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="email_add_input" class="col-sm-2 control-label">deptName</label>
+						<div class="col-sm-4">
+							<!-- 部门提交部门id即可 -->
+							<select class="form-control" name="dId" id="dept_add_select"></select>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary"id="emp_save_btn">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- 导航栏 start -->
 <header id="Header" data-section="header" class="header-non-responsive js-headroom">
@@ -245,14 +303,21 @@
 			</tr>
 		</table>
 	</div>
-	<div class="info_button"><a>修改</a></div>
+	<div class="info_button"><a onclick="editInfo()">修改</a></div>
 	
 </div>
+
 
 <script type="text/javascript">
 	$(function(){
 		showUser();
 	});
+	function editInfo(){
+        $("#editInfoModal").modal({
+            backdrop: "static"
+        });
+	}
+
 </script>
 </body>
 </html>
