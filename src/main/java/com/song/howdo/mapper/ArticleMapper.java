@@ -4,6 +4,8 @@ import com.song.howdo.model.Article;
 import com.song.howdo.util.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * Created by songchao on 2018/3/15.
  */
@@ -14,4 +16,10 @@ public interface ArticleMapper {
     Article queryArticle(@Param("article") Article article);
 
     Article queryArticleById(@Param("id") Long id);
+
+    List<Article> queryArticles(@Param("userId") Long userId);
+
+    int queryArticleCount(@Param("userId") Long userId, @Param("isPublish") String isPublish);
+
+    int updateArticleIsComment(@Param("artId") Long artId, @Param("isComment") String isComment);
 }

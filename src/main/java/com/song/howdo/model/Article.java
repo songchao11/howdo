@@ -1,6 +1,7 @@
 package com.song.howdo.model;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "howdo_article")
 public class Article extends BaseEntity {
@@ -8,10 +9,15 @@ public class Article extends BaseEntity {
 	private String title;
 	private String content;
 	private String isPublish;
+	private String isComment;
 	private Long userId;
 	private String enableFlag;
 	private Long cateId;
 	private Long readNum;
+
+	@Transient
+	private Long commentNum;
+
 	public String getTitle() {
 		return title;
 	}
@@ -54,7 +60,34 @@ public class Article extends BaseEntity {
 	public void setReadNum(Long readNum) {
 		this.readNum = readNum;
 	}
-	
-	
-	
+
+	public String getIsComment() {
+		return isComment;
+	}
+
+	public void setIsComment(String isComment) {
+		this.isComment = isComment;
+	}
+
+	public Long getCommentNum() {
+		return commentNum;
+	}
+
+	public void setCommentNum(Long commentNum) {
+		this.commentNum = commentNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Article{" +
+				"title='" + title + '\'' +
+				", content='" + content + '\'' +
+				", isPublish='" + isPublish + '\'' +
+				", userId=" + userId +
+				", enableFlag='" + enableFlag + '\'' +
+				", cateId=" + cateId +
+				", readNum=" + readNum +
+				", commentNum=" + commentNum +
+				'}';
+	}
 }

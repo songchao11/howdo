@@ -67,8 +67,10 @@ public class MapperTest {
 
     @Test
     public void test3(){
-        File file = fileMapper.queryFile("aaa","img");
-        System.out.println(file.getId());
+        List<Article> articles = articleMapper.queryArticles(9L);
+        for(Article a : articles){
+            System.out.println(a);
+        }
     }
 
 }

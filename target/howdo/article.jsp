@@ -209,144 +209,14 @@
 		<span>|</span> 文章管理
 	</div>
 	<div class="article_tabs">
-			<ul class="nav nav-pills" id="pills-tab" role="tablist">
-				<li >
-					<a >全部(4)</a>
-				</li>
-				<li >
-					<a >已发表(4)</a>
-				</li>
-				<li >
-					<a >草稿箱(0)</a>
-				</li>
-			</ul>
-			<div class="article_search">
-				<input type="text">
-				<span class="glyphicon glyphicon-search"></span>
-			</div>
+
 	</div>
 	<div class="article_content">
-		<div class="article_list_item">
-			<div class="article_list_item_title">
-				<p>
-					<a href="#">Linux远程服务器上搭建 ftp服务器</a>
-				</p>
-			</div>
-			<div class="article_list_item_info">
-				<div class="item_info_left">
-					<span>2018年03月09日 16:55:10</span>
-					<span class="glyphicon glyphicon-eye-open">5</span>
-					<span class="glyphicon glyphicon-comment">2</span>
-				</div>
-				<div class="item_info_right">
-					<span><a>查看</a></span>
-					<span><a>禁止评论</a></span>
-					<span><a>删除</a></span>
-				</div>
-			</div>
-		</div>
 
-		<div class="article_list_item">
-			<div class="article_list_item_title">
-				<p>
-					<a href="#">Linux远程服务器上搭建 ftp服务器</a>
-				</p>
-			</div>
-			<div class="article_list_item_info">
-				<div class="item_info_left">
-					<span>2018年03月09日 16:55:10</span>
-					<span class="glyphicon glyphicon-eye-open">5</span>
-					<span class="glyphicon glyphicon-comment">2</span>
-				</div>
-				<div class="item_info_right">
-					<span><a>查看</a></span>
-					<span><a>禁止评论</a></span>
-					<span><a>删除</a></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="article_list_item">
-			<div class="article_list_item_title">
-				<p>
-					<a href="#">Linux远程服务器上搭建 ftp服务器</a>
-				</p>
-			</div>
-			<div class="article_list_item_info">
-				<div class="item_info_left">
-					<span>2018年03月09日 16:55:10</span>
-					<span class="glyphicon glyphicon-eye-open">5</span>
-					<span class="glyphicon glyphicon-comment">2</span>
-				</div>
-				<div class="item_info_right">
-					<span><a>查看</a></span>
-					<span><a>禁止评论</a></span>
-					<span><a>删除</a></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="article_list_item">
-			<div class="article_list_item_title">
-				<p>
-					<a href="#">Linux远程服务器上搭建 ftp服务器</a>
-				</p>
-			</div>
-			<div class="article_list_item_info">
-				<div class="item_info_left">
-					<span>2018年03月09日 16:55:10</span>
-					<span class="glyphicon glyphicon-eye-open">5</span>
-					<span class="glyphicon glyphicon-comment">2</span>
-				</div>
-				<div class="item_info_right">
-					<span><a>查看</a></span>
-					<span><a>禁止评论</a></span>
-					<span><a>删除</a></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="article_list_item">
-			<div class="article_list_item_title">
-				<p>
-					<a href="#">Linux远程服务器上搭建 ftp服务器</a>
-				</p>
-			</div>
-			<div class="article_list_item_info">
-				<div class="item_info_left">
-					<span>2018年03月09日 16:55:10</span>
-					<span class="glyphicon glyphicon-eye-open">5</span>
-					<span class="glyphicon glyphicon-comment">2</span>
-				</div>
-				<div class="item_info_right">
-					<span><a>查看</a></span>
-					<span><a>禁止评论</a></span>
-					<span><a>删除</a></span>
-				</div>
-			</div>
-		</div>
 	</div>
 	<%--分页--%>
 	<div class="article_page">
-		<nav aria-label="Page navigation">
-			<ul class="pagination">
-				<li>
-					<a href="#" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-					</a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li>
-					<a href="#" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+
 	</div>
 	
 </div>
@@ -354,7 +224,153 @@
 <script type="text/javascript">
 	$(function(){
 		showUser();
+        showArticleList(1);
+        showArticleTotal();
 	});
+	function showArticleList(page){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+	    var userId = userEntity.id;
+	    var size = 5;
+	    $.ajax({
+			url: "${APP_PATH}/articles/"+userId+"/"+page+"/"+size,
+			type: "GET",
+			success: function(result){
+			    console.log(result);
+			   //显示文章列表
+                build_article_table(result);
+                //显示分页条
+                build_page_nav(result);
+			}
+		});
+	}
+	function build_article_table(result){
+        $(".article_content").empty();
+        var articles = result.extend.pageInfo.list;
+        $.each(articles, function(index, item){
+            var item_title = $("<div></div>").addClass("article_list_item_title")
+                .append($("<p></p>").append($("<a></a>").attr("href","#").append(item.title)));
+            if(item.isComment == 'Y'){
+                var item_info = $("<div></div>").addClass("article_list_item_info")
+                    .append($("<div></div>").addClass("item_info_left").append($("<span></span>").append(item.lastUpdateDate))
+                        .append($("<span></span>").addClass("glyphicon glyphicon-eye-open").append(item.readNum))
+                        .append($("<span></span>").addClass("glyphicon glyphicon-comment").append(item.commentNum)))
+                    .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").append("查看")))
+                        .append($("<span></span>").attr("id","allow_ban_"+item.id).append($("<a></a>").attr("href","#").append("禁止评论").attr("onclick","ban_comment("+item.id+")")))
+                        .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+")"))));
+			}else if(item.isComment == 'N'){
+                var item_info = $("<div></div>").addClass("article_list_item_info")
+                    .append($("<div></div>").addClass("item_info_left").append($("<span></span>").append(item.lastUpdateDate))
+                        .append($("<span></span>").addClass("glyphicon glyphicon-eye-open").append(item.readNum))
+                        .append($("<span></span>").addClass("glyphicon glyphicon-comment").append(item.commentNum)))
+                    .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").append("查看")))
+                        .append($("<span></span>").attr("id","allow_ban_"+item.id).append($("<a></a>").attr("href","#").append("允许评论").attr("onclick","allow_comment("+item.id+")")))
+                        .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+")"))));
+			}
+
+            $("<div></div>").addClass("article_list_item").append(item_title).append(item_info).appendTo(".article_content");
+        });
+	}
+	function showArticleTotal(){
+	    $(".article_tabs").empty();
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+	    $.ajax({
+			url: "${APP_PATH}/article/total/"+userEntity.id,
+			type: "GET",
+			success: function(result){
+				var li1 = $("<li></li>").append($("<a></a>").append("全部("+result.extend.articleTotal+")"));
+                var li2 = $("<li></li>").append($("<a></a>").append("已发表("+result.extend.articleTotal+")"));
+                var li3 = $("<li></li>").append($("<a></a>").append("草稿箱("+result.extend.draftTotal+")"));
+				var div_search = $("<div></div>").addClass("article_search").append($("<input/>").attr("type","input"))
+					.append($("<span></span>").addClass("glyphicon glyphicon-search"));
+				var top = $("<ul></ul>").addClass("nav nav-pills").attr("id","pills-tab").attr("role","tablist").append(li1).append(li2).append(li3);
+				$("<span></span>").append(top).append(div_search).appendTo(".article_tabs");
+			}
+		});
+	}
+
+	function build_page_nav(result){
+        $(".article_page").empty();
+        var ul = $("<ul></ul>").addClass("pagination");
+        //构建元素
+        var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href","#"));
+        var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+        if(result.extend.pageInfo.hasPreviousPage == false){
+            firstPageLi.addClass("disabled");
+            prePageLi.addClass("disabled");
+        }else{
+            //为首页和上一页添加点击事件
+            firstPageLi.click(function(){
+                showArticleList(1);
+            });
+            prePageLi.click(function(){
+                showArticleList(result.extend.pageInfo.pageNum-1);
+            });
+        }
+
+        var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+        var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href","#"));
+        if(result.extend.pageInfo.hasNextPage == false){
+            nextPageLi.addClass("disabled");
+            lastPageLi.addClass("disabled");
+        }else{
+            nextPageLi.click(function(){
+                showArticleList(result.extend.pageInfo.pageNum+1);
+            });
+            lastPageLi.click(function(){
+                showArticleList(result.extend.pageInfo.pages);
+            });
+        }
+
+        //添加首页和前一页
+        ul.append(firstPageLi).append(prePageLi);
+        //遍历给ul中添加页码提示
+        $.each(result.extend.pageInfo.navigatepageNums, function(index,item){
+            var numLi = $("<li></li>").append($("<a></a>").append(item));
+            if(result.extend.pageInfo.pageNum == item){
+                numLi.addClass("active");
+            }
+            numLi.click(function(){
+                showArticleList(item);
+            });
+            ul.append(numLi);
+        });
+        //添加下一页和末页
+        ul.append(nextPageLi).append(lastPageLi);
+        //将ul添加到nav中
+        var navEle = $("<nav></nav>").append(ul);
+        navEle.appendTo(".article_page");
+	}
+	function allow_comment(artId){
+	    var isComment = 'Y';
+	    $.ajax({
+            url: "${APP_PATH}/article/isComment",
+			type: "PUT",
+            data: {"id": artId, "isComment": isComment},
+            dataType: 'json',
+			success: function(result){
+                $("#allow_ban_"+artId).empty();
+                $("<a></a>").attr("href","#").append("禁止评论").attr("onclick","ban_comment("+result.extend.article.id+")").appendTo("#allow_ban_"+artId);
+			}
+		});
+	}
+    function ban_comment(artId){
+        var isComment = 'N';
+        $.ajax({
+            url: "${APP_PATH}/article/isComment",
+            type: "PUT",
+            data: {"id": artId, "isComment": isComment},
+            dataType: 'json',
+            success: function(result){
+                $("#allow_ban_"+artId).empty();
+                $("<a></a>").attr("href","#").append("允许评论").attr("onclick","allow_comment("+result.extend.article.id+")").appendTo("#allow_ban_"+artId);
+            }
+        });
+    }
+	function delete_article(artId){
+	    alert(artId);
+	}
 </script>
 </body>
 </html>

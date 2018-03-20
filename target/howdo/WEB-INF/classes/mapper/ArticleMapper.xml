@@ -6,10 +6,12 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="is_publish" property="isPublish" jdbcType="VARCHAR" />
+    <result column="is_comment" property="isComment" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="enable_flag" property="enableFlag" jdbcType="VARCHAR" />
     <result column="cate_id" property="cateId" jdbcType="BIGINT" />
     <result column="read_num" property="readNum" jdbcType="BIGINT" />
+    <result column="comment_num" property="commentNum" jdbcType="BIGINT" />
     <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
     <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
@@ -33,5 +35,21 @@
     <select id="queryArticleById" resultMap="BaseResultMap">
         select * from howdo_article where id=#{id}
     </select>
+
+    <select id="queryArticles" resultMap="BaseResultMap">
+        select ha.id,ha.user_id,ha.title,ha.content,ha.last_update_date,ha.is_comment,ha.read_num,count(hc.id) comment_num from
+        howdo_article ha left join howdo_comment hc
+        on ha.id=hc.art_id where ha.user_id=#{userId} and ha.is_publish='Y' and ha.enable_flag='Y'
+        group by ha.id,ha.user_id,ha.title,ha.content,ha.read_num
+        order by ha.last_update_date desc
+    </select>
+
+    <select id="queryArticleCount" resultType="int">
+        select count(*) from howdo_article where user_id=#{userId} and is_publish=#{isPublish} and enable_flag='Y'
+    </select>
+
+    <update id="updateArticleIsComment">
+        update howdo_article set is_comment=#{isComment} where id=#{artId}
+    </update>
 
 </mapper>
