@@ -12,6 +12,9 @@
     <result column="cate_id" property="cateId" jdbcType="BIGINT" />
     <result column="read_num" property="readNum" jdbcType="BIGINT" />
     <result column="comment_num" property="commentNum" jdbcType="BIGINT" />
+      <result column="praise_num" property="praiseNum" jdbcType="BIGINT" />
+      <result column="collect_num" property="collectNum" jdbcType="BIGINT" />
+      <result column="category" property="category" jdbcType="VARCHAR" />
     <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
     <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
@@ -20,8 +23,8 @@
   </resultMap>
 
     <insert id="addArticle">
-        insert howdo_article(title,content,is_publish,user_id,enable_flag,cate_id,read_num)
-        values(#{article.title},#{article.content},#{article.isPublish},#{article.userId},#{article.enableFlag},#{article.cateId},#{article.readNum})
+        insert howdo_article(title,content,is_publish,user_id,enable_flag,cate_id,read_num,is_comment)
+        values(#{article.title},#{article.content},#{article.isPublish},#{article.userId},#{article.enableFlag},#{article.cateId},#{article.readNum},#{article.isComment})
     </insert>
 
     <select id="queryArticle" resultMap="BaseResultMap">
@@ -39,7 +42,7 @@
     <select id="queryArticles" resultMap="BaseResultMap">
         select ha.id,ha.user_id,ha.title,ha.content,ha.last_update_date,ha.is_comment,ha.read_num,count(hc.id) comment_num from
         howdo_article ha left join howdo_comment hc
-        on ha.id=hc.art_id where ha.user_id=#{userId} and ha.is_publish='Y' and ha.enable_flag='Y'
+        on ha.id=hc.art_id where ha.user_id=#{userId} and ha.is_publish=#{isPublish} and ha.enable_flag='Y'
         group by ha.id,ha.user_id,ha.title,ha.content,ha.read_num
         order by ha.last_update_date desc
     </select>
@@ -51,5 +54,30 @@
     <update id="updateArticleIsComment">
         update howdo_article set is_comment=#{isComment} where id=#{artId}
     </update>
+
+    <delete id="deleteArticle">
+        delete from howdo_article where id=#{artId}
+    </delete>
+
+    <select id="queryArticlesByDim" resultMap="BaseResultMap">
+        select ha.id,ha.user_id,ha.title,ha.content,ha.last_update_date,ha.is_comment,ha.read_num,count(hc.id) comment_num from
+        howdo_article ha left join howdo_comment hc
+        on ha.id=hc.art_id where ha.user_id=#{userId} and ha.enable_flag='Y'
+        and ha.title like concat(concat('%',#{title}),'%')
+        group by ha.id,ha.user_id,ha.title,ha.content,ha.read_num
+        order by ha.last_update_date desc
+    </select>
+
+    <select id="queryArticleDetail" resultMap="BaseResultMap">
+        select ha.id,ha.user_id,ha.title,ha.content,ha.last_update_date,
+                ha.is_comment,ha.read_num,count(hc.id) comment_num,
+                count(hp.art_id) praise_num,count(hco.art_id) collect_num,hca.`name` category from
+                howdo_article ha left join howdo_comment hc
+                on ha.id=hc.art_id left join howdo_praise hp
+				on ha.id=hp.art_id left join howdo_collect hco
+				on ha.id=hco.art_id left join howdo_category hca
+				on ha.cate_id=hca.id
+				where ha.id=#{artId}
+    </select>
 
 </mapper>

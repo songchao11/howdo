@@ -245,7 +245,7 @@
         $.ajax({
             url: "${APP_PATH}/article",
             type: "POST",
-            data: {"title":title, "content":content, "isPublish":isPublish, "userId":userEntity.id, "enableFlag":"Y", "cateId":category, "readNum":0},
+            data: {"title":title, "content":content, "isPublish":isPublish, "userId":userEntity.id, "enableFlag":"Y", "isComment":"Y", "cateId":category, "readNum":0},
             dataType: "json",
             success: function(result){
                 if(result.code == 100){

@@ -42,4 +42,8 @@
   	#{user.email}, #{user.headPic})
   </insert>
 
+    <select id="queryUserById" resultMap="BaseResultMap">
+        select * from howdo_user where id=#{id}
+    </select>
+
 </mapper>

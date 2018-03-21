@@ -9,10 +9,16 @@ public interface ArticleService {
 
 	Msg addArticle(Article article);
 
-	Msg queryArticles(Long userId, Integer page, Integer size);
+	Msg queryArticles(Long userId, Integer page, Integer size, String isPublish);
 
 	Msg queryArticleCount(Long userId);
 
 	Msg updateArticleIsComment(Long artId, String isComment);
+
+	Msg deleteArticle(Long artId);
+
+	Msg queryArticlesByDim(String title, Long userId, Integer page, Integer size);
+
+	Msg queryArticleAndUser(Long artId, Long yourId);
 	
 }

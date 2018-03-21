@@ -137,6 +137,9 @@
 		margin-top: -20px;
 		text-align: center;
 	}
+	.shadow{
+		background-color: #f1f1f1;
+	}
 </style>
 </head>
 <body >
@@ -224,32 +227,34 @@
 <script type="text/javascript">
 	$(function(){
 		showUser();
-        showArticleList(1);
+        showArticleList(1,"Y");
         showArticleTotal();
 	});
-	function showArticleList(page){
+	function showArticleList(page,isPublish){
         var userInfo = sessionStorage.getItem('userInfo');
         userEntity = JSON.parse(userInfo);
 	    var userId = userEntity.id;
 	    var size = 5;
+	    var flag = 'not_search';
 	    $.ajax({
-			url: "${APP_PATH}/articles/"+userId+"/"+page+"/"+size,
+			url: "${APP_PATH}/articles/"+userId+"/"+page+"/"+size+"/"+isPublish,
 			type: "GET",
 			success: function(result){
 			    console.log(result);
 			   //显示文章列表
                 build_article_table(result);
                 //显示分页条
-                build_page_nav(result);
+                build_page_nav(result,isPublish,flag);
 			}
 		});
 	}
 	function build_article_table(result){
         $(".article_content").empty();
         var articles = result.extend.pageInfo.list;
+        var current_page = result.extend.pageInfo.pageNum;
         $.each(articles, function(index, item){
             var item_title = $("<div></div>").addClass("article_list_item_title")
-                .append($("<p></p>").append($("<a></a>").attr("href","#").append(item.title)));
+                .append($("<p></p>").append($("<a></a>").attr("href","#").attr("onclick","to_detail("+item.id+")").append(item.title)));
             if(item.isComment == 'Y'){
                 var item_info = $("<div></div>").addClass("article_list_item_info")
                     .append($("<div></div>").addClass("item_info_left").append($("<span></span>").append(item.lastUpdateDate))
@@ -257,7 +262,7 @@
                         .append($("<span></span>").addClass("glyphicon glyphicon-comment").append(item.commentNum)))
                     .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").append("查看")))
                         .append($("<span></span>").attr("id","allow_ban_"+item.id).append($("<a></a>").attr("href","#").append("禁止评论").attr("onclick","ban_comment("+item.id+")")))
-                        .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+")"))));
+                        .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+","+current_page+")"))));
 			}else if(item.isComment == 'N'){
                 var item_info = $("<div></div>").addClass("article_list_item_info")
                     .append($("<div></div>").addClass("item_info_left").append($("<span></span>").append(item.lastUpdateDate))
@@ -265,7 +270,7 @@
                         .append($("<span></span>").addClass("glyphicon glyphicon-comment").append(item.commentNum)))
                     .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").append("查看")))
                         .append($("<span></span>").attr("id","allow_ban_"+item.id).append($("<a></a>").attr("href","#").append("允许评论").attr("onclick","allow_comment("+item.id+")")))
-                        .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+")"))));
+                        .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+","+current_page+")"))));
 			}
 
             $("<div></div>").addClass("article_list_item").append(item_title).append(item_info).appendTo(".article_content");
@@ -275,22 +280,23 @@
 	    $(".article_tabs").empty();
         var userInfo = sessionStorage.getItem('userInfo');
         userEntity = JSON.parse(userInfo);
+        var page = 1;
 	    $.ajax({
 			url: "${APP_PATH}/article/total/"+userEntity.id,
 			type: "GET",
 			success: function(result){
-				var li1 = $("<li></li>").append($("<a></a>").append("全部("+result.extend.articleTotal+")"));
-                var li2 = $("<li></li>").append($("<a></a>").append("已发表("+result.extend.articleTotal+")"));
-                var li3 = $("<li></li>").append($("<a></a>").append("草稿箱("+result.extend.draftTotal+")"));
-				var div_search = $("<div></div>").addClass("article_search").append($("<input/>").attr("type","input"))
-					.append($("<span></span>").addClass("glyphicon glyphicon-search"));
+				var li1 = $("<li></li>").attr("onclick","switchover_all()").append($("<a></a>").attr("id","tab_1").addClass("shadow").append("全部("+result.extend.articleTotal+")"));
+                var li2 = $("<li></li>").attr("onclick","switchover_article()").append($("<a></a>").attr("id","tab_2").append("已发表("+result.extend.articleTotal+")"));
+                var li3 = $("<li></li>").attr("onclick","switchover_draft()").append($("<a></a>").attr("id","tab_3").append("草稿箱("+result.extend.draftTotal+")"));
+				var div_search = $("<div></div>").addClass("article_search").append($("<input/>").attr("type","input").attr("id","search_input").attr("onkeydown","entersearch()"))
+					.append($("<span></span>").attr("id","search_span").attr("onclick","search("+page+")").addClass("glyphicon glyphicon-search"));
 				var top = $("<ul></ul>").addClass("nav nav-pills").attr("id","pills-tab").attr("role","tablist").append(li1).append(li2).append(li3);
 				$("<span></span>").append(top).append(div_search).appendTo(".article_tabs");
 			}
 		});
 	}
 
-	function build_page_nav(result){
+	function build_page_nav(result, isPublish, flag){
         $(".article_page").empty();
         var ul = $("<ul></ul>").addClass("pagination");
         //构建元素
@@ -302,10 +308,19 @@
         }else{
             //为首页和上一页添加点击事件
             firstPageLi.click(function(){
-                showArticleList(1);
+                if(flag == 'not_search'){
+                    showArticleList(1,isPublish);
+				}else if(flag == 'search'){
+                    search(1);
+				}
+
             });
             prePageLi.click(function(){
-                showArticleList(result.extend.pageInfo.pageNum-1);
+                if(flag == 'not_search'){
+                    showArticleList(result.extend.pageInfo.pageNum-1, isPublish);
+                }else if(flag == 'search'){
+                    search(result.extend.pageInfo.pageNum-1);
+                }
             });
         }
 
@@ -316,10 +331,20 @@
             lastPageLi.addClass("disabled");
         }else{
             nextPageLi.click(function(){
-                showArticleList(result.extend.pageInfo.pageNum+1);
+                if(flag == 'not_search'){
+                    alert(flag);
+                    showArticleList(result.extend.pageInfo.pageNum+1, isPublish);
+                }else if(flag == 'search'){
+                    alert(flag);
+                    search(result.extend.pageInfo.pageNum+1);
+                }
             });
             lastPageLi.click(function(){
-                showArticleList(result.extend.pageInfo.pages);
+                if(flag == 'not_search'){
+                    showArticleList(result.extend.pageInfo.pages, isPublish);
+                }else if(flag == 'search'){
+                    search(result.extend.pageInfo.pages);
+                }
             });
         }
 
@@ -332,7 +357,11 @@
                 numLi.addClass("active");
             }
             numLi.click(function(){
-                showArticleList(item);
+                if(flag == 'not_search'){
+                    showArticleList(item, isPublish);
+                }else if(flag == 'search'){
+                    search(item);
+                }
             });
             ul.append(numLi);
         });
@@ -368,8 +397,67 @@
             }
         });
     }
-	function delete_article(artId){
-	    alert(artId);
+	function delete_article(artId, current_page){
+	    if(confirm("确认删除吗?")){
+			$.ajax({
+				url: "${APP_PATH}/article/"+artId,
+				type: "DELETE",
+				success: function(result){
+				    if(result.code == 100){
+                        showArticleList(current_page);
+					}
+				}
+			});
+		}
+	}
+	function switchover_all(){
+	    $("#tab_2").removeClass("shadow");
+        $("#tab_3").removeClass("shadow");
+		$("#tab_1").addClass("shadow");
+        showArticleList(1, "Y");
+	}
+    function switchover_article(){
+        $("#tab_1").removeClass("shadow");
+        $("#tab_3").removeClass("shadow");
+        $("#tab_2").addClass("shadow");
+        showArticleList(1, "Y");
+    }
+    function switchover_draft(){
+        $("#tab_1").removeClass("shadow");
+        $("#tab_2").removeClass("shadow");
+        $("#tab_3").addClass("shadow");
+        showArticleList(1, "N");
+    }
+    // 按Enter键,执行事件
+    function entersearch(){
+        var event = window.event || arguments.callee.caller.arguments[0];
+        if (event.keyCode == 13)
+        {
+            search(1);
+        }
+    }
+    function search(page){
+        var keyword = $("#search_input").val();
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;
+        var size = 1;
+        var flag = 'search';
+        var isPublish = 'Y';
+        $.ajax({
+            url: "${APP_PATH}/articles/search/"+keyword+"/"+userId+"/"+page+"/"+size,
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                //显示文章列表
+                build_article_table(result);
+                //显示分页条
+                build_page_nav(result,isPublish,flag);
+            }
+        });
+	}
+	function to_detail(artId){
+        window.location.href = "detail.jsp?artId="+artId;
 	}
 </script>
 </body>

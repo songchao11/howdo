@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.song.howdo.mapper.ConcernMapper" >
+  <resultMap id="BaseResultMap" type="com.song.howdo.model.Concern" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <id column="observed" property="observed" jdbcType="BIGINT" />
+    <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
+    <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="created_by" jdbcType="BIGINT" property="createdBy" />
+    <result column="last_updated_by" jdbcType="BIGINT" property="lastUpdatedBy" />
+    <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+  </resultMap>
+
+  <select id="queryConcern" resultMap="BaseResultMap">
+    select * from howdo_concern where user_id=#{userId} and observed=#{observed}
+  </select>
+
+</mapper>

@@ -19,6 +19,12 @@ public class User extends BaseEntity {
 	
 	@Transient
 	private String remember;
+	@Transient
+	private String followed;//判断是否被关注
+	@Transient
+	private int age;
+	@Transient
+	private String constellation;
 	
 	public String getAccount() {
 		return account;
@@ -87,5 +93,29 @@ public class User extends BaseEntity {
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+
+	public String getFollowed() {
+		return followed;
+	}
+
+	public void setFollowed(String followed) {
+		this.followed = followed;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getConstellation() {
+		return constellation;
+	}
+
+	public void setConstellation(String constellation) {
+		this.constellation = constellation;
 	}
 }

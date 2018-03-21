@@ -34,12 +34,13 @@ public class ArticleController {
 		return articleService.addArticle(article);
 	}
 
-	@RequestMapping(value = "/articles/{userId}/{page}/{size}", method = RequestMethod.GET)
+	@RequestMapping(value = "/articles/{userId}/{page}/{size}/{isPublish}", method = RequestMethod.GET)
 	@ResponseBody
 	public Msg queryArticles( @PathVariable Long userId,
 							  @PathVariable Integer page,
-							  @PathVariable Integer size){
-		return articleService.queryArticles(userId, page, size);
+							  @PathVariable Integer size,
+							  @PathVariable String isPublish){
+		return articleService.queryArticles(userId, page, size, isPublish);
 	}
 
 	@RequestMapping(value = "/article/total/{userId}", method = RequestMethod.GET)
@@ -54,6 +55,27 @@ public class ArticleController {
 		Long artId = article.getId();
 		String isComment = article.getIsComment();
 		return articleService.updateArticleIsComment(artId, isComment);
+	}
+
+	@RequestMapping(value = "/article/{artId}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public Msg deleteArticle(@PathVariable Long artId){
+		return articleService.deleteArticle(artId);
+	}
+
+	@RequestMapping(value = "/articles/search/{title}/{userId}/{page}/{size}", method = RequestMethod.GET)
+	@ResponseBody
+	public Msg queryArticlesByDim( @PathVariable String title,
+								   	@PathVariable Long userId,
+							  		@PathVariable Integer page,
+								    @PathVariable Integer size){
+		return articleService.queryArticlesByDim(title,userId, page, size);
+	}
+
+	@RequestMapping(value = "/article/user/{artId}/{yourId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Msg queryArticleAndUser(@PathVariable Long artId, @PathVariable Long yourId){
+		return articleService.queryArticleAndUser(artId, yourId);
 	}
 	
 }

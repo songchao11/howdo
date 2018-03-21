@@ -17,9 +17,15 @@ public interface ArticleMapper {
 
     Article queryArticleById(@Param("id") Long id);
 
-    List<Article> queryArticles(@Param("userId") Long userId);
+    List<Article> queryArticles(@Param("userId") Long userId, @Param("isPublish") String isPublish);
 
     int queryArticleCount(@Param("userId") Long userId, @Param("isPublish") String isPublish);
 
     int updateArticleIsComment(@Param("artId") Long artId, @Param("isComment") String isComment);
+
+    int deleteArticle(@Param("artId") Long artId);
+
+    List<Article> queryArticlesByDim(@Param("title") String title, @Param("userId") Long userId);
+
+    Article queryArticleDetail(@Param("artId") Long artId);
 }

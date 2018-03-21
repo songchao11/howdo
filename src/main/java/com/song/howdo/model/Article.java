@@ -17,6 +17,12 @@ public class Article extends BaseEntity {
 
 	@Transient
 	private Long commentNum;
+	@Transient
+	private Long praiseNum;
+	@Transient
+	private Long collectNum;
+	@Transient
+	private String category;
 
 	public String getTitle() {
 		return title;
@@ -59,6 +65,30 @@ public class Article extends BaseEntity {
 	}
 	public void setReadNum(Long readNum) {
 		this.readNum = readNum;
+	}
+
+	public Long getPraiseNum() {
+		return praiseNum;
+	}
+
+	public void setPraiseNum(Long praiseNum) {
+		this.praiseNum = praiseNum;
+	}
+
+	public Long getCollectNum() {
+		return collectNum;
+	}
+
+	public void setCollectNum(Long collectNum) {
+		this.collectNum = collectNum;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getIsComment() {

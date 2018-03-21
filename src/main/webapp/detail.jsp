@@ -208,13 +208,16 @@
             margin-left: 30px;
         }
         #article_manage_read{
-            margin-left: 280px;
+            margin-left: 250px;
         }
         #article_manage_comment{
-            margin-left: 30px;
+            margin-left: 15px;
         }
         #collect{
-            margin-left: 30px;
+            margin-left: 15px;
+        }
+        #praise{
+            margin-left: 15px;
         }
         .category{
             height: 40px;
@@ -344,9 +347,9 @@
             <a><img src="http://119.23.77.220/images/cat.jpg" class="img-circle" /></a>
         </div>
         <div class="p_info">
-            <h3>尼古拉斯_赵四</h3>
+            <h3 id="p_info_nickname"></h3>
             <div class="attention_btn">
-                <button type="button" class="btn btn-default">关注</button>
+                <%--<button type="button" class="btn btn-default">关注</button>--%>
             </div>
         </div>
     </div>
@@ -371,15 +374,15 @@
 
     <div class="information">
         <div class="info_one">
-            <div class="info_one_sex">性别:  男</div>
-            <div class="info_one_age">年龄:  21</div>
+            <div class="info_one_sex"></div>
+            <div class="info_one_age"></div>
         </div>
         <div class="info_two">
-            <div class="info_two_constellation">星座:  双鱼</div>
-            <div class="info_two_address">居住地:  芜湖</div>
+            <div class="info_two_constellation"></div>
+            <div class="info_two_address"></div>
         </div>
         <div class="info_three">
-            个性签名:  我没有这种天分，我会一直好好过
+            
         </div>
     </div>
 </div>
@@ -387,26 +390,21 @@
 <div class="right_content">
     <div class="content">
         <div class="title">
-            <h1>Linux远程服务器上搭建 ftp服务器</h1>
+            <h1 class="title_h1"></h1>
         </div>
         <div class="article_manage">
             <span class="article_manage_time">2017年11月16日 15:18:32</span>
             <span class="glyphicon glyphicon-eye-open" id="article_manage_read">5人阅读</span>
             <span class="glyphicon glyphicon-comment" id="article_manage_comment">评论(2)</span>
-            <span class="glyphicon glyphicon-star" id="collect"><a>收藏</a></span>
+            <span class="glyphicon glyphicon-star" id="collect">收藏(2)</span>
+            <span class="glyphicon glyphicon-thumbs-up" id="praise">点赞(2)</span>
         </div>
         <div class="category">
             <span class="glyphicon glyphicon-th-list" id="cate_tab">分类:</span>
             <span class="cate_txt">开发环境搭建</span>
         </div>
         <div class="htmledit_views">
-            刚刚终于写完了插件开发的最后一篇文章，下面就来总结一下，关于Android中插件篇从去年的11月份
-            就开始规划了，主要从三个方面去解读Android中插件开发原理。说白了，插件开发的原理
-            就是：动态加载技术。但是我们在开发插件的过程中可能会遇到很多问题，所以这里就分为三篇文章进
-            行解读的，而且也是循序渐进，解决了插件开发过程中可能会遇到的问题，不过这三篇的基础还是动态加载技术。
-            这篇文章主要介绍了Android中的DexClassLoader类的功能，以及我们如何使用动态加载技术，为何要使用动
-            态加载技术等问题的解释，最开始的时候，我们就是使用这个类进行功能模块的剥离，让一些模块放到指
-            定的jar/dex/apk中，然后去动态加载，这样做的好处是，减小包的大小，功能会更加灵活。
+
         </div>
         <div class="comment_input">
             <span><img src="http://119.23.77.220/images/cat.jpg" class="img-circle" /></span>
@@ -434,8 +432,103 @@
 <script type="text/javascript">
     $(function(){
         showUser();
+        showPage();
     });
-
+    //获取跳转页面携带过来的参数
+    function parseUrl(){
+        var url=location.href;
+        var i=url.indexOf('?');
+        if(i==-1)return;
+        var querystr=url.substr(i+1);
+        var arr1=querystr.split('&');
+        var arr2=new Object();
+        for  (i in arr1){
+            var ta=arr1[i].split('=');
+            arr2[ta[0]]=ta[1];
+        }
+        return arr2;
+    }
+    function showPage(){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var yourId = userEntity.id;//登录人的id
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        $.ajax({
+            url: "${APP_PATH}/article/user/"+artId+"/"+yourId,
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                showArticle(result);
+                showUserInfo(result);
+            }
+        });
+    }
+    function showArticle(result) {
+        console.log(result.extend.article.content);
+        $(".htmledit_views").empty();
+        $(".htmledit_views").html(result.extend.article.content);
+        $(".title_h1").empty();
+        $(".title_h1").append(result.extend.article.title);
+        $("#article_manage_read").empty();
+        $("#article_manage_read").append(result.extend.article.readNum+"人阅读");
+        $("#article_manage_comment").empty();
+        $("#article_manage_comment").append("评论("+result.extend.article.commentNum+")");
+        $("#collect").empty();
+        $("#collect").append("收藏("+result.extend.article.collectNum+")");
+        $("#praise").empty();
+        $("#praise").append("点赞("+result.extend.article.praiseNum+")");
+        $(".cate_txt").empty();
+        $(".cate_txt").append(result.extend.article.category);
+        $(".article_manage_time").empty();
+        $(".article_manage_time").append(result.extend.article.lastUpdateDate);
+    }//<button type="button" class="btn btn-default">关注</button>
+    function showUserInfo(result){
+        $("#p_info_nickname").empty();
+        $("#p_info_nickname").append(result.extend.user.nickname);
+        if(result.extend.user.followed == "空"){
+            $(".attention_btn").empty();
+        }else if(result.extend.user.followed == "关注"){
+            $("<button></button>").addClass("btn btn-default").attr("type","button").append("关注").appendTo(".attention_btn");
+        }else if(result.extend.user.followed == "已关注"){
+            $("<button></button>").addClass("btn btn-default").attr("type","button").append("关注").appendTo(".attention_btn");
+        }
+        if(result.extend.user.sex != null){
+            $(".info_one_sex").empty();
+            $(".info_one_sex").append("性别:  "+result.extend.user.sex);
+        }else{
+            $(".info_one_sex").empty();
+            $(".info_one_sex").append("性别:  暂无");
+        }
+        if(result.extend.user.age != null){
+            $(".info_one_age").empty();
+            $(".info_one_age").append("年龄:  "+result.extend.user.age);
+        }else{
+            $(".info_one_age").empty();
+            $(".info_one_age").append("年龄:  暂无");
+        }
+        if(result.extend.user.constellation != null){
+            $(".info_two_constellation").empty();
+            $(".info_two_constellation").append("星座:  "+result.extend.user.constellation);
+        }else{
+            $(".info_two_constellation").empty();
+            $(".info_two_constellation").append("星座:  暂无");
+        }
+        if(result.extend.user.address != null){
+            $(".info_two_address").empty();
+            $(".info_two_address").append("居住地:  "+result.extend.user.address);
+        }else{
+            $(".info_two_address").empty();
+            $(".info_two_address").append("居住地:  暂无");
+        }
+        if(result.extend.user.sex != null){
+            $(".info_three").empty();
+            $(".info_three").append("个性签名:  "+result.extend.user.signature);
+        }else{
+            $(".info_three").empty();
+            $(".info_three").append("个性签名:  暂无");
+        }
+    }
 </script>
 </body>
 </html>

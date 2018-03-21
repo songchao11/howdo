@@ -32,14 +32,14 @@ public class FtpUploadUtilbaidu {
         MultipartHttpServletRequest multipartRequest = commonsMultipartResolver.resolveMultipart((HttpServletRequest) shiroRequest.getRequest()); 
 //        String token = request.getParameter("token");
 //    	String a 
-//    	System.out.println("À²À²:"+a);
+//    	System.out.println("ï¿½ï¿½ï¿½ï¿½:"+a);
         
         MultipartFile file = multipartRequest.getFile("upfile");
-        System.out.println("Ì«ºÃ:"+file.getSize());
+        System.out.println("Ì«ï¿½ï¿½:"+file.getSize());
         
         FileItemStream fileStream = null;
         boolean isAjaxUpload = request.getHeader( "X_Requested_With" ) != null;
-        //»ñÈ¡File     upfile
+        //ï¿½ï¿½È¡File     upfile
 //        MultipartFile file = ((MultipartHttpServletRequest) request).getFile("upload");
         
         if (!ServletFileUpload.isMultipartContent(request)) {
@@ -87,17 +87,17 @@ public class FtpUploadUtilbaidu {
             
             InputStream is = file.getInputStream();
             System.out.println("hehe:"+is);
-            
+            System.out.println("ç»ˆæå±å±:"+filename);
 //            ftpUtil.upload(file);
-            System.out.println("Ëµ»Ñ"+originFileName);
-            if(ftpUtil.uploadFileFTP1(originFileName + suffix,is)){
-            	System.out.println("³É¹¦");
+            System.out.println("Ëµï¿½ï¿½"+originFileName);//originFileName + suffix
+            if(ftpUtil.uploadFileFTP1(filename,is)){
+            	System.out.println("ï¿½É¹ï¿½");
             	storageState = new BaseState(true);
-            	storageState.putInfo("url", "http://119.23.77.220/images/"+originFileName + suffix);
+            	storageState.putInfo("url", "http://119.23.77.220/images/"+filename);
             }
 //            State storageState = null;//storageManager.saveFtpFileByInputStream(file, token);
 //            is.close();
-            System.out.println("ÎÄ¼şÃû:"+originFileName + suffix);
+            System.out.println("ï¿½Ä¼ï¿½ï¿½ï¿½:"+originFileName + suffix);
             if (storageState.isSuccess()) {
                 storageState.putInfo("type", suffix);
                 storageState.putInfo("original", originFileName + suffix);

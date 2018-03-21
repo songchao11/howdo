@@ -11,7 +11,7 @@
     "imageCompressBorder": "1600", 
     "imageInsertAlign": "none", 
     "imageUrlPrefix": "", 
-    "imagePathFormat": "/images/{filename}", 
+    "imagePathFormat": "/images/{yyyy}{mm}{dd}{time}{rand:6}",
                                 
     "scrawlActionName": "uploadscrawl", 
     "scrawlFieldName": "upfile", 

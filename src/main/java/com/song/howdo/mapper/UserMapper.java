@@ -15,4 +15,6 @@ public interface UserMapper extends BaseMapper<User> {
     List<String> queryUserRoles(@Param("account") String account);
     
     int addUser(@Param("user") User user);
+
+    User queryUserById(@Param("id") Long id);
 }
