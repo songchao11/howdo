@@ -1,6 +1,8 @@
 package com.song.howdo.controller;
 
 import com.song.howdo.model.Article;
+import com.song.howdo.service.CollectService;
+import com.song.howdo.service.PraiseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,10 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private PraiseService praiseService;
+	@Autowired
+	private CollectService collectService;
 	
 	@RequestMapping("/article/main")
 	public String toMain(){
@@ -76,6 +82,22 @@ public class ArticleController {
 	@ResponseBody
 	public Msg queryArticleAndUser(@PathVariable Long artId, @PathVariable Long yourId){
 		return articleService.queryArticleAndUser(artId, yourId);
+	}
+
+	@RequestMapping(value = "/article/praise/{userId}/{artId}/{flag}", method = RequestMethod.POST)
+	@ResponseBody
+	public Msg addAndDeletePraise(@PathVariable Long userId,
+								  @PathVariable Long artId,
+								  @PathVariable String flag){
+		return praiseService.addAndDeletePraise(userId, artId, flag);
+	}
+
+	@RequestMapping(value = "/article/collect/{userId}/{artId}/{flag}", method = RequestMethod.POST)
+	@ResponseBody
+	public Msg addAndDeleteCollect(@PathVariable Long userId,
+								  @PathVariable Long artId,
+								  @PathVariable String flag){
+		return collectService.addAndDeleteCollect(userId, artId, flag);
 	}
 	
 }

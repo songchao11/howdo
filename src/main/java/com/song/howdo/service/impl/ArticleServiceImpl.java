@@ -5,20 +5,14 @@ import java.util.List;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.song.howdo.mapper.ArticleMapper;
-import com.song.howdo.mapper.ConcernMapper;
-import com.song.howdo.mapper.UserMapper;
-import com.song.howdo.model.Article;
-import com.song.howdo.model.User;
+import com.song.howdo.mapper.*;
+import com.song.howdo.model.*;
 import com.song.howdo.service.FileService;
 import com.song.howdo.util.AgeUtil;
 import com.song.howdo.util.ConstellationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.song.howdo.mapper.CategoryMapper;
-import com.song.howdo.model.Category;
-import com.song.howdo.model.Msg;
 import com.song.howdo.service.ArticleService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +30,10 @@ public class ArticleServiceImpl implements ArticleService {
 	private UserMapper userMapper;
 	@Autowired
 	private ConcernMapper concernMapper;
+	@Autowired
+	private PraiseMapper praiseMapper;
+	@Autowired
+	private CollectMapper collectMapper;
 
 	
 	public Msg queryCategorys() {
@@ -91,10 +89,16 @@ public class ArticleServiceImpl implements ArticleService {
 
 	public Msg queryArticleAndUser(Long artId, Long yourId) {
 		Article article = articleMapper.queryArticleDetail(artId);
+		Long readNum = article.getReadNum();
+		articleMapper.updateArticleReadNum(artId, readNum+1);
 		Long userId = article.getUserId();
 		User user = userMapper.queryUserById(userId);
 		String followed = "";
-		ConcernMapper concern = concernMapper.queryConcern(yourId, userId);
+		String isPraise = "";
+		String isCollect = "";
+		Concern concern = concernMapper.queryConcern(yourId, userId);
+		Praise praise = praiseMapper.queryPraise(yourId,artId);
+		Collect collect = collectMapper.queryCollect(yourId, artId);
 		if(yourId == userId){
 			followed = "空";
 		}else if(concern == null){
@@ -102,7 +106,23 @@ public class ArticleServiceImpl implements ArticleService {
 		}else {
 			followed = "已关注";
 		}
+		if(yourId == userId){
+			isPraise = "空";
+		}else if(praise == null){
+			isPraise = "点赞";
+		}else if(praise != null){
+			isPraise = "已点赞";
+		}
+		if(yourId == userId){
+			isCollect = "空";
+		}else if(collect == null){
+			isCollect = "收藏";
+		}else if(collect != null){
+			isCollect = "已收藏";
+		}
 		user.setFollowed(followed);
+		article.setIsPraise(isPraise);
+		article.setIsCollect(isCollect);
 		Date birthday = user.getBirthday();
 		int age = 0;
 		String constellation = null;
@@ -118,6 +138,15 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		user.setAge(age);
 		user.setConstellation(constellation);
+		//查询用户的文章 粉丝 评论 喜欢数
+		Long articleNum = articleMapper.queryArticleNumById(userId);
+		Long commentNum = articleMapper.queryArticleCommNum(userId);
+		Long observedNum = articleMapper.queryObservedNum(userId);
+		Long collectNum = articleMapper.queryCollectNum(userId);
+		user.setArticleNum(articleNum);
+		user.setCommentNum(commentNum);
+		user.setObservedNum(observedNum);
+		user.setCollectNum(collectNum);
 		return Msg.success().add("user", user).add("article", article);
 	}
 

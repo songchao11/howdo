@@ -10,11 +10,13 @@
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
-    <script src="https://cdn.bootcss.com/jquery/1.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="static/js/userinfo.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="static/css/demo.css">
 
     <link href="static/time/css/lyz.calendar.css" rel="stylesheet" type="text/css" />
 
@@ -233,6 +235,7 @@
         .htmledit_views{
             margin-left: 30px;
             margin-top: 10px;
+            /*border:1px solid red;*/
         }
         .comment_input{
             border-top: 1px solid #f4f4f4;
@@ -281,6 +284,38 @@
             font-size: 14px;
             margin-left: 15px;
         }
+        .praise_collect{
+            height: 60px;
+            /*border:1px solid black;*/
+        }
+        .praise{
+            /*border:1px solid red;*/
+            margin-top: 0px;
+            margin-left: 250px;
+            width: 40px;
+            height: 40px;
+            float: left;
+        }
+        .collect{
+            margin-left: 355px;
+            width: 50px;
+            /*border:1px solid green;*/
+        }
+        #collect_btn_y{
+            font-size: 38px;
+            color: #272636;
+            width: 39px;
+            height: 39px;
+            margin-top: 5px;
+        }
+        #collect_btn_n{
+            font-size: 38px;
+            color: #eb4f38;
+            width: 39px;
+            height: 39px;
+            margin-top: 5px;
+        }
+
     </style>
 </head>
 <body class="Corporate Homepage " data-skin="corporate">
@@ -344,7 +379,7 @@
     <div class="person_info">个人资料</div>
     <div class="person_img">
         <div class="p_img">
-            <a><img src="http://119.23.77.220/images/cat.jpg" class="img-circle" /></a>
+            <a id="p_img_a"><img src="http://119.23.77.220/images/cat.jpg" class="img-circle" /></a>
         </div>
         <div class="p_info">
             <h3 id="p_info_nickname"></h3>
@@ -382,7 +417,7 @@
             <div class="info_two_address"></div>
         </div>
         <div class="info_three">
-            
+
         </div>
     </div>
 </div>
@@ -397,17 +432,29 @@
             <span class="glyphicon glyphicon-eye-open" id="article_manage_read">5人阅读</span>
             <span class="glyphicon glyphicon-comment" id="article_manage_comment">评论(2)</span>
             <span class="glyphicon glyphicon-star" id="collect">收藏(2)</span>
-            <span class="glyphicon glyphicon-thumbs-up" id="praise">点赞(2)</span>
+            <span class="glyphicon glyphicon-thumbs-up" id="art_praise">点赞(2)</span>
         </div>
         <div class="category">
             <span class="glyphicon glyphicon-th-list" id="cate_tab">分类:</span>
-            <span class="cate_txt">开发环境搭建</span>
+            <span class="cate_txt"></span>
         </div>
         <div class="htmledit_views">
 
         </div>
+
+        <div class="praise_collect">
+            <div class="praise">
+                <span id="praise"><img src="static/img/zan.png" id="praise-img" /></span>
+                <span id="praise-txt"></span>
+                <span id="add-num"><em>+1</em></span>
+            </div>
+            <div class="collect">
+                <%--<span class="glyphicon glyphicon-star" id="collect_btn_y" onclick="addCollect()"></span>--%>
+            </div>
+        </div>
+
         <div class="comment_input">
-            <span><img src="http://119.23.77.220/images/cat.jpg" class="img-circle" /></span>
+            <span id="comment_imput_img"></span>
             <textarea id="comment_content"></textarea>
             <button type="button" class="btn btn-default" id="comment_btn">发表评论</button>
         </div>
@@ -454,6 +501,7 @@
         var yourId = userEntity.id;//登录人的id
         var v = parseUrl();//解析所有参数
         var artId = v['artId'];//就是你要的结果
+        $("<img/>").attr("src",userEntity.headPic).addClass("img-circle").appendTo("#comment_imput_img");
         $.ajax({
             url: "${APP_PATH}/article/user/"+artId+"/"+yourId,
             type: "GET",
@@ -465,7 +513,6 @@
         });
     }
     function showArticle(result) {
-        console.log(result.extend.article.content);
         $(".htmledit_views").empty();
         $(".htmledit_views").html(result.extend.article.content);
         $(".title_h1").empty();
@@ -476,13 +523,30 @@
         $("#article_manage_comment").append("评论("+result.extend.article.commentNum+")");
         $("#collect").empty();
         $("#collect").append("收藏("+result.extend.article.collectNum+")");
-        $("#praise").empty();
-        $("#praise").append("点赞("+result.extend.article.praiseNum+")");
+        $("#art_praise").empty();
+        $("#art_praise").append("点赞("+result.extend.article.praiseNum+")");
         $(".cate_txt").empty();
         $(".cate_txt").append(result.extend.article.category);
         $(".article_manage_time").empty();
         $(".article_manage_time").append(result.extend.article.lastUpdateDate);
-    }//<button type="button" class="btn btn-default">关注</button>
+        $("#praise-txt").empty();
+        $("#praise-txt").append(result.extend.article.praiseNum);
+        if(result.extend.article.isPraise == "空" && result.extend.article.isCollect == "空"){
+            $(".praise_collect").empty();
+        }else if(result.extend.article.isPraise == "点赞"){
+            $("#praise").html("<img src='static/img/zan.png' id='praise-img' class='animation' />");
+        }else if(result.extend.article.isPraise == "已点赞"){
+            $("#praise").html("<img src='static/img/yizan.png' id='praise-img' class='animation' />");
+        }
+        console.log("测试收藏:"+result.extend.article.isCollect == "收藏");
+        if(result.extend.article.isCollect == "收藏"){
+            $(".collect").empty();
+            $("<span></span>").addClass("glyphicon glyphicon-star").attr("id","collect_btn_y").attr("onclick","addCollect()").appendTo(".collect");
+        }else if(result.extend.article.isCollect == "已收藏"){
+            $(".collect").empty();
+            $("<span></span>").addClass("glyphicon glyphicon-star").attr("id","collect_btn_n").attr("onclick","deleteCollect()").appendTo(".collect");
+        }
+    }
     function showUserInfo(result){
         $("#p_info_nickname").empty();
         $("#p_info_nickname").append(result.extend.user.nickname);
@@ -528,6 +592,100 @@
             $(".info_three").empty();
             $(".info_three").append("个性签名:  暂无");
         }
+        $(".s_original").empty();
+        $(".s_original").append(result.extend.user.articleNum);
+        $(".s_fans").empty();
+        $(".s_fans").append(result.extend.user.observedNum);
+        $(".s_like").empty();
+        $(".s_like").append(result.extend.user.collectNum);
+        $(".s_comment").empty();
+        $(".s_comment").append(result.extend.user.commentNum);
+        $("#p_img_a").empty();
+        $("<img/>").attr("src",result.extend.user.headPic).addClass("img-circle").appendTo("#p_img_a");
+    }
+
+    $("#praise").click(function(){
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;
+
+
+        var praise_img = $("#praise-img");
+        var text_box = $("#add-num");
+        var praise_txt = $("#praise-txt");
+        var num=parseInt(praise_txt.text());
+        //取消点赞
+        if(praise_img.attr("src") == ("static/img/yizan.png")){
+            var flag = "delete";
+            $.ajax({
+                url: "${APP_PATH}/article/praise/"+userId+"/"+artId+"/"+flag,
+                type: "POST",
+                success: function(result){
+                    if(result.code == 100){
+                        $("#praise").html("<img src='static/img/zan.png' id='praise-img' class='animation' />");
+                        praise_txt.removeClass("hover");
+                        text_box.show().html("<em class='add-animation'>-1</em>");
+                        $(".add-animation").removeClass("hover");
+                        num -=1;
+                        praise_txt.text(num)
+                    }
+                }
+            });
+        }else{//点赞
+            var flag = "add";
+            $.ajax({
+                url: "${APP_PATH}/article/praise/"+userId+"/"+artId+"/"+flag,
+                type: "POST",
+                success: function(result){
+                    if(result.code == 100){
+                        $("#praise").html("<img src='static/img/yizan.png' id='praise-img' class='animation' />");
+                        praise_txt.addClass("hover");
+                        text_box.show().html("<em class='add-animation'>+1</em>");
+                        $(".add-animation").addClass("hover");
+                        num +=1;
+                        praise_txt.text(num)
+                    }
+                }
+            });
+        }
+    });
+    function addCollect(){
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;
+        var flag = "add";
+        $.ajax({
+            url: "${APP_PATH}/article/collect/"+userId+"/"+artId+"/"+flag,
+            type: "POST",
+            success: function(result){
+                if(result.code == 100){
+                    $(".collect").empty();
+                    $("<span></span>").addClass("glyphicon glyphicon-star").attr("id","collect_btn_n").attr("onclick","deleteCollect()").appendTo(".collect");
+                }
+            }
+        });
+    }
+    function deleteCollect(){
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;
+        var flag = "delete";
+        $.ajax({
+            url: "${APP_PATH}/article/collect/"+userId+"/"+artId+"/"+flag,
+            type: "POST",
+            success: function(result){
+                if(result.code == 100){
+                    $(".collect").empty();
+                    $("<span></span>").addClass("glyphicon glyphicon-star").attr("id","collect_btn_y").attr("onclick","addCollect()").appendTo(".collect");
+                }
+            }
+        });
     }
 </script>
 </body>

@@ -80,4 +80,24 @@
 				where ha.id=#{artId}
     </select>
 
+    <select id="queryArticleNumById" resultType="long">
+        select count(id) from howdo_article where user_id=#{userId} and enable_flag='Y' and is_publish='Y'
+    </select>
+
+    <select id="queryArticleCommNum" resultType="long">
+        select count(id) from howdo_comment where art_id in(select id from howdo_article where user_id=#{userId} and is_publish='Y' and enable_flag='Y')
+    </select>
+
+    <select id="queryObservedNum" resultType="long">
+        select count(id) from howdo_concern where observed=#{userId}
+    </select>
+
+    <select id="queryCollectNum" resultType="long">
+        select count(id) from howdo_collect where art_id in (select id from howdo_article where user_id=#{userId} and is_publish='Y' and enable_flag='Y')
+    </select>
+
+    <update id="updateArticleReadNum">
+        update howdo_article set read_num=#{readNum} and id=#{artId}
+    </update>
+
 </mapper>

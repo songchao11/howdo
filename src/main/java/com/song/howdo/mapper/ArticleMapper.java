@@ -28,4 +28,15 @@ public interface ArticleMapper {
     List<Article> queryArticlesByDim(@Param("title") String title, @Param("userId") Long userId);
 
     Article queryArticleDetail(@Param("artId") Long artId);
+
+    Long queryArticleNumById(@Param("userId") Long userId);
+
+    Long queryArticleCommNum(@Param("userId") Long userId);
+
+    Long queryObservedNum(@Param("userId") Long userId);
+
+    Long queryCollectNum(@Param("userId") Long userId);
+
+    int updateArticleReadNum(@Param("artId") Long artId, @Param("readNum") Long readNum);
+
 }

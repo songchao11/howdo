@@ -23,6 +23,10 @@ public class Article extends BaseEntity {
 	private Long collectNum;
 	@Transient
 	private String category;
+	@Transient
+	private String isPraise;
+	@Transient
+	private String isCollect;
 
 	public String getTitle() {
 		return title;
@@ -105,6 +109,22 @@ public class Article extends BaseEntity {
 
 	public void setCommentNum(Long commentNum) {
 		this.commentNum = commentNum;
+	}
+
+	public String getIsPraise() {
+		return isPraise;
+	}
+
+	public void setIsPraise(String isPraise) {
+		this.isPraise = isPraise;
+	}
+
+	public String getIsCollect() {
+		return isCollect;
+	}
+
+	public void setIsCollect(String isCollect) {
+		this.isCollect = isCollect;
 	}
 
 	@Override

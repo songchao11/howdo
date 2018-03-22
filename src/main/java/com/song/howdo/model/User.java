@@ -25,6 +25,14 @@ public class User extends BaseEntity {
 	private int age;
 	@Transient
 	private String constellation;
+	@Transient
+	private Long articleNum;
+	@Transient
+	private Long observedNum;
+	@Transient
+	private Long commentNum;
+	@Transient
+	private Long collectNum;
 	
 	public String getAccount() {
 		return account;
@@ -117,5 +125,37 @@ public class User extends BaseEntity {
 
 	public void setConstellation(String constellation) {
 		this.constellation = constellation;
+	}
+
+	public Long getArticleNum() {
+		return articleNum;
+	}
+
+	public void setArticleNum(Long articleNum) {
+		this.articleNum = articleNum;
+	}
+
+	public Long getObservedNum() {
+		return observedNum;
+	}
+
+	public void setObservedNum(Long observedNum) {
+		this.observedNum = observedNum;
+	}
+
+	public Long getCommentNum() {
+		return commentNum;
+	}
+
+	public void setCommentNum(Long commentNum) {
+		this.commentNum = commentNum;
+	}
+
+	public Long getCollectNum() {
+		return collectNum;
+	}
+
+	public void setCollectNum(Long collectNum) {
+		this.collectNum = collectNum;
 	}
 }
