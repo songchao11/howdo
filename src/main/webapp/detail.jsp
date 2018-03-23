@@ -264,6 +264,7 @@
         }
         .comment_list_top{
             margin-left: 30px;
+            width:700px;
         }
         .comment_list_top img{
             width: 30px;
@@ -315,7 +316,43 @@
             height: 39px;
             margin-top: 5px;
         }
-
+        .reply_div{
+            display: none;
+        }
+        .reply_div textarea{
+            margin-left: 75px;
+            width: 650px;
+        }
+        .reply_div button{
+            margin-left: 671px;
+        }
+        .reply_div_item{
+            display: none;
+        }
+        .reply_div_item textarea{
+            margin-left: 75px;
+            width: 580px;
+        }
+        .reply_div_item button{
+            margin-left: 600px;
+        }
+        .reply_btn{
+            margin-top: 1px;
+        }
+        .reply_time{
+            margin-left: 65px;
+            font-size: 14px;
+        }
+        .reply_btn a{
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .reply_close{
+            display: none;
+        }
+        .reply_list{
+            margin-left: 65px;
+        }
     </style>
 </head>
 <body class="Corporate Homepage " data-skin="corporate">
@@ -444,9 +481,9 @@
 
         <div class="praise_collect">
             <div class="praise">
-                <span id="praise"><img src="static/img/zan.png" id="praise-img" /></span>
-                <span id="praise-txt"></span>
-                <span id="add-num"><em>+1</em></span>
+                <%--<span id="praise"><img src="static/img/zan.png" id="praise-img" /></span>--%>
+                <%--<span id="praise-txt"></span>--%>
+                <%--<span id="add-num"><em>+1</em></span>--%>
             </div>
             <div class="collect">
                 <%--<span class="glyphicon glyphicon-star" id="collect_btn_y" onclick="addCollect()"></span>--%>
@@ -456,21 +493,61 @@
         <div class="comment_input">
             <span id="comment_imput_img"></span>
             <textarea id="comment_content"></textarea>
-            <button type="button" class="btn btn-default" id="comment_btn">发表评论</button>
+            <button type="button" class="btn btn-default" id="comment_btn" onclick="addComment()">发表评论</button>
         </div>
 
         <div class="comment_list">
             <div class="comment_list_top">
                 <img src="http://119.23.77.220/images/cat.jpg"/>
-                <span>尼古拉斯_赵四</span>
-                <span class="top_date">2016-02-05 09:44发表</span>
-                <span class="top_btn" id="top_btn_1"><a>回复</a></span>
+                <a>尼古拉斯_赵四:</a>
+                <span>
+                     老子今天不上班，爽翻老子今天不上班，爽翻
+                    老子今天不上班，爽翻
+                    老子今天不上班，爽翻 老子今天不上班，爽翻
+                </span>
             </div>
-            <div class="comment_list_botton">
-                <span class="botton_txt">老子今天不上班，爽翻</span>
+            <div class="reply_btn">
+                <span class="reply_time">2016-02-05 09:44</span>
+                <a class="reply_a" onclick="showReplyDiv(1)">回复</a>
+                <a class="reply_close" onclick="hideReply(1)">回复</a>
             </div>
-            <div class="reply_input">
-                <input type="text"><button>回复</button>
+            <div class="reply_div" id="reply_textarea_1">
+                <textarea id="reply_comment_1"></textarea>
+                <button class="btn btn-default" >回复</button>
+            </div>
+            <div class="reply_list">
+                <div class="reply_list_top">
+                    <a>厂长:</a>
+                    <span>
+                     老子今天不上班，爽翻老子今天不上班，爽翻
+                    </span>
+                </div>
+                <div class="reply_list_btn">
+                    <span class="reply_time">2016-02-05 09:44</span>
+                    <a class="reply_a" onclick="showReplyDiv(2)">回复</a>
+                    <a class="reply_close" onclick="hideReply(2)">回复</a>
+                </div>
+                <div class="reply_div_item" id="reply_textarea_2">
+                    <textarea id="reply_comment_2"></textarea>
+                    <button class="btn btn-default" >回复</button>
+                </div>
+            </div>
+            <div class="reply_list">
+                <div class="reply_list_top">
+                    <a>厂长:</a>
+                    <span>
+                     老子今天不上班，爽翻老子今天不上班，爽翻
+                    </span>
+                </div>
+                <div class="reply_list_btn">
+                    <span class="reply_time">2016-02-05 09:44</span>
+                    <a class="reply_a" onclick="showReplyDiv(3)">回复</a>
+                    <a class="reply_close" onclick="hideReply(3)">回复</a>
+                </div>
+                <div class="reply_div_item" id="reply_textarea_3">
+                    <textarea id="reply_comment_3"></textarea>
+                    <button class="btn btn-default" >回复</button>
+                </div>
             </div>
         </div>
     </div>
@@ -684,6 +761,34 @@
                     $(".collect").empty();
                     $("<span></span>").addClass("glyphicon glyphicon-star").attr("id","collect_btn_y").attr("onclick","addCollect()").appendTo(".collect");
                 }
+            }
+        });
+    }
+    function showReplyDiv(id){
+        $("#reply_textarea_"+id).show();
+        $(".reply_close").show();
+        $(".reply_a").hide();
+    }
+    function hideReply(id){
+        $("#reply_textarea_"+id).hide();
+        $(".reply_close").hide();
+        $(".reply_a").show();
+    }
+    function addComment(){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        var content = $("#comment_content").val();
+        alert(content);
+        $.ajax({
+            url: "${APP_PATH}/comment",
+            type: "POST",
+            data: {"userId":userId, "artId":artId, "parId":0, "content":content},
+            dataType: "json",
+            success: function(result){
+                alert(result.code);
             }
         });
     }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.song.howdo.mapper.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.song.howdo.model.Comment" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="art_id" property="artId" jdbcType="BIGINT" />
+    <result column="par_id" property="artId" jdbcType="BIGINT" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
+    <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="created_by" jdbcType="BIGINT" property="createdBy" />
+    <result column="last_updated_by" jdbcType="BIGINT" property="lastUpdatedBy" />
+    <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+  </resultMap>
+
+  <insert id="addComment">
+    insert howdo_comment(user_id,art_id,par_id,content) values (#{comment.userId}, #{comment.artId},
+    #{comment.parId}, #{comment.content})
+  </insert>
+
+  <select id="queryComment" resultMap="BaseResultMap">
+    select * from howdo_comment where user_id=#{comment.userId} and art_id=#{comment.artId} and par_id=#{comment.parId} and content=#{comment.content}
+  </select>
+
+
+</mapper>
