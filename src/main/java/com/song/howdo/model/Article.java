@@ -2,6 +2,7 @@ package com.song.howdo.model;
 
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.util.List;
 
 @Table(name = "howdo_article")
 public class Article extends BaseEntity {
@@ -27,6 +28,9 @@ public class Article extends BaseEntity {
 	private String isPraise;
 	@Transient
 	private String isCollect;
+	@Transient
+	private List<File> files;
+	private User user;
 
 	public String getTitle() {
 		return title;
@@ -127,17 +131,41 @@ public class Article extends BaseEntity {
 		this.isCollect = isCollect;
 	}
 
+	public List<File> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Article{" +
 				"title='" + title + '\'' +
 				", content='" + content + '\'' +
 				", isPublish='" + isPublish + '\'' +
+				", isComment='" + isComment + '\'' +
 				", userId=" + userId +
 				", enableFlag='" + enableFlag + '\'' +
 				", cateId=" + cateId +
 				", readNum=" + readNum +
 				", commentNum=" + commentNum +
+				", praiseNum=" + praiseNum +
+				", collectNum=" + collectNum +
+				", category='" + category + '\'' +
+				", isPraise='" + isPraise + '\'' +
+				", isCollect='" + isCollect + '\'' +
+				", files=" + files +
+				", user=" + user +
 				'}';
 	}
 }

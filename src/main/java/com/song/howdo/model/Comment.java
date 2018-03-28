@@ -1,6 +1,8 @@
 package com.song.howdo.model;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.List;
 
 @Table(name = "howdo_comment")
 public class Comment extends BaseEntity {
@@ -9,6 +11,14 @@ public class Comment extends BaseEntity {
 	private Long userId;
 	private Long artId;
 	private Long parId;
+
+	@Transient
+	private String nickname;
+	@Transient
+	private String headPic;
+	@Transient
+	private List<Comment> childComm;
+
 	public String getContent() {
 		return content;
 	}
@@ -33,7 +43,28 @@ public class Comment extends BaseEntity {
 	public void setParId(Long parId) {
 		this.parId = parId;
 	}
-	
-	
-	
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getHeadPic() {
+		return headPic;
+	}
+
+	public void setHeadPic(String headPic) {
+		this.headPic = headPic;
+	}
+
+	public List<Comment> getChildComm() {
+		return childComm;
+	}
+
+	public void setChildComm(List<Comment> childComm) {
+		this.childComm = childComm;
+	}
 }

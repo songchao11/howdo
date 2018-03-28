@@ -289,7 +289,7 @@
             height: 60px;
             /*border:1px solid black;*/
         }
-        .praise{
+        #praise{
             /*border:1px solid red;*/
             margin-top: 0px;
             margin-left: 250px;
@@ -352,6 +352,12 @@
         }
         .reply_list{
             margin-left: 65px;
+        }
+        .reply_a{
+            font-size: 14px;
+        }
+        .reply_close{
+            font-size: 14px;
         }
     </style>
 </head>
@@ -465,11 +471,11 @@
             <h1 class="title_h1"></h1>
         </div>
         <div class="article_manage">
-            <span class="article_manage_time">2017年11月16日 15:18:32</span>
-            <span class="glyphicon glyphicon-eye-open" id="article_manage_read">5人阅读</span>
-            <span class="glyphicon glyphicon-comment" id="article_manage_comment">评论(2)</span>
-            <span class="glyphicon glyphicon-star" id="collect">收藏(2)</span>
-            <span class="glyphicon glyphicon-thumbs-up" id="art_praise">点赞(2)</span>
+            <span class="article_manage_time"></span>
+            <span class="glyphicon glyphicon-eye-open" id="article_manage_read"></span>
+            <span class="glyphicon glyphicon-comment" id="article_manage_comment"></span>
+            <span class="glyphicon glyphicon-star" id="collect"></span>
+            <span class="glyphicon glyphicon-thumbs-up" id="art_praise"></span>
         </div>
         <div class="category">
             <span class="glyphicon glyphicon-th-list" id="cate_tab">分类:</span>
@@ -480,7 +486,7 @@
         </div>
 
         <div class="praise_collect">
-            <div class="praise">
+            <div id="praise">
                 <%--<span id="praise"><img src="static/img/zan.png" id="praise-img" /></span>--%>
                 <%--<span id="praise-txt"></span>--%>
                 <%--<span id="add-num"><em>+1</em></span>--%>
@@ -496,59 +502,8 @@
             <button type="button" class="btn btn-default" id="comment_btn" onclick="addComment()">发表评论</button>
         </div>
 
-        <div class="comment_list">
-            <div class="comment_list_top">
-                <img src="http://119.23.77.220/images/cat.jpg"/>
-                <a>尼古拉斯_赵四:</a>
-                <span>
-                     老子今天不上班，爽翻老子今天不上班，爽翻
-                    老子今天不上班，爽翻
-                    老子今天不上班，爽翻 老子今天不上班，爽翻
-                </span>
-            </div>
-            <div class="reply_btn">
-                <span class="reply_time">2016-02-05 09:44</span>
-                <a class="reply_a" onclick="showReplyDiv(1)">回复</a>
-                <a class="reply_close" onclick="hideReply(1)">回复</a>
-            </div>
-            <div class="reply_div" id="reply_textarea_1">
-                <textarea id="reply_comment_1"></textarea>
-                <button class="btn btn-default" >回复</button>
-            </div>
-            <div class="reply_list">
-                <div class="reply_list_top">
-                    <a>厂长:</a>
-                    <span>
-                     老子今天不上班，爽翻老子今天不上班，爽翻
-                    </span>
-                </div>
-                <div class="reply_list_btn">
-                    <span class="reply_time">2016-02-05 09:44</span>
-                    <a class="reply_a" onclick="showReplyDiv(2)">回复</a>
-                    <a class="reply_close" onclick="hideReply(2)">回复</a>
-                </div>
-                <div class="reply_div_item" id="reply_textarea_2">
-                    <textarea id="reply_comment_2"></textarea>
-                    <button class="btn btn-default" >回复</button>
-                </div>
-            </div>
-            <div class="reply_list">
-                <div class="reply_list_top">
-                    <a>厂长:</a>
-                    <span>
-                     老子今天不上班，爽翻老子今天不上班，爽翻
-                    </span>
-                </div>
-                <div class="reply_list_btn">
-                    <span class="reply_time">2016-02-05 09:44</span>
-                    <a class="reply_a" onclick="showReplyDiv(3)">回复</a>
-                    <a class="reply_close" onclick="hideReply(3)">回复</a>
-                </div>
-                <div class="reply_div_item" id="reply_textarea_3">
-                    <textarea id="reply_comment_3"></textarea>
-                    <button class="btn btn-default" >回复</button>
-                </div>
-            </div>
+        <div class="comment_list_all">
+
         </div>
     </div>
 </div>
@@ -557,6 +512,7 @@
     $(function(){
         showUser();
         showPage();
+        showComment();
     });
     //获取跳转页面携带过来的参数
     function parseUrl(){
@@ -781,17 +737,91 @@
         var v = parseUrl();//解析所有参数
         var artId = v['artId'];//就是你要的结果
         var content = $("#comment_content").val();
-        alert(content);
         $.ajax({
             url: "${APP_PATH}/comment",
             type: "POST",
             data: {"userId":userId, "artId":artId, "parId":0, "content":content},
             dataType: "json",
             success: function(result){
-                alert(result.code);
+                if(result.code == 100){
+                    showComment();
+                    $("#comment_content").val("");
+                }
             }
         });
     }
+
+    function showComment(){
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        $.ajax({
+            url: "${APP_PATH}/comments/"+artId,
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                buildComment(result);
+            }
+        });
+    }
+
+    function buildComment(result){
+        $(".comment_list_all").empty();
+        var comments = result.extend.comments;
+        $.each(comments, function(index, item){
+            var comment_list_top = $("<div></div>").addClass("comment_list_top")
+                .append($("<img/>").attr("src",item.headPic))
+                .append($("<a></a>").append(item.nickname+": "))
+                .append($("<span></span>").append(item.content));
+            var reply_btn = $("<div></div>").addClass("reply_btn")
+                .append($("<span></span>").addClass("reply_time").append(item.creationDate))
+                .append($("<a></a>").addClass("reply_a").attr("onclick","showReplyDiv("+item.id+")").append("回复"))
+                .append($("<a></a>").addClass("reply_close").attr("onclick","hideReply("+item.id+")").append("回复"));
+            var reply_div = $("<div></div>").addClass("reply_div").attr("id","reply_textarea_"+item.id)
+                .append($("<textarea></textarea>").attr("id","reply_comment_"+item.id))
+                .append($("<button></button>").addClass("btn btn-default").attr("onclick","addReply("+item.id+")").append("回复"));
+
+            var childComm = item.childComm;
+            var comment_list = $("<div></div>").addClass("comment_list").append(comment_list_top).append(reply_btn)
+                .append(reply_div);
+            $.each(childComm, function(index1, item1){
+                var reply_list_top = $("<div></div>").addClass("reply_list_top")
+                    .append($("<a></a>").append(item1.nickname))
+                    .append($("<span></span>").append(item1.content));
+                var reply_list_btn = $("<div></div>").addClass("reply_list_btn")
+                    .append($("<span></span>").addClass("reply_time").append(item1.creationDate))
+                    .append($("<a></a>").addClass("reply_a").attr("onclick","showReplyDiv("+item1.id+")").append("回复"))
+                    .append($("<a></a>").addClass("reply_close").attr("onclick","hideReply("+item1.id+")").append("回复"));
+                var reply_div_item = $("<div></div>").addClass("reply_div_item").attr("id","reply_textarea_"+item1.id)
+                    .append($("<textarea></textarea>").attr("id","reply_comment_"+item1.id))
+                    .append($("<button></button>").addClass("btn btn-default").attr("onclick","addReply("+item1.id+")").append("回复"));
+                var reply_list = $("<div></div>").addClass("reply_list").append(reply_list_top).append(reply_list_btn).append(reply_div_item);
+
+                comment_list = comment_list.append(reply_list);
+            });
+            $(".comment_list_all").append(comment_list);
+        });
+    }
+
+    function addReply(id){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        var content = $("#reply_comment_"+id).val();
+        $.ajax({
+            url: "${APP_PATH}/comment",
+            type: "POST",
+            data: {"userId":userId, "artId":artId, "parId":id, "content":content},
+            dataType: "json",
+            success: function(result){
+                if(result.code == 100){
+                    showComment();
+                }
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

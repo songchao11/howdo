@@ -20,5 +20,9 @@ public interface ArticleService {
 	Msg queryArticlesByDim(String title, Long userId, Integer page, Integer size);
 
 	Msg queryArticleAndUser(Long artId, Long yourId);
+
+	Msg queryArticleAll(Integer page, Integer size);
+
+	Msg queryArticleCollect(Long userId, Integer page, Integer size);
 	
 }

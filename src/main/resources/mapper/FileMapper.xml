@@ -27,4 +27,9 @@
         (#{artId}, #{fileId})
     </insert>
 
+    <select id="queryFilesByArtId" resultMap="BaseResultMap">
+        select hf.* from howdo_file hf,howdo_art_file haf
+        where hf.id=haf.file_id and haf.art_id=#{artId}
+    </select>
+
 </mapper>

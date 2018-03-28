@@ -73,4 +73,12 @@ public class MapperTest {
         }
     }
 
+    @Test
+    public void test4(){
+        List<Article> articles = articleMapper.queryArticleAll();
+        for(Article a : articles){
+            System.out.println(a);
+        }
+    }
+
 }

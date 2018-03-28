@@ -39,4 +39,13 @@ public interface ArticleMapper {
 
     int updateArticleReadNum(@Param("artId") Long artId, @Param("readNum") Long readNum);
 
+    Long queryCommNum(@Param("artId") Long artId);
+
+    Long queryPraiseNum(@Param("artId") Long artId);
+
+    Long queryCollNum(Long artId);
+
+    List<Article> queryArticleAll();
+
+    List<Article> queryArticleCollect(@Param("userId") Long userId);
 }

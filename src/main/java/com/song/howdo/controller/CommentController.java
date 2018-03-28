@@ -4,6 +4,7 @@ import com.song.howdo.model.Comment;
 import com.song.howdo.model.Msg;
 import com.song.howdo.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,11 @@ public class CommentController {
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public Msg addComment(Comment comment){
         return commentService.addComment(comment);
+    }
+
+    @RequestMapping(value = "/comments/{artId}", method = RequestMethod.GET)
+    public Msg queryComments(@PathVariable Long artId){
+        return commentService.queryComment(artId);
     }
 
 }

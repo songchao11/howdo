@@ -10,6 +10,8 @@
     <result column="art_id" property="artId" jdbcType="BIGINT" />
     <result column="par_id" property="artId" jdbcType="BIGINT" />
     <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="head_pic" property="headPic" jdbcType="VARCHAR" />
     <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
     <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
@@ -24,6 +26,32 @@
 
   <select id="queryComment" resultMap="BaseResultMap">
     select * from howdo_comment where user_id=#{comment.userId} and art_id=#{comment.artId} and par_id=#{comment.parId} and content=#{comment.content}
+  </select>
+
+  <select id="queryCommentByArtId" resultMap="BaseResultMap">
+    select hc.id,hc.user_id,hc.par_id,hc.content,hc.creation_date,hu.nickname,hu.head_pic
+     from howdo_comment hc,howdo_user hu
+     where hc.art_id=#{artId} and hc.par_id=0 and hc.user_id=hu.id
+  </select>
+
+  <select id="queryCommId" resultType="long">
+    select id from howdo_comment where par_id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="queryCommsByIds" resultMap="BaseResultMap">
+    select hc.id,hc.user_id,hc.par_id,hc.content,hc.creation_date,hu.nickname,hu.head_pic
+     from howdo_comment hc,howdo_user hu
+     where hc.user_id=hu.id and hc.id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="queryCommentById" resultMap="BaseResultMap">
+    select * from howdo_comment where id=#{id}
   </select>
 
 

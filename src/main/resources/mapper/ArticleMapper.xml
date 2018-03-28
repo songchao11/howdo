@@ -20,6 +20,12 @@
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
     <result column="last_updated_by" jdbcType="BIGINT" property="lastUpdatedBy" />
     <result column="last_update_date" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <association property="user" javaType="com.song.howdo.model.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <result column="head_pic" property="headPic" jdbcType="VARCHAR" />
+        <result column="signature" property="signature" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
 
     <insert id="addArticle">
@@ -70,12 +76,8 @@
 
     <select id="queryArticleDetail" resultMap="BaseResultMap">
         select ha.id,ha.user_id,ha.title,ha.content,ha.last_update_date,
-                ha.is_comment,ha.read_num,count(hc.id) comment_num,
-                count(hp.art_id) praise_num,count(hco.art_id) collect_num,hca.`name` category from
-                howdo_article ha left join howdo_comment hc
-                on ha.id=hc.art_id left join howdo_praise hp
-				on ha.id=hp.art_id left join howdo_collect hco
-				on ha.id=hco.art_id left join howdo_category hca
+                ha.is_comment,ha.read_num,hca.`name` category from
+                howdo_article ha left join howdo_category hca
 				on ha.cate_id=hca.id
 				where ha.id=#{artId}
     </select>
@@ -97,7 +99,31 @@
     </select>
 
     <update id="updateArticleReadNum">
-        update howdo_article set read_num=#{readNum} and id=#{artId}
+        update howdo_article set read_num=#{readNum} where id=#{artId}
     </update>
+
+    <select id="queryCommNum" resultType="long">
+        select count(*) from howdo_comment where art_id=#{artId}
+    </select>
+
+    <select id="queryPraiseNum" resultType="long">
+      select count(*) from howdo_praise where art_id=#{artId}
+    </select>
+
+    <select id="queryCollNum" resultType="long">
+      select count(*) from howdo_collect where art_id=#{artId}
+    </select>
+
+    <select id="queryArticleAll" resultMap="BaseResultMap">
+        select ha.*,hu.id,hu.nickname,hu.head_pic,hu.signature from howdo_article ha,howdo_user hu
+        where is_publish='Y' and enable_flag='Y' and hu.id=ha.user_id
+        order by last_update_date desc
+    </select>
+
+    <select id="queryArticleCollect" resultMap="BaseResultMap">
+        select ha.*,hu.id,hu.nickname,hu.head_pic,hu.signature from howdo_article ha,howdo_user hu,howdo_collect hc
+        where is_publish='Y' and enable_flag='Y' and hu.id=ha.user_id and hc.art_id=ha.id and hc.user_id=#{userId}
+        order by last_update_date desc
+    </select>
 
 </mapper>

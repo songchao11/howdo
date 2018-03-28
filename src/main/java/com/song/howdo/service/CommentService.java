@@ -10,4 +10,6 @@ public interface CommentService {
 
     Msg addComment(Comment comment);
 
+    Msg queryComment(Long artId);
+
 }

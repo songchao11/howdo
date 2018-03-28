@@ -34,6 +34,8 @@ public class ArticleServiceImpl implements ArticleService {
 	private PraiseMapper praiseMapper;
 	@Autowired
 	private CollectMapper collectMapper;
+	@Autowired
+	private FileMapper fileMapper;
 
 	
 	public Msg queryCategorys() {
@@ -91,6 +93,9 @@ public class ArticleServiceImpl implements ArticleService {
 		Article article = articleMapper.queryArticleDetail(artId);
 		Long readNum = article.getReadNum();
 		articleMapper.updateArticleReadNum(artId, readNum+1);
+		article.setCommentNum(articleMapper.queryCommNum(artId));
+		article.setPraiseNum(articleMapper.queryPraiseNum(artId));
+		article.setCollectNum(articleMapper.queryCollNum(artId));
 		Long userId = article.getUserId();
 		User user = userMapper.queryUserById(userId);
 		String followed = "";
@@ -148,6 +153,38 @@ public class ArticleServiceImpl implements ArticleService {
 		user.setObservedNum(observedNum);
 		user.setCollectNum(collectNum);
 		return Msg.success().add("user", user).add("article", article);
+	}
+
+	public Msg queryArticleAll(Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		List<Article> articles = articleMapper.queryArticleAll();
+		for(Article a:articles){
+			List<File> files = fileMapper.queryFilesByArtId(a.getId());
+			if(files.isEmpty()){
+				File file = new File();
+				file.setPath("http://119.23.77.220/images/cat.jpg");
+				files.add(file);
+			}
+			a.setFiles(files);
+		}
+		PageInfo pages = new PageInfo(articles,12);
+		return Msg.success().add("pageInfo",pages);
+	}
+
+	public Msg queryArticleCollect(Long userId, Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		List<Article> articles = articleMapper.queryArticleCollect(userId);
+		for(Article a:articles){
+			List<File> files = fileMapper.queryFilesByArtId(a.getId());
+			if(files.isEmpty()){
+				File file = new File();
+				file.setPath("http://119.23.77.220/images/cat.jpg");
+				files.add(file);
+			}
+			a.setFiles(files);
+		}
+		PageInfo pages = new PageInfo(articles,8);
+		return Msg.success().add("pageInfo",pages);
 	}
 
 }
