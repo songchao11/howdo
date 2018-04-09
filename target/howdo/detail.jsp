@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>个人信息</title>
+    <title>文章详情</title>
     <%
         pageContext.setAttribute("APP_PATH", request.getContextPath());
     %>
@@ -369,7 +369,7 @@
     <section class="header-section">
         <div class="container-fluid container-non-responsive">
             <div class='fl'>
-                <a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+                <a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
                 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -539,6 +539,9 @@
             url: "${APP_PATH}/article/user/"+artId+"/"+yourId,
             type: "GET",
             success: function(result){
+                if(result.extend.article.isComment == 'N'){
+                    $(".comment_input").hide();
+                }
                 console.log(result);
                 showArticle(result);
                 showUserInfo(result);
@@ -634,7 +637,7 @@
         $(".s_comment").empty();
         $(".s_comment").append(result.extend.user.commentNum);
         $("#p_img_a").empty();
-        $("<img/>").attr("src",result.extend.user.headPic).addClass("img-circle").appendTo("#p_img_a");
+        $("<img/>").attr("src",result.extend.user.headPic).attr("onclick","open_user_center("+result.extend.user.id+")").addClass("img-circle").appendTo("#p_img_a");
     }
 
     $("#praise").click(function(){
@@ -820,6 +823,9 @@
                 }
             }
         });
+    }
+    function open_user_center(userId){
+        window.location.href = "usercenter.jsp?userId="+userId;
     }
 
 </script>

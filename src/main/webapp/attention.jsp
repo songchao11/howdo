@@ -111,6 +111,7 @@
 		height: 100px;
 		margin-right: 100px;
 		margin-bottom: 10px;
+		float: left;
 	}
 	.attention_content_one:hover{
 		background-color: #f4f4f4;
@@ -122,7 +123,6 @@
 		float: left;
 	}
 	.article_page{
-		margin-top: -20px;
 		text-align: center;
 	}
 	.attention_info{
@@ -139,6 +139,15 @@
 		font-size: 18px;
 		font-family: 宋体;
 	}
+	.shadow{
+		background-color: #f1f1f1;
+	}
+	.no_content{
+		margin-top: 100px;
+		margin-left: 50px;
+		font-family: '微软雅黑', 'Microsoft Yahei';
+		font-size: 24px;
+	}
 </style>
 </head>
 <body class="Corporate Homepage " data-skin="corporate">
@@ -148,7 +157,7 @@
 <section class="header-section">
 <div class="container-fluid container-non-responsive">
 <div class='fl'>
-<a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+<a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -214,143 +223,27 @@
 	<div class="article_tabs">
 		<ul class="nav nav-pills" id="pills-tab" role="tablist">
 			<li >
-				<a >我关注的(4)</a>
+				<a id="iconcern" onclick="showConcern(1)">我关注的(4)</a>
 			</li>
 			<li >
-				<a >关注我的(4)</a>
-			</li>
-			<li >
-				<a >相互关注(4)</a>
+				<a id="concernme" onclick="showConcerned(1)">关注我的(4)</a>
 			</li>
 		</ul>
-		<div class="article_search">
-			<input type="text">
-			<span class="glyphicon glyphicon-search"></span>
-		</div>
+		<%--<div class="article_search">--%>
+			<%--<input type="text">--%>
+			<%--<span class="glyphicon glyphicon-search"></span>--%>
+		<%--</div>--%>
 	</div>
 
 	<div class="attention_content">
-		<table>
-			<tr>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-				<td>
-					<div class="attention_content_one">
-						<div class="attention_img">
-							<img src="http://119.23.77.220/images/cat.jpg">
-						</div>
-						<div class="attention_info">
-							<span class="nickname">渣渣辉</span><br>
-							<span class="signature">是兄弟就来贪玩蓝月看我吧</span>
-						</div>
-					</div>
-				</td>
-			</tr>
-		</table>
+		<div class="row">
+
+		</div>
 	</div>
 
 	<%--分页--%>
 	<div class="article_page">
-		<nav aria-label="Page navigation">
-			<ul class="pagination">
-				<li>
-					<a href="#" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-					</a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li>
-					<a href="#" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+
 	</div>
 	
 </div>
@@ -358,7 +251,188 @@
 <script type="text/javascript">
 	$(function(){
 		showUser();
+        showConcernNum();
+        showConcern(1);
 	});
+	function showConcern(page){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+	    var size = 8;
+	    $.ajax({
+			url: "${APP_PATH}/user/concern/"+userId+"/"+page+"/"+size,
+			type: "GET",
+			success: function(result){
+                $("#iconcern").addClass("shadow");
+			    $("#concernme").removeClass("shadow");
+			    console.log(result);
+			    if(result.extend.pageInfo.pages != 0){
+                    buildUserTable(result);
+                    build_page_nav(result);
+				}else{
+                    $(".row").empty();
+			        $(".row").append($("<div></div>").addClass("no_content").append("暂无关注!"));
+				}
+			}
+		});
+	}
+    function showConcerned(page){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+        var size = 8;
+        $.ajax({
+            url: "${APP_PATH}/user/concerned/"+userId+"/"+page+"/"+size,
+            type: "GET",
+            success: function(result){
+                $("#iconcern").removeClass("shadow");
+                $("#concernme").addClass("shadow");
+                if(result.extend.pageInfo.pages != 0){
+                    buildUserTable(result);
+                    build_page_nav_concern(result);
+				}else{
+                    $(".row").empty();
+                    $(".row").append($("<div></div>").addClass("no_content").append("暂无关注!"));
+				}
+            }
+        });
+    }
+
+    function buildUserTable(result){
+        $(".row").empty();
+        var articles = result.extend.pageInfo.list;
+        $.each(articles, function(index,item){
+            var attention_img = $("<div></div>").addClass("attention_img")
+				.append($("<img />").attr("src",item.headPic));
+            var attention_info = $("<div></div>").addClass("attention_info")
+				.append($("<span></span>").addClass("nickname").append(item.nickname)).append($("<br />"))
+                .append($("<span></span>").addClass("signature").append(item.signature));
+            $("<div></div>").addClass("col-md-6").attr("onclick","to_user_center("+item.id+")").append($("<div></div>").addClass("attention_content_one").append(attention_img).append(attention_info)).appendTo(".row");
+        });
+    }
+    function build_page_nav(result){
+        $(".article_page").empty();
+        var ul = $("<ul></ul>").addClass("pagination");
+        //构建元素
+        var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href","#"));
+        var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+        if(result.extend.pageInfo.hasPreviousPage == false){
+            firstPageLi.addClass("disabled");
+            prePageLi.addClass("disabled");
+        }else{
+            //为首页和上一页添加点击事件
+            firstPageLi.click(function(){
+                showConcern(1);
+            });
+            prePageLi.click(function(){
+                showConcern(result.extend.pageInfo.pageNum-1);
+            });
+        }
+
+        var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+        var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href","#"));
+        if(result.extend.pageInfo.hasNextPage == false){
+            nextPageLi.addClass("disabled");
+            lastPageLi.addClass("disabled");
+        }else{
+            nextPageLi.click(function(){
+                showConcern(result.extend.pageInfo.pageNum+1);
+            });
+            lastPageLi.click(function(){
+                showConcern(result.extend.pageInfo.pages);
+            });
+        }
+
+        //添加首页和前一页
+        ul.append(firstPageLi).append(prePageLi);
+        //遍历给ul中添加页码提示
+        $.each(result.extend.pageInfo.navigatepageNums, function(index,item){
+            var numLi = $("<li></li>").append($("<a></a>").append(item));
+            if(result.extend.pageInfo.pageNum == item){
+                numLi.addClass("active");
+            }
+            numLi.click(function(){
+                showConcern(item);
+            });
+            ul.append(numLi);
+        });
+        //添加下一页和末页
+        ul.append(nextPageLi).append(lastPageLi);
+        //将ul添加到nav中
+        var navEle = $("<nav></nav>").append(ul);
+        navEle.appendTo(".article_page");
+    }
+
+    function build_page_nav_concern(result){
+        $(".article_page").empty();
+        var ul = $("<ul></ul>").addClass("pagination");
+        //构建元素
+        var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href","#"));
+        var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+        if(result.extend.pageInfo.hasPreviousPage == false){
+            firstPageLi.addClass("disabled");
+            prePageLi.addClass("disabled");
+        }else{
+            //为首页和上一页添加点击事件
+            firstPageLi.click(function(){
+                showConcerned(1);
+            });
+            prePageLi.click(function(){
+                showConcerned(result.extend.pageInfo.pageNum-1);
+            });
+        }
+
+        var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+        var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href","#"));
+        if(result.extend.pageInfo.hasNextPage == false){
+            nextPageLi.addClass("disabled");
+            lastPageLi.addClass("disabled");
+        }else{
+            nextPageLi.click(function(){
+                showConcerned(result.extend.pageInfo.pageNum+1);
+            });
+            lastPageLi.click(function(){
+                showConcerned(result.extend.pageInfo.pages);
+            });
+        }
+
+        //添加首页和前一页
+        ul.append(firstPageLi).append(prePageLi);
+        //遍历给ul中添加页码提示
+        $.each(result.extend.pageInfo.navigatepageNums, function(index,item){
+            var numLi = $("<li></li>").append($("<a></a>").append(item));
+            if(result.extend.pageInfo.pageNum == item){
+                numLi.addClass("active");
+            }
+            numLi.click(function(){
+                showConcerned(item);
+            });
+            ul.append(numLi);
+        });
+        //添加下一页和末页
+        ul.append(nextPageLi).append(lastPageLi);
+        //将ul添加到nav中
+        var navEle = $("<nav></nav>").append(ul);
+        navEle.appendTo(".article_page");
+    }
+	function showConcernNum(){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+		$.ajax({
+			url: "${APP_PATH}/user/concern/num/"+userId,
+			type: "GET",
+			success: function(result){
+                $("#iconcern").empty();
+			    $("#iconcern").append("我关注的("+result.extend.concernedNum+")");
+                $("#concernme").empty();
+                $("#concernme").append("关注我的("+result.extend.concernMeNum+")");
+			}
+		});
+	}
+	function to_user_center(userId){
+        window.location.href = "usercenter.jsp?userId="+userId;
+	}
 </script>
 </body>
 </html>

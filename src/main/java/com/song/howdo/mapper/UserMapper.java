@@ -17,4 +17,14 @@ public interface UserMapper extends BaseMapper<User> {
     int addUser(@Param("user") User user);
 
     User queryUserById(@Param("id") Long id);
+
+    List<User> queryIConcerned(@Param("userId") Long userId);
+
+    List<User> queryConcernMe(@Param("userId") Long userId);
+
+    int queryIConcernedNum(@Param("userId") Long userId);
+
+    int queryConcernMeNum(@Param("userId") Long userId);
+
+    int updateUser(@Param("user") User user);
 }

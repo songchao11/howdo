@@ -1,5 +1,7 @@
 package com.song.howdo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class User extends BaseEntity {
 	private String nickname;
 	private String email;
 	private String headPic;
+	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
 	private Date birthday;
 	private String signature;
 	private String address;
@@ -33,6 +36,8 @@ public class User extends BaseEntity {
 	private Long commentNum;
 	@Transient
 	private Long collectNum;
+	@Transient
+	private String time;
 	
 	public String getAccount() {
 		return account;
@@ -157,5 +162,13 @@ public class User extends BaseEntity {
 
 	public void setCollectNum(Long collectNum) {
 		this.collectNum = collectNum;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 }

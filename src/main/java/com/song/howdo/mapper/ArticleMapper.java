@@ -48,4 +48,6 @@ public interface ArticleMapper {
     List<Article> queryArticleAll();
 
     List<Article> queryArticleCollect(@Param("userId") Long userId);
+
+    int updateArticle(@Param("article") Article article);
 }

@@ -13,10 +13,7 @@ public class UeditorController {
     @Autowired
     private ActionEnter actionEnter;
 
-    /**
-     * Ueditor上传文件请求接口
-     * produces="application/x-javascript" 设置返回配置文件的 MIME type
-     */
+
     @ResponseBody
     @RequestMapping(value = "/ueditor/exec", produces="application/x-javascript")
     public String exe(HttpServletRequest request) throws Exception{

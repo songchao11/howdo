@@ -28,7 +28,7 @@ public class ActionEnter {
         this.request = request;
         this.actionType = request.getParameter("action");
         String callbackName = this.request.getParameter("callback");
-        System.out.println("测:"+callbackName);
+        System.out.println("锟斤拷:"+callbackName);
         if (callbackName != null) {
             if (!validCallbackName(callbackName)) {
                 return new BaseState(false, AppInfo.ILLEGAL).toJSONString();
@@ -40,7 +40,6 @@ public class ActionEnter {
     }
 
     public String invoke() throws JSONException {
-    	System.out.println("进来");
         if (actionType == null || !ActionMap.mapping.containsKey(actionType)) {
             return new BaseState(false, AppInfo.INVALID_ACTION).toJSONString();
         }
@@ -62,7 +61,7 @@ public class ActionEnter {
 
             case ActionMap.UPLOAD_IMAGE:
                 conf = this.configManager.getConfig(actionCode);
-                //调用ftp上传文件
+                //锟斤拷锟斤拷ftp锟较达拷锟侥硷拷
                 conf.put("useFtpUpload",this.configManager.getAllConfig().getString("useFtpUpload"));
                 conf.put("keepLocalFile",this.configManager.getAllConfig().getString("keepLocalFile"));
                 state = new Uploader(request, conf).doExec();
@@ -104,7 +103,7 @@ public class ActionEnter {
     }
 
     /**
-     * callback参数验证
+     * callback锟斤拷锟斤拷锟斤拷证
      */
     public boolean validCallbackName(String name) {
 

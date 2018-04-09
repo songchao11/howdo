@@ -46,4 +46,27 @@
         select * from howdo_user where id=#{id}
     </select>
 
+  <select id="queryIConcerned" resultMap="BaseResultMap">
+    select hu.* from howdo_user hu,howdo_concern hc
+    where hu.id=hc.observed and hc.user_id=#{userId}
+  </select>
+
+  <select id="queryConcernMe" resultMap="BaseResultMap">
+    select hu.* from howdo_user hu,howdo_concern hc
+    where hu.id=hc.user_id and hc.observed=#{userId}
+  </select>
+
+  <select id="queryIConcernedNum" resultType="int">
+    select count(*) from howdo_concern where user_id=#{userId}
+  </select>
+
+  <select id="queryConcernMeNum" resultType="int">
+    select count(*) from howdo_concern where observed=#{userId}
+  </select>
+
+  <update id="updateUser">
+    update howdo_user set nickname=#{user.nickname},sex=#{user.sex},birthday=#{user.birthday},
+    address=#{user.address},email=#{user.email},signature=#{user.signature} where id=#{user.id}
+  </update>
+
 </mapper>

@@ -24,5 +24,8 @@ public interface ArticleService {
 	Msg queryArticleAll(Integer page, Integer size);
 
 	Msg queryArticleCollect(Long userId, Integer page, Integer size);
-	
+
+	Msg queryArticleById(Long artId);
+
+	Msg updateArticle(Article article);
 }

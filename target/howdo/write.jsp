@@ -111,7 +111,7 @@
 <section class="header-section">
 <div class="container-fluid container-non-responsive">
 <div class='fl'>
-<a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+<a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -190,9 +190,27 @@
 	var ue = UE.getEditor('editor');
 
 	$(function(){
+        sessionStorage.removeItem('article');
 		showUser();
-		showArticleCategory();
+		showArticleCategory(0);
+        var v = parseUrl();//解析所有参数
+        var artId = v['artId'];//就是你要的结果
+        showArticleDetail(artId);
     });
+    //获取跳转页面携带过来的参数
+    function parseUrl(){
+        var url=location.href;
+        var i=url.indexOf('?');
+        if(i==-1)return;
+        var querystr=url.substr(i+1);
+        var arr1=querystr.split('&');
+        var arr2=new Object();
+        for  (i in arr1){
+            var ta=arr1[i].split('=');
+            arr2[ta[0]]=ta[1];
+        }
+        return arr2;
+    }
 	function showToast(msg,flag){
 		if(flag == 'success'){
             $('.right_content').toast({
@@ -223,6 +241,8 @@
 			var isPublish = 'N';
 			var toastMsg = '保存';
 		}
+        var articleInfo = sessionStorage.getItem('article');
+        articleEntity = JSON.parse(articleInfo);
         var userInfo = sessionStorage.getItem('userInfo');
         userEntity = JSON.parse(userInfo);
         var category = $("#cate_select").val();
@@ -241,32 +261,65 @@
             showToast("请填写文章内容",'failure');
             return ;
         }
-
-        $.ajax({
-            url: "${APP_PATH}/article",
-            type: "POST",
-            data: {"title":title, "content":content, "isPublish":isPublish, "userId":userEntity.id, "enableFlag":"Y", "isComment":"Y", "cateId":category, "readNum":0},
-            dataType: "json",
-            success: function(result){
-                if(result.code == 100){
-                    showToast(toastMsg+"成功",'success');
-                    window.location.href = "article.jsp";
-                }else if(result.code == 200){
-                    showToast(toastMsg+"失败",'failure');
+		if(articleEntity != null){
+            $.ajax({
+                url: "${APP_PATH}/article",
+                type: "PUT",
+                data: {"id":articleEntity.id,"title":title, "content":content, "isPublish":isPublish, "cateId":category},
+                dataType: "json",
+                success: function(result){
+                    if(result.code == 100){
+                        showToast(toastMsg+"成功",'success');
+                        window.location.href = "article.jsp";
+                    }else if(result.code == 200){
+                        showToast(toastMsg+"失败",'failure');
+                    }
                 }
-            }
-        });
+            });
+		}else{
+            $.ajax({
+                url: "${APP_PATH}/article",
+                type: "POST",
+                data: {"title":title, "content":content, "isPublish":isPublish, "userId":userEntity.id, "enableFlag":"Y", "isComment":"Y", "cateId":category, "readNum":0},
+                dataType: "json",
+                success: function(result){
+                    if(result.code == 100){
+                        showToast(toastMsg+"成功",'success');
+                        window.location.href = "article.jsp";
+                    }else if(result.code == 200){
+                        showToast(toastMsg+"失败",'failure');
+                    }
+                }
+            });
+		}
 	}
 
-	function showArticleCategory(){
+	function showArticleCategory(flag){
 		$.ajax({
 			url: "${APP_PATH}/article/categorys",
 			type: "GET",
 			success: function(result){
 				var cates = result.extend.cates;
 				$.each(cates, function(index,item){
-					$("<option></option>").append(item.name).attr("value",item.id).appendTo("#cate_select");
+					if(item.id == flag){
+                        $("<option></option>").append(item.name).attr("value",item.id).attr("selected","selected").appendTo("#cate_select");
+					}else{
+                        $("<option></option>").append(item.name).attr("value",item.id).appendTo("#cate_select");
+					}
 				});
+			}
+		});
+	}
+	function showArticleDetail(artId){
+		$.ajax({
+			url: "${APP_PATH}/article/"+artId,
+			type: "GET",
+			success: function(result){
+				console.log(result);
+                showArticleCategory(result.extend.article.cateId);
+                $("#a_title").val(result.extend.article.title);
+                UE.getEditor('editor').execCommand('insertHtml', result.extend.article.content);
+                sessionStorage.setItem('article',JSON.stringify(result.extend.article));
 			}
 		});
 	}

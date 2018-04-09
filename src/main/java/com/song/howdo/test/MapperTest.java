@@ -8,6 +8,7 @@ import com.song.howdo.mapper.ArticleMapper;
 import com.song.howdo.mapper.FileMapper;
 import com.song.howdo.model.Article;
 import com.song.howdo.model.File;
+import com.song.howdo.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +81,6 @@ public class MapperTest {
             System.out.println(a);
         }
     }
+
 
 }

@@ -44,7 +44,6 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	public Msg addArticle(Article article) {
-		System.out.println("è¿›æ¥");
 		articleMapper.addArticle(article);
 		Article a = articleMapper.queryArticle(article);
 		if(a != null){
@@ -105,25 +104,25 @@ public class ArticleServiceImpl implements ArticleService {
 		Praise praise = praiseMapper.queryPraise(yourId,artId);
 		Collect collect = collectMapper.queryCollect(yourId, artId);
 		if(yourId == userId){
-			followed = "ç©º";
+			followed = "¿Õ";
 		}else if(concern == null){
-			followed = "å…³æ³¨";
+			followed = "¹Ø×¢";
 		}else {
-			followed = "å·²å…³æ³¨";
+			followed = "ÒÑ¹Ø×¢";
 		}
 		if(yourId == userId){
-			isPraise = "ç©º";
+			isPraise = "¿Õ";
 		}else if(praise == null){
-			isPraise = "ç‚¹èµ";
+			isPraise = "µãÔŞ";
 		}else if(praise != null){
-			isPraise = "å·²ç‚¹èµ";
+			isPraise = "ÒÑµãÔŞ";
 		}
 		if(yourId == userId){
-			isCollect = "ç©º";
+			isCollect = "¿Õ";
 		}else if(collect == null){
-			isCollect = "æ”¶è—";
+			isCollect = "ÊÕ²Ø";
 		}else if(collect != null){
-			isCollect = "å·²æ”¶è—";
+			isCollect = "ÒÑÊÕ²Ø";
 		}
 		user.setFollowed(followed);
 		article.setIsPraise(isPraise);
@@ -143,7 +142,7 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		user.setAge(age);
 		user.setConstellation(constellation);
-		//æŸ¥è¯¢ç”¨æˆ·çš„æ–‡ç«  ç²‰ä¸ è¯„è®º å–œæ¬¢æ•°
+		//²éÑ¯ÓÃ»§µÄÎÄÕÂ ·ÛË¿ ÆÀÂÛ Ï²»¶Êı
 		Long articleNum = articleMapper.queryArticleNumById(userId);
 		Long commentNum = articleMapper.queryArticleCommNum(userId);
 		Long observedNum = articleMapper.queryObservedNum(userId);
@@ -187,4 +186,13 @@ public class ArticleServiceImpl implements ArticleService {
 		return Msg.success().add("pageInfo",pages);
 	}
 
+	public Msg queryArticleById(Long artId) {
+		Article article = articleMapper.queryArticleById(artId);
+		return Msg.success().add("article",article);
+	}
+
+	public Msg updateArticle(Article article) {
+		articleMapper.updateArticle(article);
+		return Msg.success();
+	}
 }

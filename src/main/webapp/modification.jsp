@@ -28,7 +28,9 @@
     <script>window._omnitureLinkSetDomain = 'extended.dmtracker.com';</script>
 
 
-    <script src="//dynamic01.ehowcdn.com/services/modules/js/common_header/0dbdbf9e/"></script><script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js" defer></script><script type="text/javascript" src="//www.zergnet.com/zerg-inf-multi.js"></script>
+    <script src="//dynamic01.ehowcdn.com/services/modules/js/common_header/0dbdbf9e/"></script>
+    <script type="text/javascript" src="//native.sharethrough.com/assets/sfp.js" defer></script>
+    <script type="text/javascript" src="//www.zergnet.com/zerg-inf-multi.js"></script>
     <style type="text/css">
         #Header{
             position:fixed;
@@ -133,7 +135,7 @@
     <section class="header-section">
         <div class="container-fluid container-non-responsive">
             <div class='fl'>
-                <a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+                <a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
                 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -211,7 +213,7 @@
         <table>
             <tr>
                 <td>账号:</td>
-                <td>godcc</td>
+                <td id="account"></td>
             </tr>
             <tr>
                 <td>昵称:</td>
@@ -222,12 +224,7 @@
             <tr>
                 <td>性别:</td>
                 <td>
-                    <label class="radio-inline">
-                        <input type="radio" name="sex1" id="sex1" value="M" checked="checked"> 男
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="sex2" id="sex2" value="F"> 女
-                    </label>
+                    <input type="text" name="sex" class="form-control" id="sex">
                 </td>
             </tr>
             <tr>
@@ -256,7 +253,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><button type="button" class="btn btn-primary"id="emp_save_btn">保存</button></td>
+                <td><button type="button" class="btn btn-primary"id="emp_save_btn" onclick="updateUser()">保存</button></td>
             </tr>
         </table>
     </div>
@@ -278,7 +275,7 @@
 
                 upperLimit: new Date(),                               // 日期上限，默认：NaN(不限制)
 
-                lowerLimit: new Date("2011/01/01"),                   // 日期下限，默认：NaN(不限制)
+                lowerLimit: new Date("1949/01/01"),                   // 日期下限，默认：NaN(不限制)
 
 //                callback: function () {                               // 点击选择日期后的回调函数
 //
@@ -287,12 +284,51 @@
 //                }
 
             });
-
+        showUserTable();
         showUser();
     });
     function editInfo(){
         $("#editInfoModal").modal({
             backdrop: "static"
+        });
+    }
+    function showUserTable(){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        console.log(userEntity);
+        $.ajax({
+            url: "${APP_PATH}/user/"+userEntity.id,
+            type: "GET",
+            success: function(result) {
+                console.log(result);
+                $("#nickname").val(result.extend.user.nickname);
+                $("#sex").val(result.extend.user.sex);
+                $("#address").val(result.extend.user.address);
+                $("#email").val(result.extend.user.email);
+                $("#signature").val(result.extend.user.signature);
+                $("#txtBeginDate").val(result.extend.user.birthday);
+                $("#account").append(result.extend.user.account);
+            }
+        });
+    }
+
+    function updateUser(){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var nickname = $("#nickname").val();
+        var sex = $("#sex").val();
+        var address = $("#address").val();
+        var email = $("#email").val();
+        var signature = $("#signature").val();
+        var birthday = $("#txtBeginDate").val();
+        $.ajax({
+            url: "${APP_PATH}/user",
+            type: "PUT",
+            data: {"id":userEntity.id,"nickname": nickname,"sex":sex,"address":address,"email":email,"signature":signature,"time":birthday},
+            dataType: "json",
+            success: function(result){
+                window.location.href = "information.jsp";
+            }
         });
     }
 

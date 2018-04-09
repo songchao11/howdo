@@ -30,7 +30,7 @@ public class ConstellationUtil {
         boolean bool1 = Float.compare(target, 12.22f) >= 0 ? true : false;
         boolean bool2 = Float.compare(target, 1.20f) <= 0 ? true : false;
         if (bool1 || bool2) {
-            return "æ‘©ç¾¯åº§";
+            return "Ä¦ôÉ×ù";
         }
 
         int i;
@@ -90,7 +90,7 @@ public class ConstellationUtil {
         Map<String, Object> map = null;
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "ç™½ç¾Šåº§");
+        map.put(XINGZUO_NAME, "°×Ñò×ù");
         map.put(MIN_DAY, 21);
         map.put(MAX_DAY, 20);
         map.put(MIN_MONTH, 3);
@@ -98,7 +98,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "é‡‘ç‰›åº§");
+        map.put(XINGZUO_NAME, "½ğÅ£×ù");
         map.put(MIN_DAY, 21);
         map.put(MAX_DAY, 21);
         map.put(MIN_MONTH, 4);
@@ -106,7 +106,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "åŒå­åº§");
+        map.put(XINGZUO_NAME, "Ë«×Ó×ù");
         map.put(MIN_DAY, 22);
         map.put(MAX_DAY, 21);
         map.put(MIN_MONTH, 5);
@@ -114,7 +114,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "å·¨èŸ¹åº§");
+        map.put(XINGZUO_NAME, "¾ŞĞ·×ù");
         map.put(MIN_DAY, 22);
         map.put(MAX_DAY, 22);
         map.put(MIN_MONTH, 6);
@@ -122,7 +122,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "ç‹®å­åº§");
+        map.put(XINGZUO_NAME, "Ê¨×Ó×ù");
         map.put(MIN_DAY, 23);
         map.put(MAX_DAY, 23);
         map.put(MIN_MONTH, 7);
@@ -130,7 +130,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "å¤„å¥³åº§");
+        map.put(XINGZUO_NAME, "´¦Å®×ù");
         map.put(MIN_DAY, 24);
         map.put(MAX_DAY, 23);
         map.put(MIN_MONTH, 8);
@@ -138,7 +138,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "å¤©ç§¤åº§");
+        map.put(XINGZUO_NAME, "Ìì³Ó×ù");
         map.put(MIN_DAY, 24);
         map.put(MAX_DAY, 23);
         map.put(MIN_MONTH, 9);
@@ -146,7 +146,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "å¤©èåº§");
+        map.put(XINGZUO_NAME, "ÌìĞ«×ù");
         map.put(MIN_DAY, 24);
         map.put(MAX_DAY, 22);
         map.put(MIN_MONTH, 10);
@@ -154,7 +154,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "å°„æ‰‹åº§");
+        map.put(XINGZUO_NAME, "ÉäÊÖ×ù");
         map.put(MIN_DAY, 23);
         map.put(MAX_DAY, 21);
         map.put(MIN_MONTH, 11);
@@ -162,7 +162,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "æ‘©ç¾¯åº§");
+        map.put(XINGZUO_NAME, "Ä¦ôÉ×ù");
         map.put(MIN_DAY, 22);
         map.put(MAX_DAY, 20);
         map.put(MIN_MONTH, 12);
@@ -170,7 +170,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "æ°´ç“¶åº§");
+        map.put(XINGZUO_NAME, "Ë®Æ¿×ù");
         map.put(MIN_DAY, 21);
         map.put(MAX_DAY, 19);
         map.put(MIN_MONTH, 1);
@@ -178,7 +178,7 @@ public class ConstellationUtil {
         list.add(map);
 
         map = new HashMap<String, Object>();
-        map.put(XINGZUO_NAME, "åŒé±¼åº§");
+        map.put(XINGZUO_NAME, "Ë«Óã×ù");
         map.put(MIN_DAY, 20);
         map.put(MAX_DAY, 20);
         map.put(MIN_MONTH, 2);

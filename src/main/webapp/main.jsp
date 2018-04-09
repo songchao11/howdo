@@ -57,7 +57,7 @@
 <section class="header-section">
 <div class="container-fluid container-non-responsive">
 <div class='fl'>
-<a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+<a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -95,20 +95,7 @@
 </form>
 </div>
 <div class="user_menu">
-	<!-- <a href="login.jsp">登录</a><span>&nbsp;|&nbsp;</span><a href="register.jsp">注册</a> -->
-          <!-- <span>
-          <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          	admin 
-          	<span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">个人中心</a></li>
-            
-            <li role="separator" class="divider"></li>
-            <li><a href="logout">退出登录</a></li>
-          </ul>  
-          </span> -->
-        
+
 </div>
 </div>
 </section>
@@ -122,14 +109,14 @@
 <div class="container-fluid hero-container">
 	<a href="/13709304/how-to-sew-diy-fabric-storage-boxes" data-gtm-event="featured hero">
 	<div class="hero-image">
-	<img src="../img/1.jpg.jpg" alt="How to Sew DIY Fabric Storage Boxes" data-target="https://www.ehow.com/13709304/how-to-sew-diy-fabric-storage-boxes" data-pin-ehow-hover="true" data-pin-no-hover="true"/>
+	<img src="http://119.23.77.220/images/201804021522636171779025421.jpeg" style="width: 100%"/>
 	</div>
 	<div class="hero-title-container">
 	<div class="hero-label">
 	<span>特色项目</span>
 	</div>
 	<div class="hero-title">
-	如何缝制布料储物盒
+	如何制作复活节彩蛋饼干杯
 	</div>
 	</div>
 	</a>

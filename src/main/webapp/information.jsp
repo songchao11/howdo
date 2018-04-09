@@ -10,7 +10,8 @@
     <%
 	pageContext.setAttribute("APP_PATH", request.getContextPath());
 	%>
-    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <%--<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>--%>
+	<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 	<%--<script src="static/time/js/jquery-1.5.1.js"></script>--%>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -132,51 +133,20 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">员工添加</h4>
+				<h4 class="modal-title" id="myModalLabel">修改头像</h4>
 			</div>
+			<form>
 			<div class="modal-body">
-				<form class="form-horizontal">
-					<div class="form-group">
-						<label for="empName_add_input" class="col-sm-2 control-label">empName</label>
-						<div class="col-sm-10">
-							<input type="text" name="empName" class="form-control" id="empName_add_input" placeholder="empName">
-							<span class="help-block"></span>
-						</div>
+					<div id="preview">
+						<img id="imghead" border="0" src="http://119.23.77.220/images/201803291522307445733087130.png" width="90" height="90" onclick="$('#previewImg').click();">
 					</div>
-					<div class="form-group">
-						<label for="email_add_input" class="col-sm-2 control-label">email</label>
-						<div class="col-sm-10">
-							<input type="text" name="email" class="form-control" id="email_add_input" placeholder="email@hand-china.com">
-							<span class="help-block"></span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="email_add_input" class="col-sm-2 control-label">gender</label>
-						<div class="col-sm-10">
-							<label class="radio-inline">
-								<input type="radio" name="gender" id="gender1_add_input" value="M" checked="checked"> 男
-							</label>
-							<label class="radio-inline">
-								<input type="radio" name="gender" id="gender2_add_input" value="F"> 女
-							</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="email_add_input" class="col-sm-2 control-label">deptName</label>
-						<div class="col-sm-4">
-							<!-- 部门提交部门id即可 -->
-							<select class="form-control" name="dId" id="dept_add_select"></select>
-						</div>
-					</div>
-
-				</form>
+					<input type="file" name="file" onchange="previewImage(this)" style="display: none;" id="previewImg">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				<button type="button" class="btn btn-primary"id="emp_save_btn">保存</button>
 			</div>
+			</form>
 		</div>
 	</div>
 </div>
@@ -186,7 +156,7 @@
 <section class="header-section">
 <div class="container-fluid container-non-responsive">
 <div class='fl'>
-<a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+<a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -255,51 +225,59 @@
 				<a >基本资料</a>
 			</li>
 			<li >
-				<a >修改密码</a>
+				<a onclick="editPassword()">修改密码</a>
 			</li>
 		</ul>
 	</div>
 	<div class="info_left">
-		<div class="info_left_headpic"><img src="http://119.23.77.220/images/cat.jpg"></div>
-		<div><a class="info_left_txt">修改头像</a></div>
+		<div class="info_left_headpic"></div>
+		<div><a class="info_left_txt" onclick="editInfo()">修改头像</a></div>
+			<%--<div class="info_left_headpic">--%>
+				<%--<form id="imgPut"  onchange="changeFile()">--%>
+				<%--<div id="preview">--%>
+					<%--<img id="imghead" border="0" src="http://119.23.77.220/images/cat.jpg" width="90" height="90" onclick="$('#previewImg').click();">--%>
+				<%--</div>--%>
+				<%--<input type="file" name="file" onchange="previewImage(this)" style="display: none;" id="previewImg">--%>
+				<%--</form>--%>
+			<%--</div>--%>
 	</div>
 	<div class="info_right">
 		<table>
 			<tr>
 				<td>账号:</td>
-				<td>godcc</td>
+				<td class="td_account"></td>
 			</tr>
 			<tr>
 				<td>昵称:</td>
-				<td>天王盖地虎</td>
+				<td class="td_nickname"></td>
 			</tr>
 			<tr>
 				<td>性别:</td>
-				<td>男</td>
+				<td class="td_sex"></td>
 			</tr>
 			<tr>
 				<td>年龄:</td>
-				<td>23</td>
+				<td class="td_age"></td>
 			</tr>
 			<tr>
 				<td>生日:</td>
-				<td>2月26日</td>
+				<td class="td_birthday"></td>
 			</tr>
 			<tr>
 				<td>星座:</td>
-				<td>双鱼座</td>
+				<td class="td_constellation"></td>
 			</tr>
 			<tr>
 				<td>居住地:</td>
-				<td>芜湖</td>
+				<td class="td_address"></td>
 			</tr>
 			<tr>
 				<td>邮箱:</td>
-				<td>1197308689@qq.com</td>
+				<td class="td_email"></td>
 			</tr>
 			<tr>
 				<td>个性签名:</td>
-				<td>天王盖地虎，小鸡炖蘑菇，蘑菇不在家，转头日二哈天王盖地虎，小鸡炖蘑菇，蘑菇不在家，转头日二哈</td>
+				<td class="td_signature"></td>
 			</tr>
 		</table>
 	</div>
@@ -311,11 +289,36 @@
 <script type="text/javascript">
 	$(function(){
 		showUser();
+        showUserTable();
 	});
-	function editInfo(){
+	function editPassword(){
         $("#editInfoModal").modal({
             backdrop: "static"
         });
+	}
+	function editInfo(){
+	    window.location.href = "modification.jsp";
+	}
+    function showUserTable(){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        $.ajax({
+			url: "${APP_PATH}/user/"+userEntity.id,
+			type: "GET",
+			success: function(result){
+			    console.log(result);
+			    $(".info_left_headpic").append($("<img/>").attr("src",result.extend.user.headPic));
+			    $(".td_account").append(result.extend.user.account);
+                $(".td_nickname").append(result.extend.user.nickname);
+                $(".td_sex").append(result.extend.user.sex);
+                $(".td_age").append(result.extend.user.age);
+                $(".td_birthday").append(result.extend.user.birthday);
+                $(".td_constellation").append(result.extend.user.constellation);
+                $(".td_address").append(result.extend.user.address);
+                $(".td_email").append(result.extend.user.email);
+                $(".td_signature").append(result.extend.user.signature);
+			}
+		});
 	}
 
 </script>

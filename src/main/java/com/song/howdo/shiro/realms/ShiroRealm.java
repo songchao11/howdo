@@ -29,40 +29,28 @@ public class ShiroRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
-		//1.°Ñ AuthenticationToken ×ª»¯³É UsernamePasswordToken
+		//1.æŠŠ AuthenticationToken è½¬åŒ–æˆ UsernamePasswordToken
 		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-		//2.´Ó UsernamePasswordTokenÖĞ»ñÈ¡ username
+		//2.ä» UsernamePasswordTokenä¸­è·å– username
 		String username = upToken.getUsername();
-		//3.´ÓÊı¾İ¿âÖĞ²éÑ¯ username¶ÔÓ¦µÄ¼ÇÂ¼
-//		System.out.println("´ÓÊı¾İ¿âÖĞ»ñÈ¡username£º"+username+"Ëù¶ÔÓ¦µÄÓÃ»§ĞÅÏ¢");
-		//4.ÈôÓÃ»§²»´æÔÚÔòÅ×³ö UnknownAccountException Òì³£
-//		if("unknown".equals(username)){
-//			throw new UnknownAccountException("ÓÃ»§²»´æÔÚ");
-//		}
-		//5.¸ù¾İÓÃ»§ĞÅÏ¢µÄÇé¿ö£¬¾ö¶¨ÊÇ·ñĞèÒªÅ×³öÆäËûµÄÒì³£ AuthenticationException
-//		if("monster".equals(username)){
-//			throw new LockedAccountException("ÓÃ»§±»Ëø¶¨");
-//		}
-		//6. ¸ù¾İÓÃ»§µÄÇé¿ö, À´¹¹½¨ AuthenticationInfo ¶ÔÏó²¢·µ»Ø. Í¨³£Ê¹ÓÃµÄÊµÏÖÀàÎª: SimpleAuthenticationInfo
-		//ÒÔÏÂĞÅÏ¢ÊÇ´ÓÊı¾İ¿âÖĞ»ñÈ¡µÄ.
-		//1). principal: ÈÏÖ¤µÄÊµÌåĞÅÏ¢. ¿ÉÒÔÊÇ username, Ò²¿ÉÒÔÊÇÊı¾İ±í¶ÔÓ¦µÄÓÃ»§µÄÊµÌåÀà¶ÔÏó. 
+		//3.ä»æ•°æ®åº“ä¸­æŸ¥è¯¢ usernameå¯¹åº”çš„è®°å½•
+		//4.è‹¥ç”¨æˆ·ä¸å­˜åœ¨åˆ™æŠ›å‡º UnknownAccountException å¼‚å¸¸
+		//5.æ ¹æ®ç”¨æˆ·ä¿¡æ¯çš„æƒ…å†µï¼Œå†³å®šæ˜¯å¦éœ€è¦æŠ›å‡ºå…¶ä»–çš„å¼‚å¸¸ AuthenticationException
+		//6. æ ¹æ®ç”¨æˆ·çš„æƒ…å†µ, æ¥æ„å»º AuthenticationInfo å¯¹è±¡å¹¶è¿”å›. é€šå¸¸ä½¿ç”¨çš„å®ç°ç±»ä¸º: SimpleAuthenticationInfo
+		//ä»¥ä¸‹ä¿¡æ¯æ˜¯ä»æ•°æ®åº“ä¸­è·å–çš„.
+		//1). principal: è®¤è¯çš„å®ä½“ä¿¡æ¯. å¯ä»¥æ˜¯ username, ä¹Ÿå¯ä»¥æ˜¯æ•°æ®è¡¨å¯¹åº”çš„ç”¨æˆ·çš„å®ä½“ç±»å¯¹è±¡.
 		Object principal = username;
-		//2). credentials: ÃÜÂë. 
-		Object credentials = null; //"fc1709d0a95a6be30bc5926fdb7f22f4";
-//		if("admin".equals(username)){
-//			credentials = "038bdaf98f2037b31f1e75b5b4c9b26e";
-//		}else if("user".equals(username)){
-//			credentials = "098d2c478e9c11555ce2823231e02ec1";
-//		}
+		//2). credentials: å¯†ç .
+		Object credentials = null;
 		User user = userService.queryUserByAccount(username);
 		if(user != null){
 			credentials = user.getPassword();
 		}else{
-			throw new UnknownAccountException("ÓÃ»§²»´æÔÚ");
+			throw new UnknownAccountException("ç”¨æˆ·ä¸å­˜åœ¨");
 		}
-		//3). realmName: µ±Ç° realm ¶ÔÏóµÄ name. µ÷ÓÃ¸¸ÀàµÄ getName() ·½·¨¼´¿É
+		//3). realmName: å½“å‰ realm å¯¹è±¡çš„ name. è°ƒç”¨çˆ¶ç±»çš„ getName() æ–¹æ³•å³å¯
 		String realmName = getName();
-		//4). ÑÎÖµ
+		//4). ç›å€¼
 		ByteSource credentialsSalt = ByteSource.Util.bytes(username);
 		SimpleAuthenticationInfo info = null; //new SimpleAuthenticationInfo(principal, credentials, realmName);
 		info = new SimpleAuthenticationInfo(principal, credentials, credentialsSalt, realmName);
@@ -70,7 +58,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	}
 	
 	/**
-	 * ÃÜÂë¼ÓÃÜ·½·¨
+	 * éç›å€¼åŠ å¯†
 	 * @param credentials
 	 * @return
 	 */
@@ -83,7 +71,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	}
 
 	/**
-	 * ÃÜÂë¼ÓÃÜ·½·¨
+	 * ç›å€¼åŠ å¯†
 	 * @param credentials
 	 * @return
 	 */
@@ -102,10 +90,10 @@ public class ShiroRealm extends AuthorizingRealm {
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		//1. ´Ó PrincipalCollection ÖĞÀ´»ñÈ¡µÇÂ¼ÓÃ»§µÄĞÅÏ¢
+		//1. ä» PrincipalCollection ä¸­æ¥è·å–ç™»å½•ç”¨æˆ·çš„ä¿¡æ¯
 		Object principal = principals.getPrimaryPrincipal();
-		
-		//2. ÀûÓÃµÇÂ¼µÄÓÃ»§µÄĞÅÏ¢À´ÓÃ»§µ±Ç°ÓÃ»§µÄ½ÇÉ«»òÈ¨ÏŞ(¿ÉÄÜĞèÒª²éÑ¯Êı¾İ¿â)
+
+		//2. åˆ©ç”¨ç™»å½•çš„ç”¨æˆ·çš„ä¿¡æ¯æ¥ç”¨æˆ·å½“å‰ç”¨æˆ·çš„è§’è‰²æˆ–æƒé™(å¯èƒ½éœ€è¦æŸ¥è¯¢æ•°æ®åº“)
 		Set<String> roles = new HashSet<String>();
 //		roles.add("user");
 //		if("admin".equals(principal)){
@@ -116,11 +104,11 @@ public class ShiroRealm extends AuthorizingRealm {
 		for(String s : userRoles){
 			roles.add(s);
 		}
-		
-		//3. ´´½¨ SimpleAuthorizationInfo, ²¢ÉèÖÃÆä reles ÊôĞÔ.
+
+		//3. åˆ›å»º SimpleAuthorizationInfo, å¹¶è®¾ç½®å…¶ reles å±æ€§.
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roles);
-		
-		//4. ·µ»Ø SimpleAuthorizationInfo ¶ÔÏó. 
+
+		//4. è¿”å› SimpleAuthorizationInfo å¯¹è±¡.
 		return info;
 	}
 

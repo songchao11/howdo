@@ -24,10 +24,10 @@ public class FileServiceImpl implements FileService {
         //从 content 中取出图片地址
         FileUrl fileUrl = new FileUrl();
         List<String> imgUrls = fileUrl.getFileUrl(content);
-        for(String s : imgUrls){
-            fileMapper.addFile(s, "img");
-            File file = fileMapper.queryFile(s, "img");
+//        for(String s : imgUrls){
+            fileMapper.addFile(imgUrls.get(0), "img");
+            File file = fileMapper.queryFile(imgUrls.get(0), "img");
             fileMapper.addArtFile(artId, file.getId());
-        }
+//        }
     }
 }

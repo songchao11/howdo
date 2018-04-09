@@ -19,4 +19,16 @@ public interface UserService {
     Msg addUser(User user);
     
     Msg getUser();
+
+    Msg queryIConcerned(Long userId, Integer page, Integer size);
+
+    Msg queryConcernMe(Long userId, Integer page, Integer size);
+
+    Msg queryConcernNum(Long userId);
+
+    Msg queryUserById(Long userId);
+
+    Msg updateUser(User user);
+
+    Msg queryUserInfo(Long userId, Long yourId);
 }

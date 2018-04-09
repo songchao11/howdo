@@ -140,6 +140,12 @@
 	.shadow{
 		background-color: #f1f1f1;
 	}
+	.no_content{
+		margin-top: 130px;
+		margin-left: 315px;
+		font-family: '微软雅黑', 'Microsoft Yahei';
+		font-size: 24px;
+	}
 </style>
 </head>
 <body >
@@ -149,7 +155,7 @@
 <section class="header-section">
 <div class="container-fluid container-non-responsive">
 <div class='fl'>
-<a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+<a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -241,10 +247,15 @@
 			type: "GET",
 			success: function(result){
 			    console.log(result);
-			   //显示文章列表
-                build_article_table(result);
-                //显示分页条
-                build_page_nav(result,isPublish,flag);
+			    if(result.extend.pageInfo.pages != 0){
+                    //显示文章列表
+                    build_article_table(result);
+                    //显示分页条
+                    build_page_nav(result,isPublish,flag);
+				}else{
+			        $(".article_content").empty();
+			        $(".article_content").append($("<div></div>").addClass("no_content").append("暂无文章!"));
+				}
 			}
 		});
 	}
@@ -260,7 +271,7 @@
                     .append($("<div></div>").addClass("item_info_left").append($("<span></span>").append(item.lastUpdateDate))
                         .append($("<span></span>").addClass("glyphicon glyphicon-eye-open").append(item.readNum))
                         .append($("<span></span>").addClass("glyphicon glyphicon-comment").append(item.commentNum)))
-                    .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").append("查看")))
+                    .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").attr("onclick","to_write("+item.id+")").append("编辑")))
                         .append($("<span></span>").attr("id","allow_ban_"+item.id).append($("<a></a>").attr("href","#").append("禁止评论").attr("onclick","ban_comment("+item.id+")")))
                         .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+","+current_page+")"))));
 			}else if(item.isComment == 'N'){
@@ -268,7 +279,7 @@
                     .append($("<div></div>").addClass("item_info_left").append($("<span></span>").append(item.lastUpdateDate))
                         .append($("<span></span>").addClass("glyphicon glyphicon-eye-open").append(item.readNum))
                         .append($("<span></span>").addClass("glyphicon glyphicon-comment").append(item.commentNum)))
-                    .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").append("查看")))
+                    .append($("<div></div>").addClass("item_info_right").append($("<span></span>").append($("<a></a>").attr("href","#").attr("onclick","to_write("+item.id+")").append("编辑")))
                         .append($("<span></span>").attr("id","allow_ban_"+item.id).append($("<a></a>").attr("href","#").append("允许评论").attr("onclick","allow_comment("+item.id+")")))
                         .append($("<span></span>").append($("<a></a>").attr("href","#").append("删除").attr("onclick","delete_article("+item.id+","+current_page+")"))));
 			}
@@ -457,7 +468,11 @@
         });
 	}
 	function to_detail(artId){
-        window.location.href = "detail.jsp?artId="+artId;
+//        window.location.href = "detail.jsp?artId="+artId;
+		window.open("detail.jsp?artId="+artId);
+	}
+	function to_write(artId){
+	    window.location.href = "write.jsp?artId="+artId;
 	}
 </script>
 </body>

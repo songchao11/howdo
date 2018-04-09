@@ -96,4 +96,14 @@ public class ArticleController {
 	public Msg queryArticleCollect(@PathVariable Long userId, @PathVariable Integer page, @PathVariable Integer size){
 		return articleService.queryArticleCollect(userId,page,size);
 	}
+
+	@RequestMapping(value = "/article/{artId}", method = RequestMethod.GET)
+	public Msg queryArticleById(@PathVariable Long artId){
+		return articleService.queryArticleById(artId);
+	}
+
+	@RequestMapping(value = "/article", method = RequestMethod.PUT)
+	public Msg updateArticle(Article article){
+		return articleService.updateArticle(article);
+	}
 }

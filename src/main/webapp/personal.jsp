@@ -62,7 +62,6 @@
 		background-color: white;
 	}
 	.article_page{
-		margin-top: -20px;
 		text-align: center;
 	}
 	.art_img{
@@ -71,6 +70,15 @@
 	}
 	.tile_title{
 		height: 22px;
+	}
+	.row{
+		height:493px;
+	}
+	.no_content{
+		margin-top: 240px;
+		margin-left: 360px;
+		font-size: 24px;
+		font-family: '微软雅黑', 'Microsoft Yahei';
 	}
 </style>
 </head>
@@ -81,7 +89,7 @@
 <section class="header-section">
 <div class="container-fluid container-non-responsive">
 <div class='fl'>
-<a href="//www.ehow.com/" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
+<a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
 <label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
 <input type="checkbox" id="menu-toggle">
@@ -166,8 +174,12 @@
             type: "GET",
             success: function(result){
                 console.log(result);
-                buildArticleTable(result);
-                build_page_nav(result);
+                if(result.extend.pageInfo.pages != 0){
+                    buildArticleTable(result);
+                    build_page_nav(result);
+				}else{
+                    $(".row").append($("<div></div>").addClass("no_content").append("暂无收藏!"));
+				}
             }
         });
     }
@@ -200,7 +212,7 @@
         });
     }
     function build_page_nav(result){
-        $(".page_nav").empty();
+        $(".article_page").empty();
         var ul = $("<ul></ul>").addClass("pagination");
         //构建元素
         var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href","#"));

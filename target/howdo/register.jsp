@@ -17,7 +17,7 @@
 
 <style type="text/css">
 	body{
-    background: url("http://119.23.77.220/images/p1.jpg");
+    background: url("http://119.23.77.220/images/201804011522587369432091994.jpg");
     animation-name:myfirst;
     animation-duration:12s;
     /*变换时间*/
@@ -28,13 +28,13 @@
     animation-play-state:running;
     /*动画开始运行*/
 }
-@keyframes myfirst
-{
-    0%   {background:url(http://119.23.77.220/images/p1.jpg);}
-    34%  {background:url(http://119.23.77.220/images/p2.jpg);}
-    67%  {background:url(http://119.23.77.220/images/p3.jpg);}
-    100% {background:url(http://119.23.77.220/images/p1.jpg);}
-}
+	@keyframes myfirst
+	{
+		0%   {background:url(http://119.23.77.220/images/201804011522587369432091994.jpg);}
+		34%  {background:url(http://119.23.77.220/images/201804011522587391910098634.jpg);}
+		67%  {background:url(http://119.23.77.220/images/201804011522587406290005025.jpg);}
+		100% {background:url(http://119.23.77.220/images/201804011522587369432091994.jpg);}
+	}
 .form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
 /*阴影*/
 .fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
