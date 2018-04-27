@@ -64,14 +64,15 @@
 <div class='dropdown'>
 <div class='category-links'>
 <ul>
-<li><a href="/home/" data-gtm-event="navHeaderMore">Home Decor &amp; Repair</a></li>
-<li><a href="/crafts/" data-gtm-event="navHeaderMore">Crafts</a></li>
-<li><a href="/food/" data-gtm-event="navHeaderMore">Food &amp; Drink</a></li>
+<li><a href="#" onclick="showArticle(1,1)" data-gtm-event="navHeaderMore">家居装饰和修复</a></li>
+<li><a href="#" onclick="showArticle(1,2)" data-gtm-event="navHeaderMore">工艺</a></li>
+<li><a href="#" onclick="showArticle(1,3)" data-gtm-event="navHeaderMore">食物和饮料</a></li>
+	<li><a href="#" onclick="showArticle(1,7)" data-gtm-event="navHeaderMore">其他</a></li>
 </ul>
 <ul>
-<li><a href="/garden/" data-gtm-event="navHeaderMore">Garden</a></li>
-<li><a href="/fashion/" data-gtm-event="navHeaderMore">Fashion &amp; Beauty</a></li>
-<li><a href="/holidays/" data-gtm-event="navHeaderMore">Holidays</a></li>
+<li><a href="#" onclick="showArticle(1,4)" data-gtm-event="navHeaderMore">时尚与美容</a></li>
+<li><a href="#" onclick="showArticle(1,5)" data-gtm-event="navHeaderMore">假期</a></li>
+<li><a href="#" onclick="showArticle(1,6)" data-gtm-event="navHeaderMore">花园</a></li>
 </ul>
 </div>
 <div class='sponsored-programs'>
@@ -83,11 +84,11 @@
 </div>
 <div>
 <div class='eHowUserMenu fr'></div>
-<form method="get" action="/sitesearch.html" id="searchHeader">
+<form action="#" id="searchHeader">
 <label class="elegant-icons magnifying-glass hidden-xs">&#x55;</label>
-<input type="text" name="s" style="color: black;" value="" autofocus onfocus="this.value = this.value;" placeholder="Search">
+<input type="text" id="search_title" name="s" style="color: black;" value="" autofocus onfocus="this.value = this.value;" placeholder="Search">
 <input name="skin" type="hidden" value="corporate"/>
-<button class="submit gh-bttn" type="submit">
+<button class="submit gh-bttn" type="submit" onclick="searchArticle()">
 <span class="hidden-xs">Search</span>
 <span class="elegant-icons magnifying-glass visible-xs">&#x55;</span>
 </button>
@@ -107,16 +108,16 @@
 <section id="Body" class="Homepage FLC" data-page-id="homepage" data-section="body" >
 <!-- 特色项目 -->
 <div class="container-fluid hero-container">
-	<a href="/13709304/how-to-sew-diy-fabric-storage-boxes" data-gtm-event="featured hero">
+	<a href="#" id="feature_a" data-gtm-event="featured hero">
 	<div class="hero-image">
-	<img src="http://119.23.77.220/images/201804021522636171779025421.jpeg" style="width: 100%"/>
+	<%--<img src="http://119.23.77.220/images/201804021522636171779025421.jpeg" style="width: 100%"/>--%>
 	</div>
 	<div class="hero-title-container">
 	<div class="hero-label">
 	<span>特色项目</span>
 	</div>
 	<div class="hero-title">
-	如何制作复活节彩蛋饼干杯
+
 	</div>
 	</div>
 	</a>
@@ -129,39 +130,6 @@
 </div>
 
 	<div class="art_list"></div>
-<%--<div class='tile column col-xs-6 col-sm-4 col-md-3'>--%>
-<%--<div class='tile-box js-tile-box'>--%>
-<%--<a class='tile-image' href="" data-gtm-event="featured image">--%>
-<%--<img src="http://119.23.77.220/images/201803211521634135128084551.jpg" class="art_img" data-pin-ehow-hover="true" data-pin-no-hover="true"/>--%>
-<%--</a>--%>
-<%--<div class='tile-title'>--%>
-<%--<a href="" data-gtm-event="featured text">23 Surprisingly Easy Chicken Recipes</a>--%>
-<%--</div>--%>
-
-<%--<div class='tile-people'>--%>
-	<%--<div class="social">--%>
-		<%--<div class="social-thumb-container">--%>
-			<%--<a href="" data-gtm-event="featured content contributor">--%>
-				<%--<img class="social-thumb" src="http://119.23.77.220/images/cat.jpg" onerror="$(this).parent().parent().remove();">--%>
-			<%--</a>--%>
-			<%--<div class="social-hover-container">--%>
-				<%--<div class="social-hover">--%>
-					<%--<a href="/contributor/chrystl_sanchez/">--%>
-						<%--<img src="http://119.23.77.220/images/cat.jpg" data-gtm-event="featured content contributor">--%>
-					<%--</a>--%>
-					<%--<div class="name">--%>
-						<%--<a href="/contributor/chrystl_sanchez/" data-gtm-event="featured content contributor">杰克马</a>--%>
-					<%--</div>--%>
-					<%--<div class="year">Contributed this</div>--%>
-				<%--</div>--%>
-			<%--</div>--%>
-		<%--</div>--%>
-	<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-
-
 
 </div>
 	<div class="page_nav"></div>
@@ -171,7 +139,9 @@
         var userInfo = sessionStorage.getItem('userInfo');
         userEntity = JSON.parse(userInfo);
 		showUser();
-        showArticle(1);
+        showFeatureArticle();
+		var cateId = "";
+        showArticle(1,cateId);
 	});
     function showUser(){
         //清空 .user_menu div里面的东西
@@ -216,15 +186,17 @@
     function removeSession(){
         sessionStorage.removeItem("userInfo");
 	}
-	function showArticle(page){
+	function showArticle(page,cateId){
         var size = 12;
         $.ajax({
-			url: "${APP_PATH}/article/all?page="+page+"&size="+size,
+			url: "${APP_PATH}/article/all?page="+page+"&size="+size+"&cateId="+cateId,
 			type: "GET",
 			success: function(result){
 			    console.log(result);
                 buildArticleTable(result);
-                build_page_nav(result);
+                if(result.extend.pageInfo.total != 0){
+                    build_page_nav(result,cateId);
+				}
 			}
 		});
 	}
@@ -260,7 +232,7 @@
 		});
 	}
 
-    function build_page_nav(result){
+    function build_page_nav(result,cateId){
         $(".page_nav").empty();
         var ul = $("<ul></ul>").addClass("pagination");
         //构建元素
@@ -272,10 +244,10 @@
         }else{
             //为首页和上一页添加点击事件
             firstPageLi.click(function(){
-                showArticle(1);
+                showArticle(1,cateId);
             });
             prePageLi.click(function(){
-                showArticle(result.extend.pageInfo.pageNum-1);
+                showArticle(result.extend.pageInfo.pageNum-1,cateId);
             });
         }
 
@@ -286,10 +258,10 @@
             lastPageLi.addClass("disabled");
         }else{
             nextPageLi.click(function(){
-                showArticle(result.extend.pageInfo.pageNum+1);
+                showArticle(result.extend.pageInfo.pageNum+1,cateId);
             });
             lastPageLi.click(function(){
-                showArticle(result.extend.pageInfo.pages);
+                showArticle(result.extend.pageInfo.pages,cateId);
             });
         }
 
@@ -302,7 +274,7 @@
                 numLi.addClass("active");
             }
             numLi.click(function(){
-                showArticle(item);
+                showArticle(item,cateId);
             });
             ul.append(numLi);
         });
@@ -315,6 +287,37 @@
     function to_detail(artId){
         window.location.href = "detail.jsp?artId="+artId;
     }
+
+    function showFeatureArticle(){
+        $.ajax({
+            url: "${APP_PATH}/article/feature",
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                $("<img/>").attr("style", "width: 100%").attr("src", result.extend.feature[0].files[0].path).appendTo(".hero-image");
+                $(".hero-title").append(result.extend.feature[0].title);
+                $("#feature_a").attr("onclick", "to_detail("+result.extend.feature[0].id+")");
+            }
+        });
+	}
+
+	function searchArticle(){
+        var size = 12;
+        var title = $("#search_title").val();
+        var page = 1;
+        var cateId = "";
+        $.ajax({
+            url: "${APP_PATH}/article/search?page="+page+"&size="+size+"&title="+title,
+            type: "GET",
+            success: function(result){
+                console.log(result);
+                buildArticleTable(result);
+                if(result.extend.pageInfo.total != 0){
+                    build_page_nav(result,cateId);
+                }
+            }
+        });
+	}
 </script>
 </body>
 </html>

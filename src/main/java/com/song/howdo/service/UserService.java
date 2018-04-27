@@ -1,9 +1,11 @@
 package com.song.howdo.service;
 
+import java.io.InputStream;
 import java.util.List;
 
 import com.song.howdo.model.Msg;
 import com.song.howdo.model.User;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by songchao on 2017/12/27.
@@ -31,4 +33,10 @@ public interface UserService {
     Msg updateUser(User user);
 
     Msg queryUserInfo(Long userId, Long yourId);
+
+    Msg uploadPhoto(MultipartFile file);
+
+    Msg checkPassword(String account, String password);
+
+    Msg updatePassword(String account, String password, String oldPassword);
 }

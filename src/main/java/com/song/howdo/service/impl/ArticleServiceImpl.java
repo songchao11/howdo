@@ -154,9 +154,9 @@ public class ArticleServiceImpl implements ArticleService {
 		return Msg.success().add("user", user).add("article", article);
 	}
 
-	public Msg queryArticleAll(Integer page, Integer size) {
+	public Msg queryArticleAll(Long cateId, Integer page, Integer size) {
 		PageHelper.startPage(page, size);
-		List<Article> articles = articleMapper.queryArticleAll();
+		List<Article> articles = articleMapper.queryArticleAll(cateId);
 		for(Article a:articles){
 			List<File> files = fileMapper.queryFilesByArtId(a.getId());
 			if(files.isEmpty()){
@@ -194,5 +194,60 @@ public class ArticleServiceImpl implements ArticleService {
 	public Msg updateArticle(Article article) {
 		articleMapper.updateArticle(article);
 		return Msg.success();
+	}
+
+	public Msg queryFeatureArticle() {
+		List<Article> articles = articleMapper.queryFeatureArticle();
+		for(Article a:articles){
+			List<File> files = fileMapper.queryFilesByArtId(a.getId());
+			if(files.isEmpty()){
+				File file = new File();
+				file.setPath("http://119.23.77.220/images/cat.jpg");
+				files.add(file);
+			}
+			a.setFiles(files);
+		}
+		return Msg.success().add("feature", articles);
+	}
+
+	public Msg queryArticlesByAdmin(String enableFlag, Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		List<Article> articles = articleMapper.queryArticlesByAdmin(enableFlag);
+		PageInfo pages = new PageInfo(articles,5);
+		return Msg.success().add("pageInfo", pages);
+	}
+
+	public Msg queryArticlesByDimAdmin(String title, Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		List<Article> articles = articleMapper.queryArticlesByDimAdmin(title);
+		PageInfo pages = new PageInfo(articles,5);
+		return Msg.success().add("pageInfo", pages);
+	}
+
+	public Msg queryArticleCountAdmin() {
+		int noBan = articleMapper.queryArticleCountAdmin("Y");
+		int baned = articleMapper.queryArticleCountAdmin("N");
+		return Msg.success().add("noBan", noBan).add("baned", baned);
+	}
+
+	public Msg banArticle(Long artId, String enable) {
+		articleMapper.banArticle(artId, enable);
+		return Msg.success();
+	}
+
+	public Msg searchArticles(String title, Integer page, Integer size) {
+		PageHelper.startPage(page, size);
+		List<Article> articles = articleMapper.searchArticles(title);
+		for(Article a:articles){
+			List<File> files = fileMapper.queryFilesByArtId(a.getId());
+			if(files.isEmpty()){
+				File file = new File();
+				file.setPath("http://119.23.77.220/images/cat.jpg");
+				files.add(file);
+			}
+			a.setFiles(files);
+		}
+		PageInfo pages = new PageInfo(articles,12);
+		return Msg.success().add("pageInfo",pages);
 	}
 }

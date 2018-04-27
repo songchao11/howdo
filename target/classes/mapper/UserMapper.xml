@@ -15,6 +15,7 @@
     <result column="signature" property="signature" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="object_version_number" jdbcType="BIGINT" property="objectVersionNumber" />
     <result column="creation_date" jdbcType="TIMESTAMP" property="creationDate" />
     <result column="created_by" jdbcType="BIGINT" property="createdBy" />
@@ -27,7 +28,8 @@
   </select>
   
   <select id="queryUserByAccount" resultMap="BaseResultMap">
-  	select * from howdo_user where account=#{account}
+  	select hu.*,hr.role_name from howdo_user hu,howdo_user_role hur,howdo_role hr
+    where account=#{account} and hu.id=hur.user_id and hur.role_id=hr.id
   </select>
   
   <select id="queryUserRoles" resultType="String">
@@ -67,6 +69,18 @@
   <update id="updateUser">
     update howdo_user set nickname=#{user.nickname},sex=#{user.sex},birthday=#{user.birthday},
     address=#{user.address},email=#{user.email},signature=#{user.signature} where id=#{user.id}
+  </update>
+
+  <update id="updatePhoto">
+    update howdo_user set head_pic=#{headPic} where id=#{id}
+  </update>
+
+  <select id="queryPassword" resultType="String">
+    select password from howdo_user where account=#{account}
+  </select>
+
+  <update id="updatePassword">
+    update howdo_user set password=#{password} where account=#{account}
   </update>
 
 </mapper>

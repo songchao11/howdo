@@ -100,6 +100,10 @@
 		margin-left: 16px;
 		margin-bottom: 15px;
 	}
+	.info_left_headpic img{
+		width: 100px;
+		height: 100px;
+	}
 	.info_left_txt{
 		margin-left: 37px;
 		font-size: 14px;
@@ -123,6 +127,10 @@
 		width:40px;
 		margin-top: 29px;
 	}
+	#error_msg{
+		text-align: center;
+		color: red;
+	}
 </style>
 </head>
 <body class="Corporate Homepage " data-skin="corporate">
@@ -135,18 +143,62 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="myModalLabel">修改头像</h4>
 			</div>
+			<%--<form action="/user/photo" method="post" enctype="multipart/form-data">--%>
 			<form>
 			<div class="modal-body">
 					<div id="preview">
 						<img id="imghead" border="0" src="http://119.23.77.220/images/201803291522307445733087130.png" width="90" height="90" onclick="$('#previewImg').click();">
+							<%--<img id="imghead" border="0" src="/pic/cat.jpg" width="90" height="90" onclick="$('#previewImg').click();">--%>
 					</div>
-					<input type="file" name="file" onchange="previewImage(this)" style="display: none;" id="previewImg">
+					<%--<input type="file" name="file" onchange="previewImage(this)" style="display: none;" id="previewImg">--%>
+				<input type="file" name="file" id="file"/>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				<button type="button" class="btn btn-primary"id="emp_save_btn">保存</button>
+				<button type="submit" class="btn btn-primary"id="emp_save_btn" onclick="uploadPhoto();">保存</button>
 			</div>
 			</form>
+		</div>
+	</div>
+</div>
+
+<!-- 修改密码的模态框 -->
+<div class="modal fade" id="editInfoModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel_1">修改密码</h4>
+			</div>
+			<%--<form action="/user/photo" method="post" enctype="multipart/form-data">--%>
+
+				<div class="form-group">
+					<label for="password_old" class="col-sm-3 control-label">原密码</label>
+					<div class="col-sm-9">
+						<input type="password" name="empName" class="form-control" id="password_old" placeholder="请输入原密码">
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password_new_1" class="col-sm-3 control-label">新密码</label>
+					<div class="col-sm-9">
+						<input type="password" name="empName" class="form-control" id="password_new_1" placeholder="请输入新密码">
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password_new_2" class="col-sm-3 control-label">确认新密码</label>
+					<div class="col-sm-9">
+						<input type="password" name="empName" class="form-control" id="password_new_2" placeholder="请确认新密码">
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div id="error_msg"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" onclick="close_model();">关闭</button>
+					<button type="submit" class="btn btn-primary"id="emp_save_btn_1" onclick="updatePassword();">确认</button>
+				</div>
+
 		</div>
 	</div>
 </div>
@@ -231,7 +283,7 @@
 	</div>
 	<div class="info_left">
 		<div class="info_left_headpic"></div>
-		<div><a class="info_left_txt" onclick="editInfo()">修改头像</a></div>
+		<div><a class="info_left_txt" onclick="editPic()">修改头像</a></div>
 			<%--<div class="info_left_headpic">--%>
 				<%--<form id="imgPut"  onchange="changeFile()">--%>
 				<%--<div id="preview">--%>
@@ -292,10 +344,15 @@
         showUserTable();
 	});
 	function editPassword(){
-        $("#editInfoModal").modal({
+        $("#editInfoModal_1").modal({
             backdrop: "static"
         });
 	}
+    function editPic(){
+        $("#editInfoModal").modal({
+            backdrop: "static"
+        });
+    }
 	function editInfo(){
 	    window.location.href = "modification.jsp";
 	}
@@ -321,6 +378,97 @@
 		});
 	}
 
+	function uploadPhoto(){
+        var formData = new FormData();
+        var file = document.getElementById("file");
+        var fileObj = file.files[0];
+        formData.append("file", fileObj);
+        $.ajax({
+			url: "${APP_PATH}/user/photo",
+			type: "POST",
+			data: formData,
+			async: false,
+			processData: false,
+			contentType: false,
+			success: function(result){
+
+			}
+		});
+	}
+
+	function updatePassword(){
+	    var password_old = $("#password_old").val();
+        var password_new_1 = $("#password_new_1").val();
+        var password_new_2 = $("#password_new_2").val();
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var account = userEntity.account;
+        if(validate_info()){
+            $.ajax({
+                url: "${APP_PATH}/user/password/"+account+"/"+password_new_1+"/"+password_old,
+                type: "PUT",
+				success: function(result){
+					if(result.code == 100){
+					    show_error("");
+                        $('#editInfoModal_1').modal('hide');
+                        $("#password_old").val("");
+						$("#password_new_1").val("");
+						$("#password_new_2").val("");
+					}
+				}
+			});
+		}
+	}
+	function close_model(){
+        $('#editInfoModal_1').modal('hide');
+        show_error("");
+        $("#password_old").val("");
+        $("#password_new_1").val("");
+        $("#password_new_2").val("");
+	}
+	$("#password_old").change(function(){
+        var password_old = $("#password_old").val();
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var account = userEntity.account;
+        $.ajax({
+			url: "${APP_PATH}/user/password/"+account+"/"+password_old,
+			type: "GET",
+			success: function(result){
+			    if(result.code == 200){
+                    show_error("原始密码错误");
+				}else {
+			        show_error("");
+				}
+			}
+		});
+	});
+	function validate_info(){
+        var password_old = $("#password_old").val();
+        var password_new_1 = $("#password_new_1").val();
+        var password_new_2 = $("#password_new_2").val();
+        if(password_old == ""){
+            show_error("原密码不能为空!");
+            return false;
+		}
+		if(password_new_1 == ""){
+            show_error("新密码不能为空!")
+			return false;
+		}
+		if(password_new_2 == ""){
+		    show_error("确认密码不能为空!");
+		    return false;
+		}
+		if(password_new_1 != password_new_2){
+		    show_error("两次输入密码不同!");
+		    return false;
+		}
+		return true;
+	}
+	function show_error(msg){
+	    $("#error_msg").text("");
+        $("#error_msg").text(msg);
+	}
 </script>
 </body>
 </html>

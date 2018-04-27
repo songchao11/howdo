@@ -117,6 +117,9 @@
     <select id="queryArticleAll" resultMap="BaseResultMap">
         select ha.*,hu.id,hu.nickname,hu.head_pic,hu.signature from howdo_article ha,howdo_user hu
         where is_publish='Y' and enable_flag='Y' and hu.id=ha.user_id
+        <if test="cateId != null">
+            and ha.cate_id=#{cateId}
+        </if>
         order by last_update_date desc
     </select>
 
@@ -130,5 +133,35 @@
         update howdo_article set title=#{article.title}, content=#{article.content},
         is_publish=#{article.isPublish}, cate_id=#{article.cateId} where id=#{article.id}
     </update>
+
+    <select id="queryFeatureArticle" resultMap="BaseResultMap">
+        select ha.*,hu.id,hu.nickname,hu.head_pic,hu.signature from howdo_article ha,howdo_user hu
+        where is_publish='Y' and enable_flag='Y' and hu.id=ha.user_id
+				and ha.read_num=(select max(read_num) from howdo_article)
+        order by last_update_date desc
+    </select>
+
+    <select id="queryArticlesByAdmin" resultMap="BaseResultMap">
+        select * from howdo_article where enable_flag=#{enableFlag} order by last_update_date desc
+    </select>
+
+    <select id="queryArticlesByDimAdmin" resultMap="BaseResultMap">
+        select * from howdo_article where title like concat(concat('%',#{title}),'%')
+    </select>
+
+    <select id="queryArticleCountAdmin" resultType="int">
+        select count(*) from howdo_article where enable_flag=#{enable}
+    </select>
+
+    <update id="banArticle">
+        update howdo_article set enable_flag=#{enable} where id=#{artId}
+    </update>
+
+    <select id="searchArticles" resultMap="BaseResultMap">
+        select ha.*,hu.id,hu.nickname,hu.head_pic,hu.signature from howdo_article ha,howdo_user hu
+        where is_publish='Y' and enable_flag='Y' and hu.id=ha.user_id
+        and title like concat(concat('%',#{title}),'%')
+        order by last_update_date desc
+    </select>
 
 </mapper>

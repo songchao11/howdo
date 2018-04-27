@@ -38,6 +38,8 @@ public class User extends BaseEntity {
 	private Long collectNum;
 	@Transient
 	private String time;
+	@Transient
+	private String roleName;
 	
 	public String getAccount() {
 		return account;
@@ -170,5 +172,13 @@ public class User extends BaseEntity {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 }

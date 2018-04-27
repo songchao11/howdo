@@ -1,5 +1,7 @@
 package com.song.howdo.service.impl;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,8 +13,11 @@ import com.github.pagehelper.PageInfo;
 import com.song.howdo.mapper.ArticleMapper;
 import com.song.howdo.mapper.ConcernMapper;
 import com.song.howdo.model.Concern;
+import com.song.howdo.ueditor.upload.FTPUtil;
 import com.song.howdo.util.AgeUtil;
 import com.song.howdo.util.ConstellationUtil;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPReply;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
@@ -26,6 +31,7 @@ import com.song.howdo.model.Msg;
 import com.song.howdo.model.User;
 import com.song.howdo.service.UserService;
 import com.song.howdo.util.ChineseName;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by songchao on 2017/12/27.
@@ -193,6 +199,45 @@ public class UserServiceImpl implements UserService {
 		user.setObservedNum(observedNum);
 		user.setCollectNum(collectNum);
 		return Msg.success().add("user",user);
+	}
+
+	public Msg uploadPhoto(MultipartFile file) {
+		FTPUtil ftpUtil = new FTPUtil();
+		String fileName = file.getOriginalFilename();
+		System.out.println(fileName);
+		Object username =  SecurityUtils.getSubject().getPrincipal();
+		User user = userMapper.queryUserByAccount(username.toString());
+		try {
+			ftpUtil.upload(file, fileName);
+			userMapper.updatePhoto("/pic/"+fileName, user.getId());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Msg.success();
+	}
+
+	public Msg checkPassword(String account, String password) {
+		String password_query = userMapper.queryPassword(account);
+		String password_to = encryptBySalt(password, account);
+		if(password_query.equals(password_to)){
+			return Msg.success();
+		}else{
+			return Msg.fail();
+		}
+
+	}
+
+	public Msg updatePassword(String account, String password, String oldPassword) {
+		String password_query = userMapper.queryPassword(account);
+		oldPassword = encryptBySalt(oldPassword, account);
+		if(password_query.equals(oldPassword)){
+			String password_salt = encryptBySalt(password, account);
+			userMapper.updatePassword(account, password_salt);
+			return Msg.success();
+		}else{
+			return Msg.fail();
+		}
+
 	}
 
 }

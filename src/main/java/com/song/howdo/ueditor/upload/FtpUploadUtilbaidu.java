@@ -3,7 +3,9 @@ package com.song.howdo.ueditor.upload;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -27,14 +29,14 @@ public class FtpUploadUtilbaidu {
 
     public State save(HttpServletRequest request, Map<String, Object> conf) {
 
-    	ShiroHttpServletRequest shiroRequest = (ShiroHttpServletRequest) request;  
-        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();  
-        MultipartHttpServletRequest multipartRequest = commonsMultipartResolver.resolveMultipart((HttpServletRequest) shiroRequest.getRequest()); 
+//    	ShiroHttpServletRequest shiroRequest = (ShiroHttpServletRequest) request;
+//        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+//        MultipartHttpServletRequest multipartRequest = commonsMultipartResolver.resolveMultipart((HttpServletRequest) shiroRequest.getRequest());
 //        String token = request.getParameter("token");
-//    	String a 
-//    	System.out.println("����:"+a);
+        MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
         
-        MultipartFile file = multipartRequest.getFile("upfile");
+        MultipartFile file = multipartHttpServletRequest.getFile("upfile");
+//        MultipartFile file = ((MultipartHttpServletRequest) request).getFile("upfile");
         System.out.println("̫��:"+file.getSize());
         
         FileItemStream fileStream = null;
@@ -89,11 +91,12 @@ public class FtpUploadUtilbaidu {
             System.out.println("hehe:"+is);
             System.out.println("终极屁屁:"+filename);
 //            ftpUtil.upload(file);
-            System.out.println("˵��"+originFileName);//originFileName + suffix
-            if(ftpUtil.uploadFileFTP1(filename,is)){
-            	System.out.println("�ɹ�");
+            String fName = file.getOriginalFilename();
+//            if(ftpUtil.uploadFileFTP1(filename,is)){
+            if(ftpUtil.upload(file, fName)){
             	storageState = new BaseState(true);
-            	storageState.putInfo("url", "http://119.23.77.220/images/"+filename);
+//            	storageState.putInfo("url", "http://119.23.77.220/images/"+filename);
+                storageState.putInfo("url", "/pic/"+fName);
             }
 //            State storageState = null;//storageManager.saveFtpFileByInputStream(file, token);
 //            is.close();

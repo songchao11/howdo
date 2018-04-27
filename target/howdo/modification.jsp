@@ -104,6 +104,10 @@
             margin-left: 16px;
             margin-bottom: 15px;
         }
+        .info_left_headpic img{
+            width: 100px;
+            height: 100px;
+        }
         .info_left_txt{
             margin-left: 37px;
             font-size: 14px;
@@ -206,8 +210,10 @@
         </ul>
     </div>
     <div class="info_left">
-        <div class="info_left_headpic"><img src="http://119.23.77.220/images/cat.jpg"></div>
-        <div><a class="info_left_txt">修改头像</a></div>
+        <div class="info_left_headpic">
+            <%--<img src="http://119.23.77.220/images/cat.jpg">--%>
+        </div>
+        <%--<div><a class="info_left_txt">修改头像</a></div>--%>
     </div>
     <div class="info_right">
         <table>
@@ -308,6 +314,7 @@
                 $("#signature").val(result.extend.user.signature);
                 $("#txtBeginDate").val(result.extend.user.birthday);
                 $("#account").append(result.extend.user.account);
+                $(".info_left_headpic").append($("<img>").attr("src",result.extend.user.headPic));
             }
         });
     }

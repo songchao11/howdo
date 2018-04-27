@@ -2,92 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="306e0629-6bae-4d25-995d-37730437bdb1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/mapper/ArticleMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/mapper/UserMapper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/UserService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/UserServiceImpl.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/controller/ArticleController.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/controller/ArticleController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/mapper/ArticleMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/mapper/ArticleMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/model/Msg.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/model/Msg.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/model/User.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/model/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/ArticleService.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/service/ArticleService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/service/UserService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/ArticleServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/ArticleServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/CommentServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/FileServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/FileServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/shiro/realms/ShiroRealm.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/shiro/realms/ShiroRealm.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/test/MapperTest.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/test/MapperTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/ActionEnter.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/ActionEnter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/UeditorController.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/UeditorController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/upload/FTPUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/upload/FTPUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/song/howdo/util/ChineseName.class" afterPath="$PROJECT_DIR$/target/classes/com/song/howdo/util/ChineseName.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo.war" afterPath="$PROJECT_DIR$/target/howdo.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/controller/ArticleController.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/controller/ArticleController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/controller/UserController.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/controller/UserController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/mapper/ArticleMapper.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/mapper/ArticleMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/model/Msg.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/model/Msg.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/model/User.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/model/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/ArticleService.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/ArticleService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/UserService.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/UserService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/ArticleServiceImpl.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/ArticleServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/CommentServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/FileServiceImpl.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/FileServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/shiro/realms/ShiroRealm.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/shiro/realms/ShiroRealm.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/test/MapperTest.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/test/MapperTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/ActionEnter.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/ActionEnter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/UeditorController.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/UeditorController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/upload/FTPUtil.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/upload/FTPUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/util/ChineseName.class" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/com/song/howdo/util/ChineseName.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/UserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/model/Msg.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/model/Msg.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/FileServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/FileServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/shiro/realms/ShiroRealm.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/shiro/realms/ShiroRealm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/test/MapperTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/test/MapperTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/ActionEnter.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/ActionEnter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/UeditorController.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/UeditorController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/util/ChineseName.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/util/ChineseName.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/util/ConstellationUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/util/ConstellationUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FTPUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FTPUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.java" afterPath="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/article.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/article.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/attention.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/attention.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/detail.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/detail.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/information.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/information.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/main.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/modification.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/modification.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/personal.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/personal.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/write.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/write.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/ArticleMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/ArticleMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/mapper/ArticleMapper.xml" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/mapper/ArticleMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/howdo/WEB-INF/classes/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/article.jsp" afterPath="$PROJECT_DIR$/target/howdo/article.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/attention.jsp" afterPath="$PROJECT_DIR$/target/howdo/attention.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/detail.jsp" afterPath="$PROJECT_DIR$/target/howdo/detail.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/information.jsp" afterPath="$PROJECT_DIR$/target/howdo/information.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/login.jsp" afterPath="$PROJECT_DIR$/target/howdo/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/main.jsp" afterPath="$PROJECT_DIR$/target/howdo/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/modification.jsp" afterPath="$PROJECT_DIR$/target/howdo/modification.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/personal.jsp" afterPath="$PROJECT_DIR$/target/howdo/personal.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/register.jsp" afterPath="$PROJECT_DIR$/target/howdo/register.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/howdo/write.jsp" afterPath="$PROJECT_DIR$/target/howdo/write.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,12 +70,92 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MapperTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/test/MapperTest.java">
+      <file leaf-file-name="ArticleMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="372">
+              <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="32" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="86" column="5" lean-forward="false" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArticleController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="140" column="63" lean-forward="true" selection-start-line="140" selection-start-column="63" selection-end-line="140" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArticleService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArticleServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="250" column="51" lean-forward="true" selection-start-line="250" selection-start-column="51" selection-end-line="250" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArticleMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="159" column="30" lean-forward="false" selection-start-line="159" selection-start-column="30" selection-end-line="159" selection-end-column="30" />
+              <folding>
+                <marker date="1524842169923" expanded="true" signature="2405:2584" ph="select * fro... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="2669:2711" ph="select * fro... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="2793:3180" ph="select ha.id... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="3257:3363" ph="select count... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="3428:3494" ph="update howdo... " />
+                <marker date="1524842169923" expanded="true" signature="3550:3593" ph="delete from " />
+                <marker date="1524842169923" expanded="true" signature="3680:4095" ph="select ha.id... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="4182:4425" ph="select ha.id... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="4505:4603" ph="select count... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="4683:4827" ph="select count... howdo_comment" />
+                <marker date="1524842169923" expanded="true" signature="4735:4826" ph="select id fr... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="4904:4964" ph="select count... howdo_concern" />
+                <marker date="1524842169923" expanded="true" signature="5040:5185" ph="select count... howdo_collect" />
+                <marker date="1524842169923" expanded="true" signature="5093:5184" ph="select id fr... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="5248:5310" ph="update howdo... " />
+                <marker date="1524842169923" expanded="true" signature="5383:5439" ph="select count... howdo_comment" />
+                <marker date="1524842169923" expanded="true" signature="5512:5567" ph="select count... howdo_praise" />
+                <marker date="1524842169923" expanded="true" signature="5638:5694" ph="select count... howdo_collect" />
+                <marker date="1524842169923" expanded="true" signature="5778:6063" ph="select ha.*,... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="6151:6412" ph="select ha.*,... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="6468:6634" ph="update howdo... " />
+                <marker date="1524842169923" expanded="true" signature="6722:6983" ph="select ha.*,... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="6904:6943" ph="select max(r... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="7072:7147" ph="select * fro... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="7072:7162" ph="select * fro... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="7254:7331" ph="select * fro... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="7413:7475" ph="select count... howdo_article" />
+                <marker date="1524842169923" expanded="true" signature="7528:7592" ph="update howdo... " />
+                <marker date="1524842169923" expanded="true" signature="7675:7930" ph="select ha.*,... howdo_article" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,6 +176,13 @@
     <findStrings>
       <find>tk</find>
       <find>MapperScannerConfigurer</find>
+      <find>showArticle</find>
+      <find>queryArticleById</find>
+      <find>服务</find>
+      <find>服务器</find>
+      <find>服务器返回</find>
+      <find>服务器返回出错</find>
+      <find>SecurityUtils</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,11 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/PraiseMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/PraiseMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/PraiseService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/CollectMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/CollectMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/CollectService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/PraiseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/CollectServiceImpl.java" />
@@ -156,40 +208,45 @@
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/CommentServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/FileMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/FileMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/model/Article.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ConcernMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/UeditorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/ActionEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/model/FileDto.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/shiro/realms/ShiroRealm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/model/Msg.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/util/ConstellationUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/util/ChineseName.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/FileServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/article.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/detail.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/information.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/modification.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/personal.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/write.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/attention.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/usercenter.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/test/MapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/backdetail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/background.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/ActionEnter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FTPUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/modification.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/information.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/main.jsp" />
       </list>
     </option>
   </component>
@@ -246,7 +303,6 @@
     <panes>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -290,6 +346,32 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="howdo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="howdo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -343,12 +425,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="realms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="howdo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="howdo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="howdo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,11 +472,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workspace\howdo\src\main\webapp\pic" />
+      <recent name="E:\workspace\howdo\src\main\resources\files" />
       <recent name="E:\workspace\howdo\src\main\resources\mapper" />
       <recent name="E:\workspace\howdo\src\main\webapp\static\img" />
       <recent name="E:\workspace\howdo\src\main\webapp\static\css" />
-      <recent name="E:\workspace\howdo\src\main\webapp\static\time" />
-      <recent name="E:\workspace\howdo\src\main\webapp\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -378,7 +491,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MapperTest.test5">
+  <component name="RunManager" selected="Tomcat Server.Unnamed">
     <configuration default="false" name="MapperTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1037,12 +1150,7 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method>
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="howdo:war exploded" />
-        </option>
-      </method>
+      <method />
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Unnamed" />
@@ -1091,6 +1199,10 @@
       <workItem from="1522716958080" duration="15619000" />
       <workItem from="1522815288369" duration="12624000" />
       <workItem from="1523167921751" duration="10363000" />
+      <workItem from="1524546998278" duration="19354000" />
+      <workItem from="1524628530842" duration="17439000" />
+      <workItem from="1524747239236" duration="13425000" />
+      <workItem from="1524795556300" duration="16359000" />
     </task>
     <servers />
   </component>
@@ -1127,7 +1239,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342390000" />
+    <option name="totallyTimeSpent" value="408967000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1139,7 +1251,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1153,18 +1266,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28032786" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25081968" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024590164" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.009836066" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.03442623" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32131147" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22919819" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23373677" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1193,19 +1306,19 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28032786" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25081968" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024590164" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18196721" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10327869" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14098361" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22919819" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38388625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1221,7 +1334,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1230,139 +1343,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PraiseMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="74" lean-forward="true" selection-start-line="26" selection-start-column="74" selection-end-line="26" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.7.RELEASE/spring-aop-4.3.7.RELEASE-sources.jar!/org/springframework/aop/support/AopUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="332" column="0" lean-forward="false" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/detail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="257" column="1" lean-forward="true" selection-start-line="257" selection-start-column="1" selection-end-line="257" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/model/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/CommentMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/CommentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/CommentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="e#730#731#0" expanded="false" />
-            <element signature="e#787#788#0" expanded="false" />
-            <element signature="e#921#922#0" expanded="false" />
-            <element signature="e#978#979#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/CommentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/FileMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="18" column="61" lean-forward="true" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FileMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="31" column="55" lean-forward="true" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="186" column="35" lean-forward="false" selection-start-line="186" selection-start-column="35" selection-end-line="186" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ConcernMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" column="89" lean-forward="false" selection-start-line="10" selection-start-column="89" selection-end-line="10" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE-sources.jar!/org/springframework/web/bind/annotation/RestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="51" column="18" lean-forward="false" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/ActionEnter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/model/FileDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="29" column="18" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/UeditorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/shiro/realms/ShiroRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="57" column="5" lean-forward="false" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/model/Msg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1409,9 +1389,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1419,28 +1396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="95" column="94" lean-forward="true" selection-start-line="95" selection-start-column="94" selection-end-line="95" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1175">
-          <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3250">
-          <caret line="130" column="88" lean-forward="false" selection-start-line="130" selection-start-column="88" selection-end-line="130" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -1459,126 +1414,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="68" column="95" lean-forward="false" selection-start-line="68" selection-start-column="95" selection-end-line="68" selection-end-column="95" />
-          <folding>
-            <marker date="1522824478934" expanded="true" signature="1501:1525" ph="select * fro... howdo_user" />
-            <marker date="1522824478934" expanded="true" signature="1605:1654" ph="select * fro... howdo_user" />
-            <marker date="1522824478934" expanded="true" signature="1724:1886" ph="select role_... howdo_user" />
-            <marker date="1522824478934" expanded="true" signature="2169:2208" ph="select * fro... howdo_user" />
-            <marker date="1522824478934" expanded="true" signature="2286:2386" ph="select hu.* howdo_user" />
-            <marker date="1522824478934" expanded="true" signature="2461:2561" ph="select hu.* howdo_user" />
-            <marker date="1522824478934" expanded="true" signature="2631:2689" ph="select count... howdo_concern" />
-            <marker date="1522824478934" expanded="true" signature="2758:2817" ph="select count... howdo_concern" />
-            <marker date="1522824478934" expanded="true" signature="2862:2883" ph="update howdo... " />
-            <marker date="1522824478934" expanded="true" signature="2862:2909" ph="update howdo... " />
-            <marker date="1522824478934" expanded="true" signature="2862:2926" ph="update howdo... " />
-            <marker date="1522824478934" expanded="true" signature="2862:3048" ph="update howdo... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="166" column="29" lean-forward="false" selection-start-line="166" selection-start-column="29" selection-end-line="166" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="32" column="48" lean-forward="true" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="151" column="41" lean-forward="true" selection-start-line="151" selection-start-column="41" selection-end-line="151" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="194" column="46" lean-forward="true" selection-start-line="194" selection-start-column="46" selection-end-line="194" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="107" column="57" lean-forward="true" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/information.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="158" column="17" lean-forward="false" selection-start-line="158" selection-start-column="17" selection-end-line="158" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/modification.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="137" column="33" lean-forward="false" selection-start-line="137" selection-start-column="33" selection-end-line="137" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/personal.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1591,26 +1430,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="827" column="63" lean-forward="true" selection-start-line="827" selection-start-column="63" selection-end-line="827" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/attention.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
           <caret line="433" column="63" lean-forward="true" selection-start-line="433" selection-start-column="63" selection-end-line="433" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/article.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="147" column="5" lean-forward="true" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1625,8 +1448,330 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/test/MapperTest.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="78" column="67" lean-forward="true" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12875">
+          <caret line="515" column="7" lean-forward="false" selection-start-line="515" selection-start-column="7" selection-end-line="515" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/backdetail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3225">
+          <caret line="129" column="121" lean-forward="false" selection-start-line="129" selection-start-column="121" selection-end-line="129" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/background.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="343" column="61" lean-forward="true" selection-start-line="343" selection-start-column="61" selection-end-line="343" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1194">
+          <caret line="176" column="33" lean-forward="false" selection-start-line="176" selection-start-column="33" selection-end-line="176" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ShiroHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="42" column="37" lean-forward="true" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <caret line="98" column="73" lean-forward="true" selection-start-line="98" selection-start-column="73" selection-end-line="98" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/util/FileUrl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/Uploader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/ActionEnter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="29" column="68" lean-forward="false" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/define/AppInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="55" column="40" lean-forward="false" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pic/20180426235241.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pic/20180426235424.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pic/sb.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/UeditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-975">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pic/donghua.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/article.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="471" column="47" lean-forward="true" selection-start-line="471" selection-start-column="47" selection-end-line="471" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FTPUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="59" column="26" lean-forward="false" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="157" column="11" lean-forward="true" selection-start-line="157" selection-start-column="11" selection-end-line="157" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/ueditor/upload/FtpUploadUtilbaidu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="38" column="89" lean-forward="true" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/shiro/realms/ShiroRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="77" column="38" lean-forward="false" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="82" column="71" lean-forward="true" selection-start-line="82" selection-start-column="71" selection-end-line="82" selection-end-column="71" />
+          <folding>
+            <marker date="1524814415095" expanded="true" signature="1574:1598" ph="select * fro... howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="1678:1828" ph="select * fro... howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="1898:2060" ph="select role_... howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="2343:2382" ph="select * fro... howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="2460:2560" ph="select hu.* howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="2635:2735" ph="select hu.* howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="2805:2863" ph="select count... howdo_concern" />
+            <marker date="1524814415095" expanded="true" signature="2932:2991" ph="select count... howdo_concern" />
+            <marker date="1524814415095" expanded="true" signature="3036:3057" ph="update howdo... " />
+            <marker date="1524814415095" expanded="true" signature="3036:3083" ph="update howdo... " />
+            <marker date="1524814415095" expanded="true" signature="3036:3100" ph="update howdo... " />
+            <marker date="1524814415095" expanded="true" signature="3036:3222" ph="update howdo... " />
+            <marker date="1524814415095" expanded="true" signature="3268:3324" ph="update howdo... " />
+            <marker date="1524814415095" expanded="true" signature="3392:3448" ph="select passw... howdo_user" />
+            <marker date="1524814415095" expanded="true" signature="3497:3564" ph="update howdo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="34" column="93" lean-forward="true" selection-start-line="34" selection-start-column="93" selection-end-line="34" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/modification.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="108" column="26" lean-forward="false" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-903">
+          <caret line="123" column="33" lean-forward="true" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="40" column="74" lean-forward="false" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="229" column="15" lean-forward="false" selection-start-line="229" selection-start-column="15" selection-end-line="229" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="143" column="33" lean-forward="false" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
+          <folding>
+            <element signature="e#1810#1811#0" expanded="true" />
+            <element signature="e#1855#1856#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/information.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="424" column="35" lean-forward="true" selection-start-line="424" selection-start-column="35" selection-end-line="424" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/mapper/ArticleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ArticleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="159" column="30" lean-forward="false" selection-start-line="159" selection-start-column="30" selection-end-line="159" selection-end-column="30" />
+          <folding>
+            <marker date="1524842169923" expanded="true" signature="2405:2584" ph="select * fro... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="2669:2711" ph="select * fro... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="2793:3180" ph="select ha.id... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="3257:3363" ph="select count... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="3428:3494" ph="update howdo... " />
+            <marker date="1524842169923" expanded="true" signature="3550:3593" ph="delete from " />
+            <marker date="1524842169923" expanded="true" signature="3680:4095" ph="select ha.id... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="4182:4425" ph="select ha.id... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="4505:4603" ph="select count... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="4683:4827" ph="select count... howdo_comment" />
+            <marker date="1524842169923" expanded="true" signature="4735:4826" ph="select id fr... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="4904:4964" ph="select count... howdo_concern" />
+            <marker date="1524842169923" expanded="true" signature="5040:5185" ph="select count... howdo_collect" />
+            <marker date="1524842169923" expanded="true" signature="5093:5184" ph="select id fr... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="5248:5310" ph="update howdo... " />
+            <marker date="1524842169923" expanded="true" signature="5383:5439" ph="select count... howdo_comment" />
+            <marker date="1524842169923" expanded="true" signature="5512:5567" ph="select count... howdo_praise" />
+            <marker date="1524842169923" expanded="true" signature="5638:5694" ph="select count... howdo_collect" />
+            <marker date="1524842169923" expanded="true" signature="5778:6063" ph="select ha.*,... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="6151:6412" ph="select ha.*,... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="6468:6634" ph="update howdo... " />
+            <marker date="1524842169923" expanded="true" signature="6722:6983" ph="select ha.*,... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="6904:6943" ph="select max(r... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="7072:7147" ph="select * fro... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="7072:7162" ph="select * fro... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="7254:7331" ph="select * fro... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="7413:7475" ph="select count... howdo_article" />
+            <marker date="1524842169923" expanded="true" signature="7528:7592" ph="update howdo... " />
+            <marker date="1524842169923" expanded="true" signature="7675:7930" ph="select ha.*,... howdo_article" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/ArticleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/service/impl/ArticleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="250" column="51" lean-forward="true" selection-start-line="250" selection-start-column="51" selection-end-line="250" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/song/howdo/controller/ArticleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="140" column="63" lean-forward="true" selection-start-line="140" selection-start-column="63" selection-end-line="140" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="86" column="5" lean-forward="false" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
           <folding />
         </state>
       </provider>

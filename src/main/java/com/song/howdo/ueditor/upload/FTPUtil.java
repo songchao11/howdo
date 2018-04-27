@@ -57,13 +57,15 @@ public class FTPUtil {
         return success;
     }
     
-    public String upload(MultipartFile file) throws IOException {
+    public static boolean upload(MultipartFile file,String fName) throws IOException {
         File directory = new File("");// 参数为空
         String courseFile = directory.getCanonicalPath();
         System.out.println("测试地址："+courseFile);
 
         if (file.isEmpty()) {
-            return "文件为空";
+//            return "文件为空";
+            System.out.println("文件为空");
+            return false;
         }
         // 获取文件名
         String fileName = file.getOriginalFilename();
@@ -72,10 +74,11 @@ public class FTPUtil {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
 //        logger.info("上传的后缀名为：" + suffixName);
         // 文件上传后的路径D:\springbootstudy\fileupload\src\main\resources\files
-        String filePath = courseFile+"\\src\\main\\resources\\files\\";
+//        String filePath = courseFile+"\\src\\main\\resources\\files\\";
+        String filePath = "E:\\workspace\\howdo\\src\\main\\webapp\\pic\\";
         // 解决中文问题，liunx下中文路径，图片显示问题
         // fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fileName);
+        File dest = new File(filePath + fName);
         String path = dest.getPath();
         // 检测是否存在目录
         if (!dest.getParentFile().exists()) {
@@ -84,13 +87,14 @@ public class FTPUtil {
         try {
             file.transferTo(dest);
             System.out.println("地址"+path);
-            return path;
+//            return path;
+            return true;
         } catch (IllegalStateException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "";
+        return true;
     }
     
     
@@ -109,6 +113,7 @@ public class FTPUtil {
                 ftp.disconnect();
                 return success;
             }
+//            ftp.enterLocalPassiveMode();
             ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
             ftp.makeDirectory(path);
             ftp.changeWorkingDirectory(path);

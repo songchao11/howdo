@@ -94,7 +94,12 @@ input[type="text"],input[type="password"]{padding-left:26px;}
     				if(result.code == 100){
     				    //将用户信息放入 sessionStorage 中
                         sessionStorage.setItem('userInfo',JSON.stringify(result.extend.user));
-    					window.location.href = "main.jsp";
+                        if(result.extend.user.roleName == "user"){
+                            window.location.href = "main.jsp";
+						}else if(result.extend.user.roleName == "admin"){
+                            window.location.href = "background.jsp";
+						}
+
     				}else if(result.code == 200){
     					showError("账号或密码错误!");
     				}

@@ -21,11 +21,23 @@ public interface ArticleService {
 
 	Msg queryArticleAndUser(Long artId, Long yourId);
 
-	Msg queryArticleAll(Integer page, Integer size);
+	Msg queryArticleAll(Long cateId, Integer page, Integer size);
 
 	Msg queryArticleCollect(Long userId, Integer page, Integer size);
 
 	Msg queryArticleById(Long artId);
 
 	Msg updateArticle(Article article);
+
+	Msg queryFeatureArticle();
+
+	Msg queryArticlesByAdmin(String enableFlag, Integer page, Integer size);
+
+	Msg queryArticlesByDimAdmin(String title, Integer page, Integer size);
+
+	Msg queryArticleCountAdmin();
+
+	Msg banArticle(Long artId, String enable);
+
+	Msg searchArticles(String title, Integer page, Integer size);
 }

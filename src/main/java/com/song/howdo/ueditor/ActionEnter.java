@@ -28,7 +28,6 @@ public class ActionEnter {
         this.request = request;
         this.actionType = request.getParameter("action");
         String callbackName = this.request.getParameter("callback");
-        System.out.println("��:"+callbackName);
         if (callbackName != null) {
             if (!validCallbackName(callbackName)) {
                 return new BaseState(false, AppInfo.ILLEGAL).toJSONString();

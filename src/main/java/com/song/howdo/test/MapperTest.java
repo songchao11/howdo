@@ -76,7 +76,7 @@ public class MapperTest {
 
     @Test
     public void test4(){
-        List<Article> articles = articleMapper.queryArticleAll();
+        List<Article> articles = articleMapper.queryArticleAll(1L);
         for(Article a : articles){
             System.out.println(a);
         }

@@ -88,8 +88,8 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "/article/all", method = RequestMethod.GET)
-	public Msg queryArticleAll(Integer page, Integer size){
-		return articleService.queryArticleAll(page,size);
+	public Msg queryArticleAll(Integer page, Integer size, Long cateId){
+		return articleService.queryArticleAll(cateId, page, size);
 	}
 
 	@RequestMapping(value = "/article/collect/{userId}/{page}/{size}", method = RequestMethod.GET)
@@ -106,4 +106,39 @@ public class ArticleController {
 	public Msg updateArticle(Article article){
 		return articleService.updateArticle(article);
 	}
+
+	@RequestMapping(value = "/article/feature", method = RequestMethod.GET)
+	public Msg queryArticleByCategory(){
+		return articleService.queryFeatureArticle();
+	}
+
+	@RequestMapping(value = "/articles/admin/{enable}/{page}/{size}")
+	public Msg queryArticlesByAdmin(@PathVariable String enable,
+									@PathVariable Integer page,
+									@PathVariable Integer size){
+		return articleService.queryArticlesByAdmin(enable, page, size);
+	}
+
+	@RequestMapping(value = "/articles/search/admin/{title}/{page}/{size}", method = RequestMethod.GET)
+	public Msg queryArticlesByDimAdmin( @PathVariable String title,
+								   @PathVariable Integer page,
+								   @PathVariable Integer size){
+		return articleService.queryArticlesByDimAdmin(title, page, size);
+	}
+
+	@RequestMapping(value = "/article/total/admin", method = RequestMethod.GET)
+	public Msg queryArticleCountAdmin(){
+		return articleService.queryArticleCountAdmin();
+	}
+
+	@RequestMapping(value = "/article/ban/{artId}/{enable}", method = RequestMethod.PUT)
+	public Msg banArticle(@PathVariable Long artId, @PathVariable String enable){
+		return articleService.banArticle(artId, enable);
+	}
+
+	@RequestMapping(value = "/article/search", method = RequestMethod.GET)
+	public Msg searchArticles(Integer page, Integer size, String title){
+		return articleService.searchArticles(title, page,size);
+	}
+
 }

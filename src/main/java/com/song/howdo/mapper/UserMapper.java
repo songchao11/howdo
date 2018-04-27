@@ -27,4 +27,10 @@ public interface UserMapper extends BaseMapper<User> {
     int queryConcernMeNum(@Param("userId") Long userId);
 
     int updateUser(@Param("user") User user);
+
+    int updatePhoto(@Param("headPic") String headPic, @Param("id") Long id);
+
+    String queryPassword(@Param("account") String account);
+
+    int updatePassword(@Param("account") String account, @Param("password") String password);
 }
