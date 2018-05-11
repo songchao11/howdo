@@ -29,7 +29,12 @@
   
   <select id="queryUserByAccount" resultMap="BaseResultMap">
   	select hu.*,hr.role_name from howdo_user hu,howdo_user_role hur,howdo_role hr
-    where account=#{account} and hu.id=hur.user_id and hur.role_id=hr.id
+    where hu.account=#{account} and hu.id=hur.user_id and hur.role_id=hr.id
+  </select>
+
+  <select id="queryUserByAccount1" resultMap="BaseResultMap">
+    select hu.* from howdo_user hu
+    where hu.account=#{account}
   </select>
   
   <select id="queryUserRoles" resultType="String">
@@ -82,5 +87,13 @@
   <update id="updatePassword">
     update howdo_user set password=#{password} where account=#{account}
   </update>
+
+  <insert id="addFollowed">
+    insert howdo_concern(user_id,observed) values (#{userId}, #{observed})
+  </insert>
+
+  <delete id="delFollowed">
+    delete from howdo_concern where user_id=#{userId} and observed=#{observed}
+  </delete>
 
 </mapper>

@@ -91,31 +91,31 @@
 <div class='fl'>
 <a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
 <span class='nav hidden-xs'>
-<label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
-<input type="checkbox" id="menu-toggle">
-<div class='dropdown'>
-<div class='category-links'>
-<ul>
-<li><a href="/home/" data-gtm-event="navHeaderMore">Home Decor &amp; Repair</a></li>
-<li><a href="/crafts/" data-gtm-event="navHeaderMore">Crafts</a></li>
-<li><a href="/food/" data-gtm-event="navHeaderMore">Food &amp; Drink</a></li>
-</ul>
-<ul>
-<li><a href="/garden/" data-gtm-event="navHeaderMore">Garden</a></li>
-<li><a href="/fashion/" data-gtm-event="navHeaderMore">Fashion &amp; Beauty</a></li>
-<li><a href="/holidays/" data-gtm-event="navHeaderMore">Holidays</a></li>
-</ul>
-</div>
-<div class='sponsored-programs'>
-<ul>
-</ul>
-</div>
-</div>
+<%--<label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>--%>
+<%--<input type="checkbox" id="menu-toggle">--%>
+<%--<div class='dropdown'>--%>
+<%--<div class='category-links'>--%>
+<%--<ul>--%>
+<%--<li><a href="/home/" data-gtm-event="navHeaderMore">Home Decor &amp; Repair</a></li>--%>
+<%--<li><a href="/crafts/" data-gtm-event="navHeaderMore">Crafts</a></li>--%>
+<%--<li><a href="/food/" data-gtm-event="navHeaderMore">Food &amp; Drink</a></li>--%>
+<%--</ul>--%>
+<%--<ul>--%>
+<%--<li><a href="/garden/" data-gtm-event="navHeaderMore">Garden</a></li>--%>
+<%--<li><a href="/fashion/" data-gtm-event="navHeaderMore">Fashion &amp; Beauty</a></li>--%>
+<%--<li><a href="/holidays/" data-gtm-event="navHeaderMore">Holidays</a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--<div class='sponsored-programs'>--%>
+<%--<ul>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
 </span>
 </div>
 <div>
 <div class='eHowUserMenu fr'></div>
-<form method="get" action="/sitesearch.html" id="searchHeader">
+<form method="get" action="main.jsp" id="searchHeader">
 <label class="elegant-icons magnifying-glass hidden-xs">&#x55;</label>
 <input type="text" name="s" style="color: black;" value="" autofocus onfocus="this.value = this.value;" placeholder="Search">
 <input name="skin" type="hidden" value="corporate"/>

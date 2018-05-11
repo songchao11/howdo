@@ -104,11 +104,13 @@ input[type="text"],input[type="password"]{padding-left:26px;}
     	$("#username").change(function(){
     		$("#error_box").text("");
     		var username = this.value;
+    		console.log(username);
     		$.ajax({
     			url: "${APP_PATH}/account",
     			data: "username="+username,
     			type: "GET",
-    			success: function(result){ 
+    			success: function(result){
+    			    console.log(result);
     				if(result.code == 100){
     					validate_flag = true;
     					return ;
@@ -120,6 +122,10 @@ input[type="text"],input[type="password"]{padding-left:26px;}
     			}
     		});
     	});
+
+    	function checkAccount(){
+
+		}
     	
     	function validate_info(){
     		//判断之前账号是否验证成功

@@ -359,6 +359,10 @@
         .reply_close{
             font-size: 14px;
         }
+        #p_img_a img{
+            width: 60px;
+            height: 60px;
+        }
     </style>
 </head>
 <body class="Corporate Homepage " data-skin="corporate">
@@ -371,31 +375,31 @@
             <div class='fl'>
                 <a href="main.jsp" class="logo-container"><img src="//v5-static.ehowcdn.com/media/images/logos/logov3.png" alt="eHow Logo" class="logo" data-gtm-event="nav header" data-gtm-info="logo"/></a>
                 <span class='nav hidden-xs'>
-<label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>
-<input type="checkbox" id="menu-toggle">
-<div class='dropdown'>
-<div class='category-links'>
-<ul>
-<li><a href="/home/" data-gtm-event="navHeaderMore">Home Decor &amp; Repair</a></li>
-<li><a href="/crafts/" data-gtm-event="navHeaderMore">Crafts</a></li>
-<li><a href="/food/" data-gtm-event="navHeaderMore">Food &amp; Drink</a></li>
-</ul>
-<ul>
-<li><a href="/garden/" data-gtm-event="navHeaderMore">Garden</a></li>
-<li><a href="/fashion/" data-gtm-event="navHeaderMore">Fashion &amp; Beauty</a></li>
-<li><a href="/holidays/" data-gtm-event="navHeaderMore">Holidays</a></li>
-</ul>
-</div>
-<div class='sponsored-programs'>
-<ul>
-</ul>
-</div>
-</div>
+<%--<label for="menu-toggle" class="label">发现<div class='elegant-icons arrow'>C</div></label>--%>
+<%--<input type="checkbox" id="menu-toggle">--%>
+<%--<div class='dropdown'>--%>
+<%--<div class='category-links'>--%>
+<%--<ul>--%>
+<%--<li><a href="/home/" data-gtm-event="navHeaderMore">Home Decor &amp; Repair</a></li>--%>
+<%--<li><a href="/crafts/" data-gtm-event="navHeaderMore">Crafts</a></li>--%>
+<%--<li><a href="/food/" data-gtm-event="navHeaderMore">Food &amp; Drink</a></li>--%>
+<%--</ul>--%>
+<%--<ul>--%>
+<%--<li><a href="/garden/" data-gtm-event="navHeaderMore">Garden</a></li>--%>
+<%--<li><a href="/fashion/" data-gtm-event="navHeaderMore">Fashion &amp; Beauty</a></li>--%>
+<%--<li><a href="/holidays/" data-gtm-event="navHeaderMore">Holidays</a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--<div class='sponsored-programs'>--%>
+<%--<ul>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
 </span>
             </div>
             <div>
                 <div class='eHowUserMenu fr'></div>
-                <form method="get" action="/sitesearch.html" id="searchHeader">
+                <form method="get" action="#" id="searchHeader">
                     <label class="elegant-icons magnifying-glass hidden-xs">&#x55;</label>
                     <input type="text" name="s" style="color: black;" value="" autofocus onfocus="this.value = this.value;" placeholder="Search">
                     <input name="skin" type="hidden" value="corporate"/>
@@ -589,9 +593,11 @@
         if(result.extend.user.followed == "空"){
             $(".attention_btn").empty();
         }else if(result.extend.user.followed == "关注"){
-            $("<button></button>").addClass("btn btn-default").attr("type","button").append("关注").appendTo(".attention_btn");
+            $("<button></button>").addClass("btn btn-default").attr("type","button").attr("onclick", "followed("+result.extend.user.id+")")
+                .append("关注").appendTo(".attention_btn");
         }else if(result.extend.user.followed == "已关注"){
-            $("<button></button>").addClass("btn btn-default").attr("type","button").append("关注").appendTo(".attention_btn");
+            $("<button></button>").addClass("btn btn-default").attr("type","button").attr("onclick", "unfocus("+result.extend.user.id+")")
+                .append("已关注").appendTo(".attention_btn");
         }
         if(result.extend.user.sex != null){
             $(".info_one_sex").empty();
@@ -826,6 +832,36 @@
     }
     function open_user_center(userId){
         window.location.href = "usercenter.jsp?userId="+userId;
+    }
+
+    function followed(observed){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+        $.ajax({
+            url: "${APP_PATH}/user/followed/"+userId+"/"+observed,
+            type: "POST",
+            success: function(result){
+                $(".attention_btn").empty();
+                $("<button></button>").addClass("btn btn-default").attr("type","button").attr("onclick", "unfocus("+observed+")")
+                    .append("已关注").appendTo(".attention_btn");
+            }
+        });
+    }
+
+    function unfocus(observed){
+        var userInfo = sessionStorage.getItem('userInfo');
+        userEntity = JSON.parse(userInfo);
+        var userId = userEntity.id;//登录人的id
+        $.ajax({
+            url: "${APP_PATH}/user/unfollowed/"+userId+"/"+observed,
+            type: "DELETE",
+            success: function(result){
+                $(".attention_btn").empty();
+                $("<button></button>").addClass("btn btn-default").attr("type","button").attr("onclick", "followed("+observed+")")
+                    .append("关注").appendTo(".attention_btn");
+            }
+        });
     }
 
 </script>

@@ -49,7 +49,9 @@ public class UserController {
     @ResponseBody
     public Msg checkUser(@RequestParam String username){
     	Object useraa =  SecurityUtils.getSubject().getPrincipal();
+    	System.out.println(username);
     	User user = userService.queryUserByAccount(username);
+    	System.out.println(user);
     	if(user == null){
     		return Msg.success();
     	}else{
@@ -142,6 +144,18 @@ public class UserController {
     @ResponseBody
     public Msg updatePassword(@PathVariable String account, @PathVariable String password, @PathVariable String oldPassword){
         return userService.updatePassword(account, password,oldPassword);
+    }
+
+    @RequestMapping(value = "/user/followed/{userId}/{observed}", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg followed(@PathVariable Long userId, @PathVariable Long observed){
+        return userService.addFollowed(userId, observed);
+    }
+
+    @RequestMapping(value = "/user/unfollowed/{userId}/{observed}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Msg unfollowed(@PathVariable Long userId, @PathVariable Long observed){
+        return userService.delFollowed(userId, observed);
     }
 
 }

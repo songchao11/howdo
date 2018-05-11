@@ -137,7 +137,7 @@
     <select id="queryFeatureArticle" resultMap="BaseResultMap">
         select ha.*,hu.id,hu.nickname,hu.head_pic,hu.signature from howdo_article ha,howdo_user hu
         where is_publish='Y' and enable_flag='Y' and hu.id=ha.user_id
-				and ha.read_num=(select max(read_num) from howdo_article)
+				and ha.read_num=(select max(read_num) from howdo_article where is_publish='Y' and enable_flag='Y')
         order by last_update_date desc
     </select>
 

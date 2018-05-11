@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
 		user.setNickname(nickname);
 		user.setHeadPic("http://119.23.77.220/images/cat.jpg");
 		userMapper.addUser(user);
-		User queryUser = userMapper.queryUserByAccount(user.getAccount());
+		User queryUser = userMapper.queryUserByAccount1(user.getAccount());
 		if(queryUser != null){
 			Long userId = queryUser.getId();
 			userRoleMapper.addUserRole(userId, 1L);
@@ -159,7 +159,8 @@ public class UserServiceImpl implements UserService {
 		}
 		user.setBirthday(date);
 		userMapper.updateUser(user);
-		return Msg.success();
+//		return Msg.success();
+		return this.getUser();
 	}
 
 	public Msg queryUserInfo(Long userId, Long yourId){
@@ -238,6 +239,16 @@ public class UserServiceImpl implements UserService {
 			return Msg.fail();
 		}
 
+	}
+
+	public Msg addFollowed(Long userId, Long observed) {
+		userMapper.addFollowed(userId, observed);
+		return Msg.success();
+	}
+
+	public Msg delFollowed(Long userId, Long observed) {
+		userMapper.delFollowed(userId, observed);
+		return Msg.success();
 	}
 
 }

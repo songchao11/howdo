@@ -34,9 +34,9 @@
             background-color: #f4f4f4;
         }
         .article{
-            border:1px solid black;
+            /*border:1px solid black;*/
             width:900px;
-            height: 660px;
+            /*height: 660px;*/
             margin: 70px auto;
             background-color: white;
         }

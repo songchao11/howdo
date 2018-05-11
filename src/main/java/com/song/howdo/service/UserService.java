@@ -39,4 +39,8 @@ public interface UserService {
     Msg checkPassword(String account, String password);
 
     Msg updatePassword(String account, String password, String oldPassword);
+
+    Msg addFollowed(Long userId, Long observed);
+
+    Msg delFollowed(Long userId, Long observed);
 }

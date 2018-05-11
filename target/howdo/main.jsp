@@ -285,7 +285,8 @@
         navEle.appendTo(".page_nav");
     }
     function to_detail(artId){
-        window.location.href = "detail.jsp?artId="+artId;
+//        window.location.href = "detail.jsp?artId="+artId;
+        window.open("detail.jsp?artId="+artId);
     }
 
     function showFeatureArticle(){

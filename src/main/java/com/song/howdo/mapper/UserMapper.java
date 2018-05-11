@@ -11,6 +11,8 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> queryUsers();
     
     User queryUserByAccount(@Param("account") String account);
+
+    User queryUserByAccount1(@Param("account") String account);
     
     List<String> queryUserRoles(@Param("account") String account);
     
@@ -33,4 +35,8 @@ public interface UserMapper extends BaseMapper<User> {
     String queryPassword(@Param("account") String account);
 
     int updatePassword(@Param("account") String account, @Param("password") String password);
+
+    int addFollowed(@Param("userId") Long userId, @Param("observed") Long observed);
+
+    int delFollowed(@Param("userId") Long userId, @Param("observed") Long observed);
 }
