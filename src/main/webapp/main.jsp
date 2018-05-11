@@ -211,8 +211,8 @@
 				.append($("<img />").attr("src",item.files[0].path).addClass("art_img")
 					.attr("data-pin-ehow-hover","true").attr("data-pin-no-hover","true"));
 			var tile_title = $("<div></div>").addClass("tile_title")
-				.append($("<a></a>").attr("data-gtm-event","featured text").attr("onclick","to_detail("+item.id+")").append(item.title));
-
+				.append($("<a></a>").attr("data-gtm-event","featured text").attr("onclick","to_detail("+item.id+")").append(item.title.substring(0,17)));
+			console.log(item.title.substring(0,17));
 			var a_headPic = $("<a></a>").attr("data-gtm-event","featured content contributor")
 				.append($("<img />").addClass("social-thumb").attr("src",item.user.headPic)
 					.attr("onerror","$(this).parent().parent().remove();"));
