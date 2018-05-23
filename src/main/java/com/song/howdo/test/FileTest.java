@@ -8,6 +8,8 @@ import java.io.InputStream;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class FileTest {
 
 //	public static void main(String[] args) {
@@ -103,6 +105,15 @@ public class FileTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
+    }
+
+    public String getPath(HttpServletRequest request){
+        String path=request.getSession().getServletContext().getRealPath("/pic");
+
+        System.out.println(path);
+        return path;
     }
 	
 }

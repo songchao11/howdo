@@ -7,6 +7,8 @@ import com.song.howdo.model.Msg;
 import com.song.howdo.model.User;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by songchao on 2017/12/27.
  */
@@ -34,7 +36,7 @@ public interface UserService {
 
     Msg queryUserInfo(Long userId, Long yourId);
 
-    Msg uploadPhoto(MultipartFile file);
+    Msg uploadPhoto(MultipartFile file, HttpServletRequest request);
 
     Msg checkPassword(String account, String password);
 

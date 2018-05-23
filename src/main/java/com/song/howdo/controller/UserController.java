@@ -104,16 +104,8 @@ public class UserController {
     @ResponseBody
     public Msg uploadPhoto(@RequestParam("file")MultipartFile file,
                                     HttpServletRequest request)throws IOException {
-        System.out.println("开始"+file.getOriginalFilename());
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
-        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
-        String fileName = date + ".jpg";
-
-//        return Msg.success();
-//        ModelAndView mv = new ModelAndView();
-        userService.uploadPhoto(file);
-//        mv.setViewName("information.jsp");
+        userService.uploadPhoto(file,request);
         return Msg.success();
     }
 

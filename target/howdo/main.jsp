@@ -114,7 +114,7 @@
 	</div>
 	<div class="hero-title-container">
 	<div class="hero-label">
-	<span>特色项目</span>
+	<span>特色文章</span>
 	</div>
 	<div class="hero-title">
 

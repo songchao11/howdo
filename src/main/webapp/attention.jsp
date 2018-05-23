@@ -122,6 +122,12 @@
 		/*border:1px solid blue;*/
 		float: left;
 	}
+	.attention_img img{
+		width: 99px;
+		height: 99px;
+		/*border:1px solid blue;*/
+		/*float: left;*/
+	}
 	.article_page{
 		text-align: center;
 	}

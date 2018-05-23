@@ -29,20 +29,12 @@ public class FtpUploadUtilbaidu {
 
     public State save(HttpServletRequest request, Map<String, Object> conf) {
 
-//    	ShiroHttpServletRequest shiroRequest = (ShiroHttpServletRequest) request;
-//        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-//        MultipartHttpServletRequest multipartRequest = commonsMultipartResolver.resolveMultipart((HttpServletRequest) shiroRequest.getRequest());
-//        String token = request.getParameter("token");
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
         
         MultipartFile file = multipartHttpServletRequest.getFile("upfile");
-//        MultipartFile file = ((MultipartHttpServletRequest) request).getFile("upfile");
-        System.out.println("̫��:"+file.getSize());
-        
+
         FileItemStream fileStream = null;
         boolean isAjaxUpload = request.getHeader( "X_Requested_With" ) != null;
-        //��ȡFile     upfile
-//        MultipartFile file = ((MultipartHttpServletRequest) request).getFile("upload");
         
         if (!ServletFileUpload.isMultipartContent(request)) {
             return new BaseState(false, AppInfo.NOT_MULTIPART_CONTENT);
@@ -88,19 +80,16 @@ public class FtpUploadUtilbaidu {
             State storageState = null;
             
             InputStream is = file.getInputStream();
-            System.out.println("hehe:"+is);
-            System.out.println("终极屁屁:"+filename);
-//            ftpUtil.upload(file);
+
             String fName = file.getOriginalFilename();
-//            if(ftpUtil.uploadFileFTP1(filename,is)){
-            if(ftpUtil.upload(file, fName)){
+            String fileSavePath=request.getSession().getServletContext().getRealPath("/pic");
+
+            if(ftpUtil.upload(file, fName, fileSavePath)){
             	storageState = new BaseState(true);
-//            	storageState.putInfo("url", "http://119.23.77.220/images/"+filename);
+
                 storageState.putInfo("url", "/pic/"+fName);
             }
-//            State storageState = null;//storageManager.saveFtpFileByInputStream(file, token);
-//            is.close();
-            System.out.println("�ļ���:"+originFileName + suffix);
+
             if (storageState.isSuccess()) {
                 storageState.putInfo("type", suffix);
                 storageState.putInfo("original", originFileName + suffix);

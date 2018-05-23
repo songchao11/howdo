@@ -201,6 +201,7 @@
        			/account = anon
 				/article/all = anon
 				/article/feature = anon
+				/pic/* = anon
                 
                 # everything else requires authentication:
                 /** = authc

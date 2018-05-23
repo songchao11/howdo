@@ -33,6 +33,8 @@ import com.song.howdo.service.UserService;
 import com.song.howdo.util.ChineseName;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by songchao on 2017/12/27.
  */
@@ -48,6 +50,7 @@ public class UserServiceImpl implements UserService {
     private ConcernMapper concernMapper;
     @Autowired
     private ArticleMapper articleMapper;
+
 
     public List<User> queryUsers() {
         List<User> users = userMapper.queryUsers();
@@ -159,7 +162,6 @@ public class UserServiceImpl implements UserService {
 		}
 		user.setBirthday(date);
 		userMapper.updateUser(user);
-//		return Msg.success();
 		return this.getUser();
 	}
 
@@ -202,14 +204,16 @@ public class UserServiceImpl implements UserService {
 		return Msg.success().add("user",user);
 	}
 
-	public Msg uploadPhoto(MultipartFile file) {
+	public Msg uploadPhoto(MultipartFile file, HttpServletRequest request) {
+		String fileSavePath=request.getSession().getServletContext().getRealPath("/pic");
+		System.out.println("aaaaaaaaa:"+fileSavePath);
 		FTPUtil ftpUtil = new FTPUtil();
 		String fileName = file.getOriginalFilename();
 		System.out.println(fileName);
 		Object username =  SecurityUtils.getSubject().getPrincipal();
 		User user = userMapper.queryUserByAccount(username.toString());
 		try {
-			ftpUtil.upload(file, fileName);
+			ftpUtil.upload(file, fileName,fileSavePath);
 			userMapper.updatePhoto("/pic/"+fileName, user.getId());
 		} catch (IOException e) {
 			e.printStackTrace();

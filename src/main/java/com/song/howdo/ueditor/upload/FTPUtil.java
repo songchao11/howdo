@@ -8,6 +8,8 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class FTPUtil {
 
 	//ftp服务器ip地址
@@ -20,6 +22,8 @@ public class FTPUtil {
     private static final String FTP_PASSWORD = "ele_ishare!";
     //图片路径
     private static final String FTP_BASEPATH = "/home/eleuser/file/images";
+
+    private HttpServletRequest request;
 
     public  static boolean uploadFile(String originFileName,InputStream input){
         System.out.println("里面:"+input);
@@ -57,7 +61,7 @@ public class FTPUtil {
         return success;
     }
     
-    public static boolean upload(MultipartFile file,String fName) throws IOException {
+    public static boolean upload(MultipartFile file,String fName,String savePath) throws IOException {
         File directory = new File("");// 参数为空
         String courseFile = directory.getCanonicalPath();
         System.out.println("测试地址："+courseFile);
@@ -76,9 +80,11 @@ public class FTPUtil {
         // 文件上传后的路径D:\springbootstudy\fileupload\src\main\resources\files
 //        String filePath = courseFile+"\\src\\main\\resources\\files\\";
         String filePath = "E:\\workspace\\howdo\\src\\main\\webapp\\pic\\";
+
         // 解决中文问题，liunx下中文路径，图片显示问题
         // fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fName);
+        System.out.println(savePath);
+        File dest = new File(savePath +"\\"+ fName);
         String path = dest.getPath();
         // 检测是否存在目录
         if (!dest.getParentFile().exists()) {
